@@ -23,6 +23,7 @@ python scripts/generate_report.py # all of the above -> reports/*.docx
 # optional analysis tool (not part of the linear pipeline)
 python scripts/scenario_simulator.py --list
 python scripts/churn_model.py
+python scripts/cohort_analysis.py
 ```
 
 All five scripts resolve paths relative to their own file location
@@ -41,6 +42,8 @@ ecommerce-rfm-pipeline/
 │   ├── raw_sales_data.csv        # simulator.py output (simulated transactions)
 │   ├── customer_truth.csv        # simulator.py output (latent traits, ground truth)
 │   ├── churn_predictions.csv     # churn_model.py output (per-customer risk)
+│   ├── cohort_retention.csv      # cohort_analysis.py output (wide matrix)
+│   ├── cohort_retention_long.csv # cohort_analysis.py output (tidy, for Power BI)
 │   └── rfm_segments.csv          # rfm_analysis.py output (customer segments)
 ├── scripts/
 │   ├── scraper.py
@@ -49,7 +52,8 @@ ecommerce-rfm-pipeline/
 │   ├── rfm_analysis.py
 │   ├── generate_report.py
 │   ├── scenario_simulator.py
-│   └── churn_model.py
+│   ├── churn_model.py
+│   └── cohort_analysis.py
 ├── reports/
 │   ├── Wayfair_Sales_Performance_Report.docx
 │   └── charts/                   # PNGs embedded in the report (regenerated each run)
@@ -234,6 +238,7 @@ already happened.
 
 ```bash
 python scripts/churn_model.py
+python scripts/cohort_analysis.py
 ```
 
 **Validation.** Features come strictly from transactions on or before a cutoff;
@@ -282,6 +287,52 @@ but fits at -0.279. The script prints each coefficient beside that feature's
 own correlation and flags the disagreements, so the chart cannot be read as
 causal. Ranking quality is unaffected; only interpretation is.
 
+### `cohort_analysis.py`
+Groups customers by acquisition month and tracks what share of each cohort is
+still buying in the months after. Answers what RFM cannot: not "who is valuable
+now" but "how fast do customers decay, and is acquisition quality changing".
+
+```bash
+python scripts/cohort_analysis.py
+```
+
+Retention decays cleanly, and cohorts are evenly sized (101-138):
+
+| Month | +1 | +2 | +3 | +4 | +5 | +6 |
+|---|---|---|---|---|---|---|
+| Avg retention | 10.6% | 8.5% | 7.1% | 5.6% | 4.7% | 3.2% |
+| Cohorts averaged | 11 | 10 | 9 | 8 | 7 | 6 |
+
+Four things the script does deliberately, each guarding a way cohort analysis
+usually goes wrong:
+
+- **Censoring is made explicit.** The matrix is triangular because later cohorts
+  have had less time. Averaging down a column silently changes the sample, so
+  the cohort count is printed beside every average -- a "month +8" figure drawn
+  from three cohorts is not comparable to "month +1" drawn from eleven.
+- **Cohort quality is compared at a fixed offset,** which is the only
+  apples-to-apples comparison. The month +1 figures trend +0.44 pp per cohort,
+  which looks like improving acquisition until you test it: **p = 0.086, not
+  significant**. The script says so plainly. This dataset draws every customer
+  from the same distribution, so flat is the correct answer, and a tool that
+  reported a trend here would be wrong.
+- **Blank means "not yet observed", never "nobody bought".** `groupby` drops
+  both cases identically, so an observed month where a cohort went quiet would
+  otherwise render exactly like a month that has not happened yet. Observed
+  zeros are shown as `0%`; only genuinely future cells are blank.
+- **Cohorts under 30 customers are flagged and excluded** from summary stats. A
+  cohort of three produces cells reading 33% or 67% that look like findings on
+  a heatmap and are one person's coin flip. (Under the old uniform-random
+  simulator, later cohorts really did collapse to 2-4 customers.)
+
+Also reports **cumulative revenue per cohort member**, the payback view that
+retention percentages hide: by month +3 a cohort has delivered ~27% more per
+member than at acquisition.
+
+`data/cohort_retention_long.csv` is tidy long-format -- one row per
+cohort/offset with retention, revenue per member, and cumulative revenue --
+which is the shape Power BI's matrix visual wants.
+
 ## Known data characteristics (from the last full run)
 
 - 49 real products, 1,500 simulated customers, 2,169 simulated transactions,
@@ -323,8 +374,6 @@ Segment breakdown from the last run (sums to the $708,998.19 revenue total):
 - Feed `churn_predictions.csv` into `scenario_simulator.py` so campaigns can be
   targeted by predicted risk rather than by segment membership. The model is
   calibrated, so its probabilities can be used as expected values directly.
-- **Cohort retention heatmap.** Now viable: cohorts are evenly sized (115-138
-  per month) and retention decays 100% -> 10.6% -> 8.5% -> 7.1% -> 5.6%.
 - Weight product selection by price so cheaper items sell more often. Products
   are currently drawn uniformly, which overstates revenue concentration.
 - If the scraper ever reports 0 products, re-derive the CSS classes (see
