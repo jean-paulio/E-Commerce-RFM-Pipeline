@@ -22,6 +22,7 @@ python scripts/generate_report.py # all of the above -> reports/*.docx
 
 # optional analysis tool (not part of the linear pipeline)
 python scripts/scenario_simulator.py --list
+python scripts/churn_model.py
 ```
 
 All five scripts resolve paths relative to their own file location
@@ -39,6 +40,7 @@ ecommerce-rfm-pipeline/
 │   ├── product_catalog_clean.csv # clean_data.py output (cleaned catalog)
 │   ├── raw_sales_data.csv        # simulator.py output (simulated transactions)
 │   ├── customer_truth.csv        # simulator.py output (latent traits, ground truth)
+│   ├── churn_predictions.csv     # churn_model.py output (per-customer risk)
 │   └── rfm_segments.csv          # rfm_analysis.py output (customer segments)
 ├── scripts/
 │   ├── scraper.py
@@ -46,7 +48,8 @@ ecommerce-rfm-pipeline/
 │   ├── simulator.py
 │   ├── rfm_analysis.py
 │   ├── generate_report.py
-│   └── scenario_simulator.py
+│   ├── scenario_simulator.py
+│   └── churn_model.py
 ├── reports/
 │   ├── Wayfair_Sales_Performance_Report.docx
 │   └── charts/                   # PNGs embedded in the report (regenerated each run)
@@ -224,6 +227,61 @@ measured on simulated transactions, so pass `--baseline` with your own estimate
 for a real decision; the arithmetic does not depend on the data having
 predictive signal, since lift and baseline are inputs rather than estimates.
 
+### `churn_model.py`
+Scores each customer's probability of purchasing again in the next 30 days --
+the forward-looking counterpart to `rfm_analysis.py`, which only describes what
+already happened.
+
+```bash
+python scripts/churn_model.py
+```
+
+**Validation.** Features come strictly from transactions on or before a cutoff;
+the label is whether the customer purchased after it, so the windows never
+overlap. Two numbers are reported because they answer different questions:
+
+| | ROC AUC | Avg precision | Top-decile capture |
+|---|---|---|---|
+| Cross-validated (5-fold) | 0.768 | 0.146 | 30% |
+| **Forward backtest** | **0.695** | **0.112** | **27%** |
+| Random baseline | 0.500 | 0.053 | 10% |
+
+The backtest fits at an earlier cutoff and scores at a later one, so training
+data strictly precedes test data. **That is the number to quote** -- it is the
+honest estimate of deployed behavior, and it is meaningfully lower than the
+cross-validated figure, as it should be. Top-decile capture of 27% is a 2.7x
+lift: contacting the riskiest 10% of customers reaches 27% of everyone who
+would have bought.
+
+**Validated against ground truth.** `customer_truth.csv` holds the latent
+parameters `simulator.py` used, so the model can be checked against the process
+that generated the data rather than only a held-out split:
+
+| | Top decile | Bottom decile |
+|---|---|---|
+| True purchase rate (per year) | 2.92 | 1.07 |
+| Actually churned in window | 36% | 97% |
+
+Predicted probability correlates with the true purchase rate at rho = +0.296
+and identifies genuinely-active customers at AUC 0.772.
+
+**No `class_weight="balanced"`, deliberately.** Despite the 5% positive rate,
+rebalancing rescales probabilities to a 50/50 world and destroys calibration:
+mean predicted probability was 0.389 against an actual 0.053, with a Brier
+score 4x worse (0.198 vs 0.049). Ranking did not improve either (AUC 0.761
+balanced vs 0.768 unweighted). Since `scenario_simulator.py` consumes these as
+expected values rather than only as a ranking, calibration is the property that
+matters. The reflexive fix for imbalance cost accuracy here for nothing.
+
+**Coefficients are partial effects, not standalone predictors.** The features
+are heavily collinear (`monetary` ~ `frequency` x `aov`; `overdue_ratio` is
+built from `recency`; `recency`/`tenure` correlate at 0.88). Under collinearity
+a fitted coefficient can take the opposite sign to the feature's own
+relationship with the outcome -- `monetary` correlates +0.024 with repurchase
+but fits at -0.279. The script prints each coefficient beside that feature's
+own correlation and flags the disagreements, so the chart cannot be read as
+causal. Ranking quality is unaffected; only interpretation is.
+
 ## Known data characteristics (from the last full run)
 
 - 49 real products, 1,500 simulated customers, 2,169 simulated transactions,
@@ -262,11 +320,9 @@ Segment breakdown from the last run (sums to the $708,998.19 revenue total):
 
 ## Natural next steps
 
-- **Churn / next-purchase model.** Now viable: a logistic regression on
-  recency/frequency/monetary features scores AUC 0.763 against a held-out
-  30-day window. `data/customer_truth.csv` gives the latent parameters that
-  generated the data, so the model can be checked against ground truth rather
-  than only against its own held-out split.
+- Feed `churn_predictions.csv` into `scenario_simulator.py` so campaigns can be
+  targeted by predicted risk rather than by segment membership. The model is
+  calibrated, so its probabilities can be used as expected values directly.
 - **Cohort retention heatmap.** Now viable: cohorts are evenly sized (115-138
   per month) and retention decays 100% -> 10.6% -> 8.5% -> 7.1% -> 5.6%.
 - Weight product selection by price so cheaper items sell more often. Products
