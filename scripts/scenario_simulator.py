@@ -354,11 +354,35 @@ def main():
             print(f"  {seg:<28}{sizes[seg]:>10,}{b.baseline_conv*100:>9.1f}%"
                   f"{money(b.aov):>12}")
         print(f"\n  overall baseline conversion: {overall*100:.1f}%")
-        print("\n  NOTE: in this dataset the segment baselines above are"
-              " statistically\n  indistinguishable from each other -- transactions are"
-              " assigned to\n  customers at random by simulator.py, so past behavior does"
-              " not\n  predict future purchases. Pass --baseline with your own estimate"
-              "\n  for any real decision.")
+        # Whether these baselines carry signal is a property of the data, not a
+        # fixed fact -- measure it rather than asserting it, so this note cannot
+        # go stale if the simulator's behavioral model changes.
+        conv = baselines["baseline_conv"]
+        spread = conv.max() / conv.min() if conv.min() > 0 else float("inf")
+        # Two independent red flags. A narrow spread means the segments barely
+        # differ; an inverted ordering (Champions converting no better than
+        # Hibernating) means whatever spread exists is noise. The old uniform-
+        # random simulator produced a 1.6x spread that was purely noise, so
+        # spread alone is not a sufficient test.
+        champs = baselines["baseline_conv"].get("Champions")
+        lost = baselines["baseline_conv"].get("Hibernating / Lost")
+        inverted = champs is not None and lost is not None and champs <= lost
+        if spread < 3.0 or inverted:
+            print("")
+            print("  WARNING: these segment baselines do not look trustworthy.")
+            print(f"  Spread is only {spread:.2f}x" + (" and Champions convert no"
+                  " better than" if inverted else ""))
+            if inverted:
+                print("  Hibernating / Lost, which should never happen.")
+            print("  Past behavior likely does not predict future purchases here,")
+            print("  so treat the per-segment rates as uninformative.")
+            print("  Pass --baseline with your own estimate.")
+        else:
+            print("")
+            print(f"  Segment baselines differ {spread:.1f}x (highest to lowest)")
+            print("  and are correctly ordered, so they carry real signal. They")
+            print("  are still measured on simulated transactions -- pass")
+            print("  --baseline to substitute your own estimate for a real call.")
         if not args.segment:
             return
 

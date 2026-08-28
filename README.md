@@ -38,6 +38,7 @@ ecommerce-rfm-pipeline/
 │   ├── product_catalog.csv       # scraper.py output (raw scraped catalog)
 │   ├── product_catalog_clean.csv # clean_data.py output (cleaned catalog)
 │   ├── raw_sales_data.csv        # simulator.py output (simulated transactions)
+│   ├── customer_truth.csv        # simulator.py output (latent traits, ground truth)
 │   └── rfm_segments.csv          # rfm_analysis.py output (customer segments)
 ├── scripts/
 │   ├── scraper.py
@@ -105,14 +106,43 @@ to a clearly distinct filename instead (`product_catalog_SAMPLE.csv`).
   `product_catalog_clean.csv`.
 
 ### `simulator.py`
-- Generates 500 synthetic customers and 2,500 synthetic transactions
-  against the real catalog, over a 365-day window ending 2026-06-01.
-- Includes ±5% random price variance per transaction (real sales data
-  isn't a flat price applied retroactively).
-- `RANDOM_SEED = 42` is set for reproducibility — remove it for fresh
-  randomness on each run.
-- Checks the catalog's `Source` column before proceeding (see provenance
-  note above).
+- Generates a simulated transaction history against the real catalog, over a
+  365-day window ending 2026-06-01.
+- **Customers are not interchangeable.** Each draws two latent traits --
+  a purchase rate (`lambda`, Gamma-distributed) and a dropout hazard giving a
+  finite lifetime -- then buys via a Poisson process from their acquisition
+  date until they churn or the window closes. This is the Pareto/NBD structure
+  (Schmittlein, Morrison & Colombo 1987) used in non-contractual CLV work.
+- **Acquisition dates are staggered** across the window rather than every
+  customer existing from day one, so cohort analysis sees real monthly cohorts.
+- **Transaction volume is an output, not an input.** Tune `NUM_CUSTOMERS` and
+  the rate parameters; the ledger length follows. There is no
+  `NUM_TRANSACTIONS` knob any more.
+- Writes `data/customer_truth.csv` alongside the ledger, holding each
+  customer's true `lambda`, lifetime, and churn status. That is ground truth
+  for validating a churn/propensity model -- you can check whether the model
+  recovers the parameters that generated the data.
+- ±5% random price variance per transaction; `RANDOM_SEED = 42` for
+  reproducibility; checks the catalog's `Source` column before proceeding.
+
+#### Why the behavioral model exists
+
+An earlier version assigned every transaction to a uniformly random customer
+(`customer = random.choice(customers)`). That made each customer's future
+purchases statistically independent of their past ones, which was invisible in
+the descriptive outputs but broke everything predictive built on top:
+
+| Symptom | Uniform random | Behavioral model |
+|---|---|---|
+| Churn model AUC (logistic regression) | 0.480 | **0.763** |
+| `frequency` correlation with repurchase | -0.0003 | **+0.163** |
+| Month-1 cohort retention | 35% (flat, no decay) | **10.6% (decaying)** |
+| Cohort sizes across 12 months | 157 → 2 (artifact) | **115–138 (even)** |
+| Repeat-purchase rate | 96.2% (implausible) | **28.0%** |
+
+All five traced back to that one line. Note the sign on `frequency`: under the
+old model, how often a customer had bought carried no information about whether
+they would buy again, which is why any model scored at chance.
 
 ### `rfm_analysis.py`
 - Computes Recency / Frequency / Monetary per customer from
@@ -183,25 +213,31 @@ not purchased recently", so it reports a 0% baseline by construction and makes
 every campaign look infinitely profitable. (Measured naively, At Risk shows 0.0%
 and Champions 97.3%; measured properly, both sit near 38%.)
 
-**Caveat specific to this dataset:** forward-looking conversion is ~38% for
-every segment, and the ordering is meaningless -- `Hibernating / Lost` (42.3%)
-scores above `Champions` (36.8%). That is the uniform-random-assignment issue in
-`simulator.py` again: past behavior does not predict future behavior here. Pass
-`--baseline` with your own estimate for any real decision. The tool's arithmetic
-does not depend on the data having predictive signal, since lift and baseline
-are inputs rather than estimates.
+**Baselines now carry signal.** Since the simulator gained a behavioral model,
+forward conversion ranges from 16.9% (Champions) down to 1.2% (Hibernating /
+Lost) -- a 14x spread, correctly ordered. Under the old uniform-random
+simulator every segment sat near 38% and `Hibernating / Lost` outranked
+`Champions`, which was meaningless. The tool checks for both failure modes at
+runtime (narrow spread, or Champions converting no better than Hibernating) and
+prints a warning rather than trusting the numbers blindly. Rates are still
+measured on simulated transactions, so pass `--baseline` with your own estimate
+for a real decision; the arithmetic does not depend on the data having
+predictive signal, since lift and baseline are inputs rather than estimates.
 
 ## Known data characteristics (from the last full run)
 
-- 49 real products, 495 simulated customers, 2,500 simulated transactions,
-  $813,442 total simulated revenue.
-- Revenue is heavily concentrated: one $3,399.99 rug alone accounts for
-  ~29% of total revenue; the top 5 products account for ~50%.
-- 96.2% of simulated customers are "repeat" customers (placed 2+ orders) —
-  this is an artifact of the simulation's random-assignment design, not a
-  claim about real Wayfair shopper behavior. Worth keeping in mind when
-  interpreting `rfm_segments.csv`: segment sizes reflect the simulation's
-  assumptions, not real-world purchase patterns.
+- 49 real products, 1,500 simulated customers, 2,169 simulated transactions,
+  $708,998.19 total simulated revenue.
+- Revenue is still concentrated: the single highest-earning rug accounts for
+  ~33% of revenue and the top 5 products for ~52%. That comes from the real
+  catalog's price spread, not from the simulation.
+- 28.0% of customers placed 2+ orders, and 58.0% churned before the window
+  closed. Both are properties of the behavioral model rather than claims about
+  real Wayfair shoppers, but they are at least in a plausible range for
+  big-ticket home goods.
+- Products are still chosen uniformly at random per transaction. Real customers
+  favor cheaper items, so the revenue concentration above is if anything
+  overstated. Tackling that would be the next realism improvement.
 
 ## Report
 
@@ -213,25 +249,30 @@ provenance (real catalog vs. simulated transactions) up front, and repeats
 the simulation caveat inside the segmentation section so segment sizes
 aren't read as real-world customer distribution.
 
-Segment breakdown from the last run (sums to the $813,442.22 revenue total):
+Segment breakdown from the last run (sums to the $708,998.19 revenue total):
 
 | Segment | Customers | % of base | Revenue | % of revenue |
 |---|---|---|---|---|
-| Champions | 75 | 15.2% | $201,101.04 | 24.7% |
-| Loyal Customers | 88 | 17.8% | $193,584.29 | 23.8% |
-| Promising / New | 92 | 18.6% | $80,670.32 | 9.9% |
-| About to Sleep / Average | 42 | 8.5% | $28,121.51 | 3.5% |
-| At Risk / Can't Lose Them | 92 | 18.6% | $183,820.34 | 22.6% |
-| Hibernating / Lost | 106 | 21.4% | $126,144.72 | 15.5% |
+| Champions | 186 | 12.4% | $219,214.45 | 30.9% |
+| Loyal Customers | 230 | 15.3% | $139,850.04 | 19.7% |
+| Promising / New | 322 | 21.5% | $117,082.57 | 16.5% |
+| About to Sleep / Average | 162 | 10.8% | $14,926.18 | 2.1% |
+| At Risk / Can't Lose Them | 322 | 21.5% | $129,793.64 | 18.3% |
+| Hibernating / Lost | 278 | 18.5% | $88,131.31 | 12.4% |
 
 ## Natural next steps
 
+- **Churn / next-purchase model.** Now viable: a logistic regression on
+  recency/frequency/monetary features scores AUC 0.763 against a held-out
+  30-day window. `data/customer_truth.csv` gives the latent parameters that
+  generated the data, so the model can be checked against ground truth rather
+  than only against its own held-out split.
+- **Cohort retention heatmap.** Now viable: cohorts are evenly sized (115-138
+  per month) and retention decays 100% -> 10.6% -> 8.5% -> 7.1% -> 5.6%.
+- Weight product selection by price so cheaper items sell more often. Products
+  are currently drawn uniformly, which overstates revenue concentration.
 - If the scraper ever reports 0 products, re-derive the CSS classes (see
   fragility note above) before assuming the page has no products.
-- Consider whether `simulator.py`'s repeat-purchase rate should be tuned
-  down to be more realistic for big-ticket home goods.
-- Consider tuning `simulator.py`'s repeat-purchase rate (see above); it is
-  the main thing standing between this dataset and a realistic one.
 
 ## Version control
 
