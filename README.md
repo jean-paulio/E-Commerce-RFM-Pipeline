@@ -185,9 +185,27 @@ Segment breakdown from the last run (sums to the $813,442.22 revenue total):
   fragility note above) before assuming the page has no products.
 - Consider whether `simulator.py`'s repeat-purchase rate should be tuned
   down to be more realistic for big-ticket home goods.
-- Put the project under version control. Note that the committed CSVs are
-  LF-terminated but regenerating them on Windows produces CRLF, so add a
-  `.gitattributes` before the first commit to avoid whole-file diffs.
+- Consider tuning `simulator.py`'s repeat-purchase rate (see above); it is
+  the main thing standing between this dataset and a realistic one.
+
+## Version control
+
+The repo uses `.gitattributes` to keep line endings from creating noise:
+pandas writes CRLF on Windows, while the repository stores LF. Re-running the
+entire pipeline leaves all four CSVs showing **no diff**.
+
+Two things worth knowing:
+
+- `.gitattributes` deliberately uses plain `text`, not `text eol=lf`. Forcing
+  LF in the working tree makes every pandas-written CSV disagree with its
+  checked-out form, and `git status` then reports all four data files as
+  modified after any rerun even though content is identical. This was tested,
+  not assumed.
+- `reports/Wayfair_Sales_Performance_Report.docx` **will** show as modified
+  after every regeneration. A .docx is a zip archive with embedded
+  timestamps, so its bytes change even when the document doesn't. Before
+  committing one, check whether the content actually changed rather than
+  assuming a diff is meaningful; if it hasn't, `git checkout --` the file.
 
 ## Verified environment
 
