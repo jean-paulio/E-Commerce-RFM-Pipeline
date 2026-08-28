@@ -1,0 +1,26 @@
+# Normalize line endings so regenerating data files on Windows doesn't show
+# up as a whole-file rewrite.
+#
+# The pipeline's CSVs were originally written with LF endings, but pandas on
+# Windows writes CRLF. Without normalization, re-running any pipeline stage
+# would make every row of every CSV look modified in `git diff`, burying real
+# content changes. `text` makes git store LF in the repo and normalize CRLF
+# working-tree files on staging, so an unchanged rerun produces a clean diff.
+
+* text=auto
+
+*.py    text eol=lf
+*.csv   text eol=lf
+*.md    text eol=lf
+*.txt   text eol=lf
+*.json  text eol=lf
+
+# wayfair_page.html is the scraper's input and the project's only copy of the
+# real page. Keep its bytes exactly as saved -- never normalize it.
+*.html  -text
+
+# Binary artifacts: no line-ending translation, no textual diffs.
+*.docx  binary
+*.png   binary
+*.jpg   binary
+*.xlsx  binary
