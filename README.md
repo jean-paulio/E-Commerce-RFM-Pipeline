@@ -19,6 +19,9 @@ python scripts/clean_data.py     # data/product_catalog.csv -> data/product_cata
 python scripts/simulator.py      # data/product_catalog_clean.csv -> data/raw_sales_data.csv
 python scripts/rfm_analysis.py   # data/raw_sales_data.csv -> data/rfm_segments.csv
 python scripts/generate_report.py # all of the above -> reports/*.docx
+
+# optional analysis tool (not part of the linear pipeline)
+python scripts/scenario_simulator.py --list
 ```
 
 All five scripts resolve paths relative to their own file location
@@ -41,7 +44,8 @@ ecommerce-rfm-pipeline/
 │   ├── clean_data.py
 │   ├── simulator.py
 │   ├── rfm_analysis.py
-│   └── generate_report.py
+│   ├── generate_report.py
+│   └── scenario_simulator.py
 ├── reports/
 │   ├── Wayfair_Sales_Performance_Report.docx
 │   └── charts/                   # PNGs embedded in the report (regenerated each run)
@@ -145,6 +149,47 @@ to a clearly distinct filename instead (`product_catalog_SAMPLE.csv`).
 - **Why this script exists**: the original report was authored interactively
   and its generating code was never saved, so the report couldn't be rebuilt
   when upstream data changed. This closes that gap.
+
+### `scenario_simulator.py`
+A "what-if" tool for testing retention/discount campaigns against the RFM
+segments before committing budget. Not part of the linear pipeline -- it reads
+`rfm_segments.csv` and `raw_sales_data.csv` and answers questions like *"if we
+give 15% off to At Risk customers and assume a 10% conversion lift, does it pay
+for itself?"*
+
+```bash
+python scripts/scenario_simulator.py --list
+python scripts/scenario_simulator.py --segment "At Risk / Can't Lose Them" --discount 15 --lift 10
+python scripts/scenario_simulator.py --segment Champions --sweep --chart
+```
+
+Two things it does deliberately:
+
+- **Accounts for discount cannibalization.** A discount is paid to everyone who
+  redeems, including customers who would have bought anyway. Ignoring this is
+  the most common way campaign ROI gets overstated. In the 15%/10% example
+  above, $1,523 of discount goes to baseline buyers versus $152 to incremental
+  ones -- which is why that scenario returns **-67% ROI** despite sounding
+  reasonable.
+- **Solves for break-even lift.** Rather than reporting ROI for one guessed
+  lift, it reports the lift the campaign would need to break even, which is the
+  number that actually drives a go/no-go call. At 5% discount that's a 10.4%
+  lift; at 25% discount it's 81%.
+
+**Baselines are measured out of sample.** Segments are rebuilt on history only,
+then conversion is measured in a held-out 30-day window. Measuring conversion on
+the same window that defined `recency` would be circular -- "At Risk" means "has
+not purchased recently", so it reports a 0% baseline by construction and makes
+every campaign look infinitely profitable. (Measured naively, At Risk shows 0.0%
+and Champions 97.3%; measured properly, both sit near 38%.)
+
+**Caveat specific to this dataset:** forward-looking conversion is ~38% for
+every segment, and the ordering is meaningless -- `Hibernating / Lost` (42.3%)
+scores above `Champions` (36.8%). That is the uniform-random-assignment issue in
+`simulator.py` again: past behavior does not predict future behavior here. Pass
+`--baseline` with your own estimate for any real decision. The tool's arithmetic
+does not depend on the data having predictive signal, since lift and baseline
+are inputs rather than estimates.
 
 ## Known data characteristics (from the last full run)
 
