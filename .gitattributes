@@ -1,19 +1,25 @@
-# Normalize line endings so regenerating data files on Windows doesn't show
-# up as a whole-file rewrite.
+# Normalize line endings so regenerating data files doesn't show up as a
+# whole-file rewrite.
 #
-# The pipeline's CSVs were originally written with LF endings, but pandas on
-# Windows writes CRLF. Without normalization, re-running any pipeline stage
-# would make every row of every CSV look modified in `git diff`, burying real
-# content changes. `text` makes git store LF in the repo and normalize CRLF
-# working-tree files on staging, so an unchanged rerun produces a clean diff.
+# The pipeline's CSVs are written by pandas, which emits CRLF on Windows. The
+# `text` attribute makes git store LF in the repository and convert on the way
+# in and out, so an unchanged rerun produces a clean diff and the repo stays
+# portable.
+#
+# Note: `text` deliberately does NOT carry `eol=lf` here. Forcing LF in the
+# working tree makes every pandas-written CSV permanently disagree with its
+# checked-out form, and `git status` then reports the file as modified even
+# though the normalized content is identical (verified: same blob hash, empty
+# diff). Letting the checkout use the platform's native ending keeps status
+# honest while still storing LF in the repo.
 
 * text=auto
 
-*.py    text eol=lf
-*.csv   text eol=lf
-*.md    text eol=lf
-*.txt   text eol=lf
-*.json  text eol=lf
+*.py    text
+*.csv   text
+*.md    text
+*.txt   text
+*.json  text
 
 # wayfair_page.html is the scraper's input and the project's only copy of the
 # real page. Keep its bytes exactly as saved -- never normalize it.
