@@ -426,7 +426,10 @@ def main():
     out = X.copy()
     out["repurchase_probability"] = scores.round(4)
     out["churn_risk"] = (1 - scores).round(4)
-    out["risk_decile"] = pd.qcut(scores.rank(method="first"), 10,
+    # 10 = highest churn risk, so sorting descending puts the customers most in
+    # need of attention first -- the direction a dashboard user will assume.
+    # (Ranking on repurchase probability instead silently inverts it.)
+    out["risk_decile"] = pd.qcut((1 - scores).rank(method="first"), 10,
                                  labels=False) + 1
     out["actually_purchased"] = y
     out.sort_values("churn_risk", ascending=False).to_csv(OUTPUT_FILE)
