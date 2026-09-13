@@ -1,419 +1,318 @@
-# E-Commerce RFM Analytics Pipeline
+# E-Commerce Customer Analytics Pipeline
 
-An analytics pipeline that scrapes **real** Wayfair product catalog data,
-layers **simulated** customer transactions on top of it (since Wayfair's
-actual sales history is proprietary), and produces an RFM (Recency,
-Frequency, Monetary) customer segmentation plus a formal sales performance
-report.
+**Real Wayfair catalog data · Simulated customers · Segmentation, churn prediction, cohort retention, and campaign ROI modeling**
 
-This README exists so a fresh session (human or AI) can pick up the project
-without re-deriving decisions that were already made and tested.
+What happens after someone buys from an online store? Do they come back? Which customers are worth the most, which ones are slipping away, and would a discount win them back or just hand money to people who were going to buy anyway?
 
-## Quick start
+This project answers those questions end to end for a simulated online rug store built on **real Wayfair products and prices**. It starts from a saved Wayfair web page, generates a year of realistic customer behavior on top of it, and turns that into four decision tools plus an automatically generated business report.
+
+**Scale:** 49 real products · 1,500 simulated customers · 2,169 orders · $709K in simulated revenue
+
+---
+
+## At a glance
+
+| The business question | What this project built | The answer it found |
+|---|---|---|
+| Who are our best customers? | Customer segmentation (RFM) | **Champions are 12% of customers but 31% of revenue** |
+| Who is about to stop buying? | Churn prediction model | Finds likely buyers **2.7× better than a random list** |
+| How fast do new customers drop off? | Cohort retention analysis | **11%** buy again the next month; **3%** by month six |
+| Would this discount pay off? | What-if campaign calculator | 15% off for "At Risk" customers **loses money (−77% ROI)** |
+
+---
+
+## How it works
+
+```mermaid
+flowchart LR
+    A["Saved Wayfair page<br/>real products and prices"] --> B["scraper.py<br/>extract 49 products"]
+    B --> C["clean_data.py<br/>remove junk, never invent data"]
+    C --> D["simulator.py<br/>1,500 customers with<br/>individual buying habits"]
+    D --> E["rfm_analysis.py<br/>customer segments"]
+    E --> F["generate_report.py<br/>Word business report"]
+    D --> G["churn_model.py<br/>who buys next?"]
+    D --> H["cohort_analysis.py<br/>retention over time"]
+    E --> I["scenario_simulator.py<br/>campaign ROI"]
+    E --> J[("Power BI dashboard<br/>(in progress)")]
+    G --> J
+    H --> J
+```
+
+---
+
+## Real data vs. simulated data
+
+This is the most important thing to understand about the project.
+
+- **Real:** 49 Wayfair area rugs, with their actual names and prices, extracted from a saved Wayfair product listing page.
+- **Simulated:** every customer, order, and date. Wayfair's sales data is private, so the project generates customers with realistic buying habits and a year of orders against the real catalog. Customer names are computer-generated and don't refer to real people.
+
+The two are never mixed silently. Findings about products and prices reflect real catalog data; findings about customer behavior reflect the simulation.
+
+<details>
+<summary><b>Technical details</b></summary>
+
+- Every catalog row carries a `Source` column (`scraped` or `synthetic_fallback`). `simulator.py` checks it and refuses to generate transactions against non-scraped rows without explicit confirmation.
+- Fallback or sample data is always written to a distinct filename (`product_catalog_SAMPLE.csv`), never over real output. `clean_data.py` exits with an error rather than inventing replacement products.
+- The scraper selects titles and prices by exact CSS class sets verified against the page (49/49 clean extraction), with a text-heuristic fallback. Product IDs are a stable hash of name and price.
+
+</details>
+
+### How the simulated customers behave
+
+Real customers aren't interchangeable. Some buy often, most buy rarely, and eventually most stop buying altogether. The simulator gives each customer their own buying habits and their own "lifespan" as a customer, and they join the store at different points in the year. That realism is what makes the prediction and retention analysis possible (see [what went wrong](#five-times-the-obvious-answer-was-wrong) for how that was discovered).
+
+<details>
+<summary><b>Technical details</b></summary>
+
+- Customers follow a **Pareto/NBD** process (Schmittlein, Morrison & Colombo, 1987), the standard model for non-contractual customer bases. Each customer draws a Gamma-distributed purchase rate λ and a Gamma-distributed lifetime, then purchases via a Poisson process from acquisition until dropout or window end.
+- Acquisition dates are staggered across the 365-day window, producing genuine monthly cohorts.
+- Transaction volume is an *output* of the process, not a fixed input.
+- The latent parameters are written to `customer_truth.csv`, giving ground truth for validating the churn model against the process that generated the data.
+- Fully reproducible under a fixed seed: a clean run regenerates every dataset identically.
+
+</details>
+
+---
+
+## What the project delivers
+
+### 1. Customer segmentation (RFM)
+
+Every customer is scored on three things: how **R**ecently they bought, how **F**requently, and how much **M**oney they've spent. They're then sorted into groups a marketing team can act on.
+
+**Champions make up 12% of customers but bring in 31% of revenue.**
+
+![Customer segmentation](docs/images/rfm_segments.png)
+
+| Segment | Share of customers | Share of revenue |
+|---|---|---|
+| Champions | 12.4% | 30.9% |
+| Loyal Customers | 15.3% | 19.7% |
+| At Risk / Can't Lose Them | 21.5% | 18.3% |
+| Promising / New | 21.5% | 16.5% |
+| Hibernating / Lost | 18.5% | 12.4% |
+| About to Sleep / Average | 10.8% | 2.1% |
+
+<details>
+<summary><b>Technical details</b></summary>
+
+- Each dimension is scored on a 1–5 quintile scale; six rule-based segments are assigned from the combined scores.
+- Scores use `.rank(method='first')` before `pd.qcut`, so tied values (common with integer purchase counts) can't produce duplicate bin edges. Passing `duplicates='drop'` to `qcut` instead fails when explicit labels are supplied.
+- The analysis snapshot date is derived from the data (`max(InvoiceDate) + 1 day`), not hardcoded.
+
+</details>
+
+### 2. Churn prediction
+
+A model estimates each customer's chance of buying again in the next 30 days. If a team can only afford to contact 10% of its customers, the model's list reaches **2.7× more of the people about to buy** than a random list would.
+
+Because the simulation's hidden settings are known, the model can also be checked against the truth, not just against its own test data. **97% of the customers it ranked least likely to return really had quit**, compared with 36% of those it ranked most likely.
+
+![Churn model evaluation](docs/images/churn_model.png)
+
+<details>
+<summary><b>Technical details</b></summary>
+
+- **Features:** recency, frequency, monetary value, average order value, tenure, units, mean inter-purchase gap, and an "overdue" ratio (recency relative to the customer's own typical gap).
+- **Leakage-free temporal design:** features use only transactions on or before a cutoff; labels come from the following 30 days.
+- **Model selection:** logistic regression, random forest, and gradient boosting compared under 5-fold stratified CV. Logistic regression won.
+- **Evaluation:** because only ~5% of customers buy in a given window, ROC AUC is reported alongside average precision (vs. the base rate) and top-decile capture:
+
+  | | ROC AUC | Avg precision | Top-decile capture |
+  |---|---|---|---|
+  | Cross-validated | 0.768 | 0.146 | 30% |
+  | **Forward backtest** (train earlier, test later) | **0.695** | **0.112** | **27%** |
+  | Random baseline | 0.500 | 0.053 | 10% |
+
+  The forward backtest is the honest estimate of deployed performance, since training data strictly precedes test data.
+- **Calibrated probabilities** (Brier 0.049), so scores can be used as expected values in campaign planning, not just as a ranking.
+- **Ground-truth validation:** predicted probability correlates with the true purchase rate at ρ = +0.296 and identifies genuinely active customers at AUC 0.772.
+- Outputs `churn_predictions.csv` with a probability, churn risk, and risk decile per customer (decile 10 = highest risk).
+
+</details>
+
+### 3. Cohort retention
+
+Customers are grouped by the month they first bought, then tracked month by month. **About 11% of new customers buy again the following month; by month six it's about 3%.**
+
+The analysis also checks whether newer customers are better or worse than older ones. They aren't: an apparent improvement turned out to be random noise.
+
+![Cohort retention heatmap](docs/images/cohort_retention.png)
+
+<details>
+<summary><b>Technical details</b></summary>
+
+- **Right-censoring made explicit:** later cohorts have had less time to be observed, so every column average is reported with the number of cohorts behind it.
+- **Cohort quality compared at a fixed offset** (month +1), tested with linear regression: slope +0.44 pp per cohort, **p = 0.086**, not significant.
+- **Observed zeros are distinguished from unobserved cells.** A cohort that went quiet in an observed month shows `0%`; only months that haven't happened yet are blank.
+- Cohorts under 30 customers are flagged and excluded from summary statistics.
+- Also reports cumulative revenue per cohort member (the payback view), and exports `cohort_retention_long.csv` in tidy long format for Power BI.
+
+</details>
+
+### 4. What-if campaign calculator
+
+Type in a campaign idea, such as *"15% off for At Risk customers, expecting 10% more of them to buy,"* and the calculator reports whether it makes or loses money, and how big the response would need to be just to break even.
+
+That example **loses money, at −77% ROI.** The discount goes to everyone who uses it, including customers who would have bought anyway, and here **about 10× more discount goes to those customers** than to the customers the offer actually won over. It would need a 55% response lift to break even. Smaller discounts need far less: 5% off breaks even at a 25% lift.
+
+![Campaign ROI sensitivity](docs/images/scenario_roi_at_risk.png)
+
+<details>
+<summary><b>Technical details</b></summary>
+
+- Profit model accounts for **discount cannibalization** (discount paid on baseline purchases), redemption rate, per-contact cost, and gross margin.
+- **Break-even lift is solved in closed form** rather than guessed, since that's the number a go/no-go decision turns on.
+- **Baselines are measured out of sample.** Segments are rebuilt on history and conversion is measured in a held-out 30-day window, avoiding a circular 0% baseline for "At Risk" customers (see below).
+- A runtime check warns when segment baselines look untrustworthy (narrow spread, or Champions converting no better than Hibernating).
+- Command-line tool with a `--sweep` sensitivity grid and heatmap output. Margin and cost inputs are planning assumptions and can be overridden.
+
+</details>
+
+### 5. Automated business report
+
+A formal Word report covering KPIs, monthly revenue trends, top and bottom products, revenue concentration, and customer segments. It's generated from the data by a script, so it can be rebuilt any time the data changes.
+
+<details>
+<summary><b>Technical details</b></summary>
+
+- Built with `python-docx` and `matplotlib`; figures in the narrative are computed at generation time rather than typed in.
+- Degrades gracefully: if segment data is missing, the segmentation section is omitted rather than the build failing.
+
+</details>
+
+---
+
+## Five times the obvious answer was wrong
+
+Results are only worth something if they're right. These are the points where a standard approach produced a confident but wrong answer, and how each one was caught.
+
+**1. The model that was no better than a coin flip.**
+The first churn model predicted no better than guessing. Rather than tune it, the data was investigated. The original simulation gave every customer identical random behavior, so past purchases said nothing about future ones. The simulator was rebuilt so customers have individual habits and eventually stop buying, and the same model went from coin-flip accuracy (AUC 0.48) to 0.76.
+
+<details>
+<summary><b>Technical details</b></summary>
+
+The original simulator assigned each transaction via `random.choice(customers)`, making future purchases statistically independent of past ones. Every downstream symptom traced back to that one line:
+
+| Symptom | Uniform random | Pareto/NBD model |
+|---|---|---|
+| Churn model AUC | 0.480 | 0.763 |
+| Purchase frequency's correlation with repurchase | −0.0003 | +0.163 |
+| Month-1 cohort retention | 35% (flat) | 10.6% (decaying) |
+| Cohort sizes over 12 months | 157 → 2 | 101–138 |
+| Repeat-purchase rate | 96.2% | 28.0% |
+
+</details>
+
+**2. The standard fix that made predictions about 7× too high.**
+Only about 5% of customers buy in any 30-day window. The usual fix for rare outcomes inflated the model's probabilities roughly sevenfold, which would have made every campaign estimate wrong. Removing it made the model both more accurate and properly calibrated.
+
+<details>
+<summary><b>Technical details</b></summary>
+
+With `class_weight="balanced"`, mean predicted probability was 0.389 against an actual rate of 0.053, and the Brier score was 0.198. Without it: Brier 0.049, and ROC AUC slightly *improved* (0.761 → 0.768). Rebalancing rescales probabilities to a 50/50 world, which is harmful when the probabilities are used as expected values.
+
+</details>
+
+**3. "Big spenders are more likely to leave." (They aren't.)**
+The model appeared to say that customers who spend more are more likely to stop buying. That's a statistical illusion caused by inputs that overlap with each other. The model's output now flags these cases so the numbers can't be misread.
+
+<details>
+<summary><b>Technical details</b></summary>
+
+`monetary` correlates +0.024 with repurchase on its own but receives a −0.279 coefficient. The features are heavily collinear (monetary ↔ AOV 0.85; recency ↔ overdue ratio 0.91), so coefficients are partial effects. The script prints each coefficient beside the feature's own correlation and flags sign disagreements. Ranking quality is unaffected.
+
+</details>
+
+**4. A campaign that looked infinitely profitable.**
+Measured the obvious way, "At Risk" customers had a 0% chance of buying on their own, which makes any campaign aimed at them look like pure profit. But that's circular: they're labeled "At Risk" *because* they haven't bought recently. Measured properly on a later time period, their real rate is 2%.
+
+<details>
+<summary><b>Technical details</b></summary>
+
+Measuring conversion in the same window that defines recency re-reads the segment definition. Naive same-window rates were 0.0% for At Risk and 40.9% for Champions; out-of-sample rates (segments rebuilt on history, outcomes from a held-out 30 days) are 2.0% and 16.9%.
+
+</details>
+
+**5. A trend that wasn't there.**
+The cohort analysis first reported that newer customers were getting better. A proper statistical test showed the pattern was random noise, which matches how the data was actually generated.
+
+<details>
+<summary><b>Technical details</b></summary>
+
+An initial heuristic compared the slope to the spread and flagged a trend. It was replaced with an ordinary least-squares significance test (`scipy.stats.linregress`): +0.44 pp per cohort, SE 0.23, p = 0.086, n = 11.
+
+</details>
+
+---
+
+## Tech stack
+
+| Area | Tools |
+|---|---|
+| Data collection | Python, BeautifulSoup |
+| Data processing | pandas, NumPy |
+| Simulation | NumPy (Gamma and Poisson processes), Faker |
+| Machine learning | scikit-learn |
+| Statistics | SciPy |
+| Visualization | matplotlib |
+| Reporting | python-docx |
+| Business intelligence | Power BI (dashboard in progress) |
+
+**Methods:** Pareto/NBD customer simulation · RFM segmentation · leakage-free temporal backtesting · probability calibration · cohort analysis with right-censoring · statistical significance testing · scenario and sensitivity modeling
+
+---
+
+## Run it yourself
 
 ```bash
 pip install -r requirements.txt
 
-python scripts/scraper.py        # data/wayfair_page.html -> data/product_catalog.csv
-python scripts/clean_data.py     # data/product_catalog.csv -> data/product_catalog_clean.csv
-python scripts/simulator.py      # data/product_catalog_clean.csv -> data/raw_sales_data.csv
-python scripts/rfm_analysis.py   # data/raw_sales_data.csv -> data/rfm_segments.csv
-python scripts/generate_report.py # all of the above -> reports/*.docx
+python scripts/scraper.py            # extract products from the saved page
+python scripts/clean_data.py         # clean the catalog
+python scripts/simulator.py          # generate customers and orders
+python scripts/rfm_analysis.py       # segment customers
+python scripts/generate_report.py    # build the Word report
 
-# optional analysis tool (not part of the linear pipeline)
-python scripts/scenario_simulator.py --list
-python scripts/churn_model.py
-python scripts/cohort_analysis.py
-```
-
-All five scripts resolve paths relative to their own file location
-(`SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))`), so they run
-correctly whether invoked from the project root or from inside `scripts/`.
-Verified both ways.
-
-## Folder structure
-
-```
-ecommerce-rfm-pipeline/
-├── data/
-│   ├── wayfair_page.html         # locally saved Wayfair page (scraper input)
-│   ├── product_catalog.csv       # scraper.py output (raw scraped catalog)
-│   ├── product_catalog_clean.csv # clean_data.py output (cleaned catalog)
-│   ├── raw_sales_data.csv        # simulator.py output (simulated transactions)
-│   ├── customer_truth.csv        # simulator.py output (latent traits, ground truth)
-│   ├── churn_predictions.csv     # churn_model.py output (per-customer risk)
-│   ├── cohort_retention.csv      # cohort_analysis.py output (wide matrix)
-│   ├── cohort_retention_long.csv # cohort_analysis.py output (tidy, for Power BI)
-│   └── rfm_segments.csv          # rfm_analysis.py output (customer segments)
-├── scripts/
-│   ├── scraper.py
-│   ├── clean_data.py
-│   ├── simulator.py
-│   ├── rfm_analysis.py
-│   ├── generate_report.py
-│   ├── scenario_simulator.py
-│   ├── churn_model.py
-│   └── cohort_analysis.py
-├── reports/
-│   ├── Wayfair_Sales_Performance_Report.docx
-│   └── charts/                   # PNGs embedded in the report (regenerated each run)
-├── requirements.txt
-└── README.md
-```
-
-## Data provenance — the most important design decision in this project
-
-**Real data:** product names and prices in `product_catalog.csv` /
-`product_catalog_clean.csv`, scraped from `wayfair_page.html`.
-
-**Simulated data:** everything in `raw_sales_data.csv` and
-`rfm_segments.csv` — customer identities, invoices, dates, quantities. This
-is intentional: real Wayfair sales/customer data is proprietary, so
-transactions are generated against the real catalog instead. Customer
-names are Faker-generated and do not refer to real people.
-
-To prevent these two categories from ever silently blending, every catalog
-row carries a `Source` column (`"scraped"` or `"synthetic_fallback"`).
-`simulator.py` checks this column before generating transactions and will
-warn/prompt if it finds non-`"scraped"` rows. This exists because early
-drafts of `scraper.py`/`clean_data.py` had fallback logic that silently
-overwrote real scraped data with fabricated products under the same
-filename — that failure mode is why the current versions never overwrite
-real output with synthetic data, and always write synthetic/fallback data
-to a clearly distinct filename instead (`product_catalog_SAMPLE.csv`).
-
-## Script-by-script notes
-
-### `scraper.py`
-- **Primary strategy**: selects product titles/prices by exact CSS class
-  match, verified against the real page. Titles are `<h2>` elements with
-  class set `{_6o3atzbl, _6o3atz18y, _1lxwj2q1}`; prices are `<span>`
-  elements with class set `{_6o3atzbl, _6o3atzc7, _6o3atz1d9, _6o3atz1bd}`.
-  This gave 100% clean extraction (49/49 real products) vs. a much noisier
-  text-content heuristic used earlier.
-- **⚠️ Known fragility**: those class names look like hashed/atomic CSS
-  from a CSS-in-JS build. They will likely change whenever Wayfair ships a
-  new frontend build. If `scraper.py` suddenly reports 0 products, this is
-  the first thing to check — re-inspect `wayfair_page.html` for the current
-  class names (search for a known product title string, e.g. via
-  `BeautifulSoup`, and check its parent element's `class` attribute).
-- **Fallback strategy**: if class-based extraction finds nothing, falls
-  back to a text-heuristic (badge-word filtering + longest-candidate
-  selection) so the script degrades gracefully rather than failing outright.
-- Product IDs are a stable hash of `(name, price)`, so re-running the
-  scraper doesn't reassign IDs to the same products.
-
-### `clean_data.py`
-- Filters out rows where the name is actually a price string, or matches
-  known UI/navigation junk substrings.
-- Never fabricates replacement data. If cleaning leaves fewer than 15 rows,
-  it exits with an error explaining likely causes rather than silently
-  injecting invented products.
-- Never overwrites `product_catalog.csv` — always writes to
-  `product_catalog_clean.csv`.
-
-### `simulator.py`
-- Generates a simulated transaction history against the real catalog, over a
-  365-day window ending 2026-06-01.
-- **Customers are not interchangeable.** Each draws two latent traits --
-  a purchase rate (`lambda`, Gamma-distributed) and a dropout hazard giving a
-  finite lifetime -- then buys via a Poisson process from their acquisition
-  date until they churn or the window closes. This is the Pareto/NBD structure
-  (Schmittlein, Morrison & Colombo 1987) used in non-contractual CLV work.
-- **Acquisition dates are staggered** across the window rather than every
-  customer existing from day one, so cohort analysis sees real monthly cohorts.
-- **Transaction volume is an output, not an input.** Tune `NUM_CUSTOMERS` and
-  the rate parameters; the ledger length follows. There is no
-  `NUM_TRANSACTIONS` knob any more.
-- Writes `data/customer_truth.csv` alongside the ledger, holding each
-  customer's true `lambda`, lifetime, and churn status. That is ground truth
-  for validating a churn/propensity model -- you can check whether the model
-  recovers the parameters that generated the data.
-- ±5% random price variance per transaction; `RANDOM_SEED = 42` for
-  reproducibility; checks the catalog's `Source` column before proceeding.
-
-#### Why the behavioral model exists
-
-An earlier version assigned every transaction to a uniformly random customer
-(`customer = random.choice(customers)`). That made each customer's future
-purchases statistically independent of their past ones, which was invisible in
-the descriptive outputs but broke everything predictive built on top:
-
-| Symptom | Uniform random | Behavioral model |
-|---|---|---|
-| Churn model AUC (logistic regression) | 0.480 | **0.763** |
-| `frequency` correlation with repurchase | -0.0003 | **+0.163** |
-| Month-1 cohort retention | 35% (flat, no decay) | **10.6% (decaying)** |
-| Cohort sizes across 12 months | 157 → 2 (artifact) | **115–138 (even)** |
-| Repeat-purchase rate | 96.2% (implausible) | **28.0%** |
-
-All five traced back to that one line. Note the sign on `frequency`: under the
-old model, how often a customer had bought carried no information about whether
-they would buy again, which is why any model scored at chance.
-
-### `rfm_analysis.py`
-- Computes Recency / Frequency / Monetary per customer from
-  `raw_sales_data.csv`, scores each on a 1–5 quintile scale, and assigns a
-  segment label (`Champions`, `Loyal Customers`, `Promising / New`,
-  `At Risk / Can't Lose Them`, `Hibernating / Lost`, `About to Sleep /
-  Average`).
-- All three quintile scores use `.rank(method='first')` before `qcut` so
-  that tied values (common with integer `frequency`) can never produce a
-  "duplicate bin edge" crash. This was a real bug found and fixed — adding
-  `duplicates='drop'` to `qcut` directly does **not** work when explicit
-  `labels` are also passed (it raises a different error), so don't
-  reintroduce that pattern.
-- `snapshot_date` is derived from the data itself
-  (`max(InvoiceDate) + 1 day`), not hardcoded, so it stays correct even if
-  `simulator.py`'s date window changes later.
-
-### `generate_report.py`
-- Builds `reports/Wayfair_Sales_Performance_Report.docx` from
-  `raw_sales_data.csv`, `product_catalog_clean.csv`, and (optionally)
-  `rfm_segments.csv`. Charts are written to `reports/charts/` and embedded.
-- **Every number in the narrative prose is computed at generation time.**
-  There are no hardcoded figures in the sentences — month names, peak/trough
-  revenue, the 80%-of-revenue product count, segment shares, and the
-  partial-month exclusion note all derive from the data. Changing the
-  simulation window or catalog produces a report whose prose still matches
-  its own tables.
-- `rfm_segments.csv` is optional. If it's missing the script prints a notice
-  and emits the report without the segmentation section, rather than failing.
-- Verified to reproduce every figure from the original hand-authored report
-  (revenue, orders, AOV, repeat rate, top/bottom products, top customers).
-- Exits with a clear message if the .docx is open in Word, which holds a
-  write lock on the file.
-- **Why this script exists**: the original report was authored interactively
-  and its generating code was never saved, so the report couldn't be rebuilt
-  when upstream data changed. This closes that gap.
-
-### `scenario_simulator.py`
-A "what-if" tool for testing retention/discount campaigns against the RFM
-segments before committing budget. Not part of the linear pipeline -- it reads
-`rfm_segments.csv` and `raw_sales_data.csv` and answers questions like *"if we
-give 15% off to At Risk customers and assume a 10% conversion lift, does it pay
-for itself?"*
-
-```bash
-python scripts/scenario_simulator.py --list
+python scripts/churn_model.py        # train and evaluate the churn model
+python scripts/cohort_analysis.py    # cohort retention analysis
 python scripts/scenario_simulator.py --segment "At Risk / Can't Lose Them" --discount 15 --lift 10
-python scripts/scenario_simulator.py --segment Champions --sweep --chart
 ```
 
-Two things it does deliberately:
+Every script runs from the project root or from inside `scripts/`. A fixed random seed makes every run reproduce the same results.
 
-- **Accounts for discount cannibalization.** A discount is paid to everyone who
-  redeems, including customers who would have bought anyway. Ignoring this is
-  the most common way campaign ROI gets overstated. In the 15%/10% example
-  above, $1,523 of discount goes to baseline buyers versus $152 to incremental
-  ones -- which is why that scenario returns **-67% ROI** despite sounding
-  reasonable.
-- **Solves for break-even lift.** Rather than reporting ROI for one guessed
-  lift, it reports the lift the campaign would need to break even, which is the
-  number that actually drives a go/no-go call. At 5% discount that's a 10.4%
-  lift; at 25% discount it's 81%.
+<details>
+<summary><b>Repository layout</b></summary>
 
-**Baselines are measured out of sample.** Segments are rebuilt on history only,
-then conversion is measured in a held-out 30-day window. Measuring conversion on
-the same window that defined `recency` would be circular -- "At Risk" means "has
-not purchased recently", so it reports a 0% baseline by construction and makes
-every campaign look infinitely profitable. (Measured naively, At Risk shows 0.0%
-and Champions 97.3%; measured properly, both sit near 38%.)
-
-**Baselines now carry signal.** Since the simulator gained a behavioral model,
-forward conversion ranges from 16.9% (Champions) down to 1.2% (Hibernating /
-Lost) -- a 14x spread, correctly ordered. Under the old uniform-random
-simulator every segment sat near 38% and `Hibernating / Lost` outranked
-`Champions`, which was meaningless. The tool checks for both failure modes at
-runtime (narrow spread, or Champions converting no better than Hibernating) and
-prints a warning rather than trusting the numbers blindly. Rates are still
-measured on simulated transactions, so pass `--baseline` with your own estimate
-for a real decision; the arithmetic does not depend on the data having
-predictive signal, since lift and baseline are inputs rather than estimates.
-
-### `churn_model.py`
-Scores each customer's probability of purchasing again in the next 30 days --
-the forward-looking counterpart to `rfm_analysis.py`, which only describes what
-already happened.
-
-```bash
-python scripts/churn_model.py
-python scripts/cohort_analysis.py
+```
+├── data/          raw page, cleaned catalog, simulated orders, and every analysis output
+├── scripts/       the eight pipeline and analysis scripts
+├── reports/       the generated Word report
+├── docs/          technical notes and README images
+└── requirements.txt
 ```
 
-**Validation.** Features come strictly from transactions on or before a cutoff;
-the label is whether the customer purchased after it, so the windows never
-overlap. Two numbers are reported because they answer different questions:
+</details>
 
-| | ROC AUC | Avg precision | Top-decile capture |
-|---|---|---|---|
-| Cross-validated (5-fold) | 0.768 | 0.146 | 30% |
-| **Forward backtest** | **0.695** | **0.112** | **27%** |
-| Random baseline | 0.500 | 0.053 | 10% |
+---
 
-The backtest fits at an earlier cutoff and scores at a later one, so training
-data strictly precedes test data. **That is the number to quote** -- it is the
-honest estimate of deployed behavior, and it is meaningfully lower than the
-cross-validated figure, as it should be. Top-decile capture of 27% is a 2.7x
-lift: contacting the riskiest 10% of customers reaches 27% of everyone who
-would have bought.
+## Limitations
 
-**Validated against ground truth.** `customer_truth.csv` holds the latent
-parameters `simulator.py` used, so the model can be checked against the process
-that generated the data rather than only a held-out split:
+- **Customer behavior is simulated.** Segment sizes, retention rates, and churn patterns reflect the simulation's assumptions, not real Wayfair shoppers. The value is in the methods, which would apply unchanged to real transaction data.
+- **Products are chosen at random** within the simulation, so revenue is probably more concentrated in expensive rugs than it would be in reality.
+- **Gross margin (45%) and campaign costs are planning assumptions,** not measured figures.
+- **The catalog is a single snapshot** of one Wayfair page, and the scraper depends on page structure that changes whenever Wayfair updates its site.
 
-| | Top decile | Bottom decile |
-|---|---|---|
-| True purchase rate (per year) | 2.92 | 1.07 |
-| Actually churned in window | 36% | 97% |
+## What's next
 
-Predicted probability correlates with the true purchase rate at rho = +0.296
-and identifies genuinely-active customers at AUC 0.772.
+- Power BI dashboard (in progress)
+- Target campaigns by predicted churn risk instead of by segment
+- Price-weighted product selection in the simulator
 
-**No `class_weight="balanced"`, deliberately.** Despite the 5% positive rate,
-rebalancing rescales probabilities to a 50/50 world and destroys calibration:
-mean predicted probability was 0.389 against an actual 0.053, with a Brier
-score 4x worse (0.198 vs 0.049). Ranking did not improve either (AUC 0.761
-balanced vs 0.768 unweighted). Since `scenario_simulator.py` consumes these as
-expected values rather than only as a ranking, calibration is the property that
-matters. The reflexive fix for imbalance cost accuracy here for nothing.
+---
 
-**Coefficients are partial effects, not standalone predictors.** The features
-are heavily collinear (`monetary` ~ `frequency` x `aov`; `overdue_ratio` is
-built from `recency`; `recency`/`tenure` correlate at 0.88). Under collinearity
-a fitted coefficient can take the opposite sign to the feature's own
-relationship with the outcome -- `monetary` correlates +0.024 with repurchase
-but fits at -0.279. The script prints each coefficient beside that feature's
-own correlation and flags the disagreements, so the chart cannot be read as
-causal. Ranking quality is unaffected; only interpretation is.
+Design decisions, known fragilities, and verification details are documented in [docs/TECHNICAL_NOTES.md](docs/TECHNICAL_NOTES.md).
 
-### `cohort_analysis.py`
-Groups customers by acquisition month and tracks what share of each cohort is
-still buying in the months after. Answers what RFM cannot: not "who is valuable
-now" but "how fast do customers decay, and is acquisition quality changing".
-
-```bash
-python scripts/cohort_analysis.py
-```
-
-Retention decays cleanly, and cohorts are evenly sized (101-138):
-
-| Month | +1 | +2 | +3 | +4 | +5 | +6 |
-|---|---|---|---|---|---|---|
-| Avg retention | 10.6% | 8.5% | 7.1% | 5.6% | 4.7% | 3.2% |
-| Cohorts averaged | 11 | 10 | 9 | 8 | 7 | 6 |
-
-Four things the script does deliberately, each guarding a way cohort analysis
-usually goes wrong:
-
-- **Censoring is made explicit.** The matrix is triangular because later cohorts
-  have had less time. Averaging down a column silently changes the sample, so
-  the cohort count is printed beside every average -- a "month +8" figure drawn
-  from three cohorts is not comparable to "month +1" drawn from eleven.
-- **Cohort quality is compared at a fixed offset,** which is the only
-  apples-to-apples comparison. The month +1 figures trend +0.44 pp per cohort,
-  which looks like improving acquisition until you test it: **p = 0.086, not
-  significant**. The script says so plainly. This dataset draws every customer
-  from the same distribution, so flat is the correct answer, and a tool that
-  reported a trend here would be wrong.
-- **Blank means "not yet observed", never "nobody bought".** `groupby` drops
-  both cases identically, so an observed month where a cohort went quiet would
-  otherwise render exactly like a month that has not happened yet. Observed
-  zeros are shown as `0%`; only genuinely future cells are blank.
-- **Cohorts under 30 customers are flagged and excluded** from summary stats. A
-  cohort of three produces cells reading 33% or 67% that look like findings on
-  a heatmap and are one person's coin flip. (Under the old uniform-random
-  simulator, later cohorts really did collapse to 2-4 customers.)
-
-Also reports **cumulative revenue per cohort member**, the payback view that
-retention percentages hide: by month +3 a cohort has delivered ~27% more per
-member than at acquisition.
-
-`data/cohort_retention_long.csv` is tidy long-format -- one row per
-cohort/offset with retention, revenue per member, and cumulative revenue --
-which is the shape Power BI's matrix visual wants.
-
-## Known data characteristics (from the last full run)
-
-- 49 real products, 1,500 simulated customers, 2,169 simulated transactions,
-  $708,998.19 total simulated revenue.
-- Revenue is still concentrated: the single highest-earning rug accounts for
-  ~33% of revenue and the top 5 products for ~52%. That comes from the real
-  catalog's price spread, not from the simulation.
-- 28.0% of customers placed 2+ orders, and 58.0% churned before the window
-  closed. Both are properties of the behavioral model rather than claims about
-  real Wayfair shoppers, but they are at least in a plausible range for
-  big-ticket home goods.
-- Products are still chosen uniformly at random per transaction. Real customers
-  favor cheaper items, so the revenue concentration above is if anything
-  overstated. Tackling that would be the next realism improvement.
-
-## Report
-
-`reports/Wayfair_Sales_Performance_Report.docx` — formal Word report,
-generated by `scripts/generate_report.py`. Covers KPIs, monthly revenue
-trend, top/bottom products, revenue concentration (Pareto), customer
-purchase frequency, and **RFM customer segmentation**. States data
-provenance (real catalog vs. simulated transactions) up front, and repeats
-the simulation caveat inside the segmentation section so segment sizes
-aren't read as real-world customer distribution.
-
-Segment breakdown from the last run (sums to the $708,998.19 revenue total):
-
-| Segment | Customers | % of base | Revenue | % of revenue |
-|---|---|---|---|---|
-| Champions | 186 | 12.4% | $219,214.45 | 30.9% |
-| Loyal Customers | 230 | 15.3% | $139,850.04 | 19.7% |
-| Promising / New | 322 | 21.5% | $117,082.57 | 16.5% |
-| About to Sleep / Average | 162 | 10.8% | $14,926.18 | 2.1% |
-| At Risk / Can't Lose Them | 322 | 21.5% | $129,793.64 | 18.3% |
-| Hibernating / Lost | 278 | 18.5% | $88,131.31 | 12.4% |
-
-## Natural next steps
-
-- Feed `churn_predictions.csv` into `scenario_simulator.py` so campaigns can be
-  targeted by predicted risk rather than by segment membership. The model is
-  calibrated, so its probabilities can be used as expected values directly.
-- Weight product selection by price so cheaper items sell more often. Products
-  are currently drawn uniformly, which overstates revenue concentration.
-- If the scraper ever reports 0 products, re-derive the CSS classes (see
-  fragility note above) before assuming the page has no products.
-
-## Version control
-
-The repo uses `.gitattributes` to keep line endings from creating noise:
-pandas writes CRLF on Windows, while the repository stores LF. Re-running the
-entire pipeline leaves all four CSVs showing **no diff**.
-
-Two things worth knowing:
-
-- `.gitattributes` deliberately uses plain `text`, not `text eol=lf`. Forcing
-  LF in the working tree makes every pandas-written CSV disagree with its
-  checked-out form, and `git status` then reports all four data files as
-  modified after any rerun even though content is identical. This was tested,
-  not assumed.
-- `reports/Wayfair_Sales_Performance_Report.docx` **will** show as modified
-  after every regeneration. A .docx is a zip archive with embedded
-  timestamps, so its bytes change even when the document doesn't. Before
-  committing one, check whether the content actually changed rather than
-  assuming a diff is meaningful; if it hasn't, `git checkout --` the file.
-
-## Verified environment
-
-The pipeline was re-run end to end and is reproducible on library versions
-well ahead of the minimums in `requirements.txt`:
-
-| Package | Pinned minimum | Verified working on |
-|---|---|---|
-| pandas | >=2.0 | 3.0.1 |
-| numpy | >=1.24 | 2.4.3 |
-| Faker | >=20.0 | 40.37.0 |
-| beautifulsoup4 | >=4.12 | 4.14.3 |
-| matplotlib | >=3.7 | 3.10.8 |
-| python-docx | >=1.1 | 1.2.0 |
-
-With `RANDOM_SEED = 42`, `simulator.py` regenerates `raw_sales_data.csv`
-byte-identically on Faker 40 despite being written against Faker 20, and
-`rfm_analysis.py` reproduces `rfm_segments.csv` exactly on pandas 3.x. The
-scraper still extracts 49/49 products, so the fragile CSS classes noted
-above are still valid as of this run.
+*Not affiliated with or endorsed by Wayfair. Product names and prices come from a publicly viewable listing page; all customer and transaction data is synthetic.*
