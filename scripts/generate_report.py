@@ -83,6 +83,75 @@ def money_short(value: float) -> str:
     return f"${value / 1000:,.0f}K"
 
 
+def repeat_descriptor(rate_pct: float) -> str:
+    """Adjective for a repeat-purchase rate, chosen from the value itself.
+
+    The wording used to hardcode "very high", which was true when the simulator
+    produced a 96% repeat rate and false once it produced 28%. The numbers in
+    the prose updated with the data; the adjectives did not. Deriving the word
+    from the number keeps them in agreement.
+    """
+    if rate_pct >= 60:
+        return "very high"
+    if rate_pct >= 40:
+        return "high"
+    if rate_pct >= 20:
+        return "moderate"
+    return "low"
+
+
+def repeat_realism_note(rate_pct: float) -> str:
+    if rate_pct >= 50:
+        return ("That is higher than would be expected for big-ticket home goods, "
+                "and reflects the simulation's assumptions rather than real Wayfair "
+                "shopper behavior.")
+    return ("That is a plausible level for big-ticket home goods such as area rugs, "
+            "though it reflects the simulation's assumptions rather than observed "
+            "Wayfair shopper behavior.")
+
+
+def describe_trend(monthly: pd.DataFrame, late_acquired_share: float) -> dict:
+    """Direction of monthly revenue, measured rather than assumed.
+
+    Compares the average of the first few months with the last few. The report
+    previously asserted "relatively stable" unconditionally, which stayed in the
+    text after revenue began rising by more than half across the year.
+    """
+    rev = monthly["Revenue"]
+    k = max(1, min(3, len(rev) // 2))
+    change = rev.iloc[-k:].mean() / rev.iloc[:k].mean() - 1
+    if change > 0.15:
+        phrase, verb = "trended upward", "grew"
+    elif change < -0.15:
+        phrase, verb = "trended downward", "fell"
+    else:
+        phrase, verb = "held broadly steady", None
+
+    if verb:
+        sentence = (f"Comparing the first {k} months with the last {k}, average "
+                    f"monthly revenue {verb} by {abs(change) * 100:.0f}%.")
+    else:
+        sentence = (f"Comparing the first {k} months with the last {k}, average "
+                    f"monthly revenue changed by {change * 100:+.0f}%, with no "
+                    f"sustained trend.")
+
+    # Growth is only attributed to the customer base building up when the data
+    # shows customers really were acquired across the year.
+    builds_up = change > 0.15 and late_acquired_share > 0.5
+    if builds_up:
+        sentence += (" In this simulated dataset, much of that growth reflects the "
+                     "active customer base building up over the year, since new "
+                     "customers are acquired every month while earlier ones keep "
+                     "buying.")
+    return {
+        "phrase": phrase,
+        "sentence": sentence,
+        "takeaway_suffix": (", largely because the simulated customer base builds "
+                            "up as new customers are acquired each month."
+                            if builds_up else "."),
+    }
+
+
 def style_chart_axes(ax) -> None:
     """Apply the report's chart look: no box, faint horizontal guides only."""
     ax.spines["top"].set_visible(False)
@@ -464,6 +533,9 @@ def build_document(sales, catalog, rfm):
     top5_share = perf.head(5)["RevenueShare"].sum()
     peak_month = monthly["Revenue"].idxmax()
     trough_month = monthly["Revenue"].idxmin()
+    first_month = sales.groupby("CustomerID")["InvoiceDate"].min().dt.to_period("M")
+    late_acquired = float((first_month > first_month.min()).mean())
+    trend = describe_trend(monthly, late_acquired)
 
     add_body(doc, "Key observations:", bold=True)
     add_bullets(doc, [
@@ -474,13 +546,13 @@ def build_document(sales, catalog, rfm):
         f"The top 5 products by revenue account for {top5_share:.1f}% of all revenue; "
         f"the remaining {kpis['catalog_size'] - 5} products share the rest.",
 
-        f"{kpis['repeat_rate']:.1f}% of customers placed more than one order, indicating "
-        f"strong simulated repeat-purchase behavior across the customer base.",
+        f"{kpis['repeat_rate']:.1f}% of customers placed more than one order, a "
+        f"{repeat_descriptor(kpis['repeat_rate'])} repeat-purchase rate.",
 
-        f"Monthly revenue is relatively stable, ranging from roughly "
+        f"Monthly revenue ranged from roughly "
         f"{money_short(monthly['Revenue'].min())} to "
-        f"{money_short(monthly['Revenue'].max())} per month with no sustained downward "
-        f"trend across the {len(monthly)} full months of data.",
+        f"{money_short(monthly['Revenue'].max())} per month and {trend['phrase']} "
+        f"across the {len(monthly)} full months of data.",
     ])
 
     # --- revenue trend -----------------------------------------------------
@@ -497,14 +569,17 @@ def build_document(sales, catalog, rfm):
         f"in the dataset ({monthly.index.min().strftime('%B %Y')} through "
         f"{monthly.index.max().strftime('%B %Y')}).{excluded_note}")
     add_chart(doc, chart_monthly_revenue(monthly))
+    # Only call a peak seasonal when it actually falls in the holiday season.
+    holiday = peak_month.month in (11, 12)
     add_body(doc,
         f"Revenue peaked in {peak_month.strftime('%B %Y')} at "
-        f"${monthly['Revenue'].max():,.0f}, consistent with a holiday shopping pattern, "
-        f"and dipped to its lowest full-month point in "
+        f"${monthly['Revenue'].max():,.0f}"
+        + (", consistent with a holiday shopping pattern," if holiday else
+           ", which does not coincide with the usual holiday peak for home goods,")
+        + f" and dipped to its lowest full-month point in "
         f"{trough_month.strftime('%B %Y')} at ${monthly['Revenue'].min():,.0f}. Order "
         f"counts follow a similar rhythm, ranging from {monthly['Orders'].min()} to "
-        f"{monthly['Orders'].max()} orders per month. Overall, the trend shows healthy "
-        f"month-to-month variation without a sustained decline.")
+        f"{monthly['Orders'].max()} orders per month. {trend['sentence']}")
 
     # --- product performance ----------------------------------------------
     add_heading(doc, "Product Performance", 1)
@@ -558,18 +633,24 @@ def build_document(sales, catalog, rfm):
     # --- customer behavior -------------------------------------------------
     opc = kpis["orders_per_customer"]
     add_heading(doc, "Customer Behavior", 1)
+    single_share = (opc == 1).mean() * 100
+    if single_share >= 50:
+        spread_note = f"Most customers ({single_share:.0f}%) placed a single order."
+    else:
+        spread_note = (f"Most customers placed between {int(opc.quantile(0.25))} and "
+                       f"{int(opc.quantile(0.75))} orders; {single_share:.0f}% placed "
+                       f"only one.")
     add_body(doc,
         f"The distribution below shows how many orders each of the "
         f"{kpis['unique_customers']:,} customers placed over the twelve-month period. "
-        f"Most customers placed between {int(opc.quantile(0.25))} and "
-        f"{int(opc.quantile(0.75))} orders; very few placed only one.")
+        + spread_note)
     add_chart(doc, chart_customer_distribution(opc))
     add_body(doc,
-        f"Only {kpis['single_order_customers']} of {kpis['unique_customers']:,} customers "
+        f"{kpis['single_order_customers']:,} of {kpis['unique_customers']:,} customers "
         f"({100 - kpis['repeat_rate']:.1f}%) placed a single order, while "
-        f"{kpis['repeat_rate']:.1f}% placed two or more — a high repeat rate, "
-        f"consistent with the simulation's design assumptions rather than a claim about "
-        f"real Wayfair shopper behavior.")
+        f"{kpis['repeat_rate']:.1f}% placed two or more — a "
+        f"{repeat_descriptor(kpis['repeat_rate'])} repeat rate. "
+        f"{repeat_realism_note(kpis['repeat_rate'])}")
 
     cust_rev = sales.groupby(["CustomerID", "CustomerName"]).agg(
         Revenue=("Revenue", "sum"),
@@ -589,6 +670,7 @@ def build_document(sales, catalog, rfm):
         "kpis": kpis,
         "perf": perf,
         "monthly": monthly,
+        "trend": trend,
         "summary": summary,
         "top_product": top_product,
         "top5_share": top5_share,
@@ -660,11 +742,11 @@ def add_segmentation_section(doc, summary, kpis):
     add_body(doc, " ".join(lines))
 
     add_body(doc,
-        f"One caveat carries over from the simulation's design: because transactions are "
-        f"assigned to customers at random, the {kpis['repeat_rate']:.1f}% repeat rate is "
-        f"far higher than real big-ticket home goods retail would produce. Segment sizes "
-        f"here therefore describe the simulated population, not expected real-world "
-        f"customer distribution.", size=9.5)
+        "One caveat carries over from the simulation's design: customer purchase "
+        "rates and lifetimes are drawn from assumed distributions rather than "
+        "observed from real shoppers. Segment sizes here therefore describe the "
+        "simulated population, not the expected real-world customer distribution.",
+        size=9.5)
 
 
 def add_takeaways(doc, ctx):
@@ -683,13 +765,12 @@ def add_takeaways(doc, ctx):
         f"contributes comparatively little despite similar order volumes — suggesting "
         f"unit price, not popularity, is the primary revenue driver.",
 
-        f"Order volume is fairly stable month over month, with a clear seasonal peak in "
-        f"{ctx['monthly']['Revenue'].idxmax().strftime('%B')}, typical of holiday-driven "
-        f"home goods demand.",
+        f"Monthly revenue {ctx['trend']['phrase']} over the year"
+        f"{ctx['trend']['takeaway_suffix']}",
 
-        f"Simulated repeat-purchase behavior is very high ({kpis['repeat_rate']:.1f}%); in "
-        f"a real dataset this would be worth validating, since real-world repeat rates "
-        f"for big-ticket home goods like area rugs are often lower.",
+        f"{kpis['repeat_rate']:.1f}% of customers bought more than once, a "
+        f"{repeat_descriptor(kpis['repeat_rate'])} repeat rate. "
+        f"{repeat_realism_note(kpis['repeat_rate'])}",
     ]
     if summary is not None:
         top_rev = summary.loc[summary["Revenue"].idxmax()]
@@ -699,8 +780,8 @@ def add_takeaways(doc, ctx):
             f"{top_rev['customer_segment']} segment drive {top_rev['RevenueShare']:.1f}% "
             f"of revenue, pointing retention effort at a well-defined group.")
         items.append(
-            "With segmentation in place, modeling seasonality more formally or tuning "
-            "the simulator toward realistic repeat rates would be the natural next steps.")
+            "The project extends this descriptive view with individual-level churn "
+            "prediction, cohort retention tracking, and campaign ROI modeling.")
     else:
         items.append(
             "This report is a foundation for further analysis — segmenting customers by "
