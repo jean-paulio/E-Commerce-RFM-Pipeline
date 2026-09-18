@@ -1,1501 +1,1501 @@
 CustomerID,recency,frequency,monetary,r_score,f_score,m_score,customer_segment
-CUST_1000,120,3,299.1,3,5,4,Loyal Customers
-CUST_1001,34,4,4112.24,5,5,5,Champions
-CUST_1002,59,1,227.53,4,1,3,Promising / New
-CUST_1003,64,2,653.14,4,4,5,Champions
-CUST_1004,52,1,20.29,4,1,1,Promising / New
-CUST_1005,63,1,393.95000000000005,4,1,4,Promising / New
-CUST_1006,184,1,159.33,3,1,3,Promising / New
-CUST_1007,350,1,20.32,1,1,1,Hibernating / Lost
-CUST_1008,149,2,3401.74,3,4,5,Loyal Customers
-CUST_1009,228,2,176.02,2,4,3,At Risk / Can't Lose Them
-CUST_1010,133,1,104.38,3,1,2,Promising / New
-CUST_1011,314,1,68.98,1,1,1,Hibernating / Lost
-CUST_1012,160,2,244.07,3,4,3,Loyal Customers
-CUST_1013,122,1,114.25,3,1,2,Promising / New
-CUST_1014,239,1,35.73,2,1,1,Hibernating / Lost
-CUST_1015,206,1,34.55,2,1,1,Hibernating / Lost
-CUST_1016,319,1,96.37,1,1,2,Hibernating / Lost
-CUST_1017,162,1,55.45,3,1,1,Promising / New
-CUST_1018,111,1,77.2,4,1,1,Promising / New
-CUST_1019,197,1,129.9,2,1,2,Hibernating / Lost
-CUST_1020,144,1,105.91,3,1,2,Promising / New
-CUST_1021,3,3,893.8499999999999,5,5,5,Champions
-CUST_1022,250,2,337.02,2,4,4,At Risk / Can't Lose Them
-CUST_1023,94,2,707.63,4,4,5,Champions
-CUST_1024,147,4,485.71,3,5,4,Loyal Customers
-CUST_1025,217,2,451.07,2,4,4,At Risk / Can't Lose Them
-CUST_1026,89,1,20.07,4,1,1,Promising / New
-CUST_1027,214,1,208.3,2,1,3,Hibernating / Lost
-CUST_1028,4,1,1326.14,5,1,5,Promising / New
-CUST_1029,137,2,284.76,3,4,4,Loyal Customers
-CUST_1030,121,1,106.17,3,1,2,Promising / New
-CUST_1031,186,1,205.27,2,1,3,Hibernating / Lost
-CUST_1032,233,1,48.28,2,1,1,Hibernating / Lost
-CUST_1033,64,1,102.96,4,1,2,Promising / New
-CUST_1034,6,2,637.32,5,4,5,Champions
-CUST_1035,85,1,6897.28,4,1,5,Promising / New
-CUST_1036,14,1,289.32,5,1,4,Promising / New
-CUST_1037,195,2,3381.2,2,4,5,At Risk / Can't Lose Them
-CUST_1038,12,1,68.67,5,1,1,Promising / New
-CUST_1039,3,1,3341.18,5,1,5,Promising / New
-CUST_1040,216,1,74.04,2,1,1,Hibernating / Lost
-CUST_1041,229,1,580.8,2,1,5,Hibernating / Lost
-CUST_1042,37,2,212.07,5,4,3,Loyal Customers
-CUST_1043,188,4,663.85,2,5,5,At Risk / Can't Lose Them
-CUST_1044,24,1,182.85,5,1,3,Promising / New
-CUST_1045,360,1,93.42,1,1,2,Hibernating / Lost
-CUST_1046,2,2,409.71000000000004,5,4,4,Champions
-CUST_1047,72,1,75.47,4,1,1,Promising / New
-CUST_1048,127,2,214.18,3,4,3,Loyal Customers
-CUST_1049,124,1,305.98,3,1,4,Promising / New
-CUST_1050,66,3,1429.5500000000002,4,5,5,Champions
-CUST_1051,213,1,390.20000000000005,2,1,4,Hibernating / Lost
-CUST_1052,176,3,3719.7400000000002,3,5,5,Loyal Customers
-CUST_1053,56,2,416.13,4,4,4,Champions
-CUST_1054,27,1,147.94,5,1,3,Promising / New
-CUST_1055,210,1,627.95,2,1,5,Hibernating / Lost
-CUST_1056,44,1,411.98,5,1,4,Promising / New
-CUST_1057,341,1,75.49,1,1,1,Hibernating / Lost
-CUST_1058,155,1,135.4,3,1,2,Promising / New
-CUST_1059,309,1,68.53,1,1,1,Hibernating / Lost
-CUST_1060,58,2,760.25,4,4,5,Champions
-CUST_1061,249,1,552.05,2,1,4,Hibernating / Lost
-CUST_1062,19,1,162.44,5,1,3,Promising / New
-CUST_1063,96,2,521.86,4,4,4,Champions
-CUST_1064,60,1,94.88,4,1,2,Promising / New
-CUST_1065,58,1,470.99,4,1,4,Promising / New
-CUST_1066,216,2,488.27,2,4,4,At Risk / Can't Lose Them
-CUST_1067,178,1,495.01,3,1,4,Promising / New
-CUST_1068,145,1,69.28,3,1,1,Promising / New
-CUST_1069,281,1,200.76,1,1,3,Hibernating / Lost
-CUST_1070,54,1,67.61,4,1,1,Promising / New
-CUST_1071,190,1,135.23,2,1,2,Hibernating / Lost
-CUST_1072,301,1,393.2,1,1,4,Hibernating / Lost
-CUST_1073,97,1,3415.35,4,1,5,Promising / New
-CUST_1074,94,2,285.20000000000005,4,4,4,Champions
-CUST_1075,190,4,527.63,2,5,4,At Risk / Can't Lose Them
-CUST_1076,254,2,194.51,2,4,3,At Risk / Can't Lose Them
-CUST_1077,331,1,69.74,1,1,1,Hibernating / Lost
-CUST_1078,142,3,524.3,3,5,4,Loyal Customers
-CUST_1079,186,1,201.77,2,1,3,Hibernating / Lost
-CUST_1080,289,1,205.71,1,1,3,Hibernating / Lost
-CUST_1081,121,1,40.74,3,1,1,Promising / New
-CUST_1082,170,4,1109.26,3,5,5,Loyal Customers
-CUST_1083,24,1,106.13,5,1,2,Promising / New
-CUST_1084,128,1,3531.89,3,1,5,Promising / New
-CUST_1085,5,1,149.47,5,1,3,Promising / New
-CUST_1086,167,1,41.92,3,1,1,Promising / New
-CUST_1087,361,1,34.3,1,1,1,Hibernating / Lost
-CUST_1088,95,5,781.0600000000001,4,5,5,Champions
-CUST_1089,325,1,274.08,1,1,4,Hibernating / Lost
-CUST_1090,17,3,1439.66,5,5,5,Champions
-CUST_1091,355,2,252.87,1,4,3,At Risk / Can't Lose Them
-CUST_1092,295,2,155.95,1,4,3,At Risk / Can't Lose Them
-CUST_1093,347,1,184.08,1,1,3,Hibernating / Lost
-CUST_1094,57,1,130.14,4,1,2,Promising / New
-CUST_1095,111,1,69.7,4,1,1,Promising / New
-CUST_1096,124,2,1231.4,3,4,5,Loyal Customers
-CUST_1097,156,5,1340.47,3,5,5,Loyal Customers
-CUST_1098,190,2,3413.4900000000002,2,4,5,At Risk / Can't Lose Them
-CUST_1099,350,1,54.51,1,1,1,Hibernating / Lost
-CUST_1100,206,3,393.73,2,5,4,At Risk / Can't Lose Them
-CUST_1101,133,1,54.04,3,1,1,Promising / New
-CUST_1102,308,1,89.61,1,1,1,Hibernating / Lost
-CUST_1103,311,1,147.11,1,1,3,Hibernating / Lost
-CUST_1104,11,1,3385.66,5,1,5,Promising / New
-CUST_1105,215,1,120.98,2,1,2,Hibernating / Lost
-CUST_1106,331,1,134.04,1,1,2,Hibernating / Lost
-CUST_1107,157,1,1448.8,3,1,5,Promising / New
-CUST_1108,172,1,495.45,3,1,4,Promising / New
-CUST_1109,64,4,237.1,4,5,3,Loyal Customers
-CUST_1110,130,4,509.75,3,5,4,Loyal Customers
-CUST_1111,251,1,3370.22,2,1,5,Hibernating / Lost
-CUST_1112,188,1,51.87,2,1,1,Hibernating / Lost
-CUST_1113,80,2,503.75,4,4,4,Champions
-CUST_1114,122,1,257.3,3,1,4,Promising / New
-CUST_1115,322,1,126.75,1,1,2,Hibernating / Lost
-CUST_1116,28,1,118.85,5,1,2,Promising / New
-CUST_1117,132,1,136.04,3,1,2,Promising / New
-CUST_1118,57,2,178.66,4,4,3,Loyal Customers
-CUST_1119,59,1,20.38,4,1,1,Promising / New
-CUST_1120,276,1,20.43,1,1,1,Hibernating / Lost
-CUST_1121,34,1,199.26,5,1,3,Promising / New
-CUST_1122,33,2,366.69,5,4,4,Champions
-CUST_1123,58,1,134.77,4,1,2,Promising / New
-CUST_1124,26,1,681.95,5,1,5,Promising / New
-CUST_1125,57,1,496.01,4,1,4,Promising / New
-CUST_1126,41,2,167.67000000000002,5,4,3,Loyal Customers
-CUST_1127,175,3,3759.98,3,5,5,Loyal Customers
-CUST_1128,160,5,1104.15,3,5,5,Loyal Customers
-CUST_1129,356,1,188.85000000000002,1,1,3,Hibernating / Lost
-CUST_1130,58,2,270.82,4,4,4,Champions
-CUST_1131,7,1,1337.12,5,1,5,Promising / New
-CUST_1132,338,1,100.91,1,1,2,Hibernating / Lost
-CUST_1133,216,2,268.96,2,4,4,At Risk / Can't Lose Them
-CUST_1134,11,1,196.3,5,1,3,Promising / New
-CUST_1135,92,1,505.89,4,1,4,Promising / New
-CUST_1136,277,1,96.64,1,1,2,Hibernating / Lost
-CUST_1137,108,2,285.08,4,4,4,Champions
-CUST_1138,18,1,353.64,5,1,4,Promising / New
-CUST_1139,348,1,458.54,1,1,4,Hibernating / Lost
-CUST_1140,34,1,99.54,5,1,2,Promising / New
-CUST_1141,211,2,352.8,2,4,4,At Risk / Can't Lose Them
-CUST_1142,143,1,82.76,3,1,1,Promising / New
-CUST_1143,120,1,282.36,3,1,4,Promising / New
-CUST_1144,165,1,40.53,3,1,1,Promising / New
-CUST_1145,42,1,37.83,5,1,1,Promising / New
-CUST_1146,185,1,124.28,2,1,2,Hibernating / Lost
-CUST_1147,31,1,487.1,5,1,4,Promising / New
-CUST_1148,2,2,225.97,5,4,3,Loyal Customers
-CUST_1149,240,1,472.13,2,1,4,Hibernating / Lost
-CUST_1150,40,1,40.81,5,1,1,Promising / New
-CUST_1151,34,1,93.11,5,1,2,Promising / New
-CUST_1152,239,1,145.49,2,1,2,Hibernating / Lost
-CUST_1153,46,1,125.36,5,1,2,Promising / New
-CUST_1154,272,1,19.76,1,1,1,Hibernating / Lost
-CUST_1155,68,1,104.94,4,1,2,Promising / New
-CUST_1156,24,1,47.5,5,1,1,Promising / New
-CUST_1157,207,1,670.84,2,1,5,Hibernating / Lost
-CUST_1158,348,1,140.62,1,1,2,Hibernating / Lost
-CUST_1159,266,2,753.23,2,4,5,At Risk / Can't Lose Them
-CUST_1160,310,1,206.62,1,1,3,Hibernating / Lost
-CUST_1161,365,1,3471.26,1,1,5,Hibernating / Lost
-CUST_1162,195,1,98.42,2,1,2,Hibernating / Lost
-CUST_1163,58,1,19.25,4,1,1,Promising / New
-CUST_1164,189,1,456.45000000000005,2,1,4,Hibernating / Lost
-CUST_1165,348,1,167.74,1,1,3,Hibernating / Lost
-CUST_1166,67,1,151.93,4,1,3,Promising / New
-CUST_1167,354,1,545.87,1,1,4,Hibernating / Lost
-CUST_1168,171,1,1378.0,3,1,5,Promising / New
-CUST_1169,108,2,836.71,4,4,5,Champions
-CUST_1170,40,5,5580.41,5,5,5,Champions
-CUST_1171,249,1,322.64,2,1,4,Hibernating / Lost
-CUST_1172,226,1,57.17,2,1,1,Hibernating / Lost
-CUST_1173,203,2,3555.77,2,4,5,At Risk / Can't Lose Them
-CUST_1174,82,1,407.58,4,1,4,Promising / New
-CUST_1175,313,1,20.53,1,1,1,Hibernating / Lost
-CUST_1176,199,2,161.12,2,4,3,At Risk / Can't Lose Them
-CUST_1177,319,1,33.03,1,1,1,Hibernating / Lost
-CUST_1178,10,3,1979.3899999999999,5,5,5,Champions
-CUST_1179,81,2,117.22999999999999,4,4,2,About to Sleep / Average
-CUST_1180,174,1,312.15,3,1,4,Promising / New
-CUST_1181,74,7,1795.03,4,5,5,Champions
-CUST_1182,353,1,72.24,1,1,1,Hibernating / Lost
-CUST_1183,75,1,456.65,4,1,4,Promising / New
-CUST_1184,269,1,337.46,2,1,4,Hibernating / Lost
-CUST_1185,300,1,64.74,1,1,1,Hibernating / Lost
-CUST_1186,65,2,597.11,4,4,5,Champions
-CUST_1187,177,1,52.11,3,1,1,Promising / New
-CUST_1188,182,1,76.09,3,1,1,Promising / New
-CUST_1189,329,1,92.71,1,1,1,Hibernating / Lost
-CUST_1190,137,1,115.57,3,1,2,Promising / New
-CUST_1191,119,8,1834.51,3,5,5,Loyal Customers
-CUST_1192,233,1,658.18,2,1,5,Hibernating / Lost
-CUST_1193,222,1,19.2,2,1,1,Hibernating / Lost
-CUST_1194,152,1,98.48,3,1,2,Promising / New
-CUST_1195,44,1,404.32,5,1,4,Promising / New
-CUST_1196,330,2,916.0699999999999,1,4,5,At Risk / Can't Lose Them
-CUST_1197,15,1,202.99,5,1,3,Promising / New
-CUST_1198,314,2,659.5,1,4,5,At Risk / Can't Lose Them
-CUST_1199,6,1,211.49,5,1,3,Promising / New
-CUST_1200,175,1,138.27,3,1,2,Promising / New
-CUST_1201,305,1,470.64,1,1,4,Hibernating / Lost
-CUST_1202,325,1,94.76,1,1,2,Hibernating / Lost
-CUST_1203,88,1,19.15,4,1,1,Promising / New
-CUST_1204,140,1,114.29,3,1,2,Promising / New
-CUST_1205,269,2,146.69,2,4,2,At Risk / Can't Lose Them
-CUST_1206,103,1,19.04,4,1,1,Promising / New
-CUST_1207,25,3,163.57,5,5,3,Loyal Customers
-CUST_1208,222,1,65.34,2,1,1,Hibernating / Lost
-CUST_1209,170,1,127.84,3,1,2,Promising / New
-CUST_1210,15,1,100.93,5,1,2,Promising / New
-CUST_1211,290,1,35.99,1,1,1,Hibernating / Lost
-CUST_1212,173,1,19.98,3,1,1,Promising / New
-CUST_1213,171,1,88.97,3,1,1,Promising / New
-CUST_1214,345,1,32.76,1,1,1,Hibernating / Lost
-CUST_1215,31,2,132.29,5,4,2,About to Sleep / Average
-CUST_1216,164,1,130.04,3,1,2,Promising / New
-CUST_1217,3,1,281.66,5,1,4,Promising / New
-CUST_1218,129,1,20.75,3,1,1,Promising / New
-CUST_1219,249,1,200.7,2,1,3,Hibernating / Lost
-CUST_1220,312,3,1502.12,1,5,5,At Risk / Can't Lose Them
-CUST_1221,75,2,801.14,4,4,5,Champions
-CUST_1222,13,7,1837.17,5,5,5,Champions
-CUST_1223,255,1,276.14,2,1,4,Hibernating / Lost
-CUST_1224,245,1,3407.63,2,1,5,Hibernating / Lost
-CUST_1225,212,1,202.28,2,1,3,Hibernating / Lost
-CUST_1226,98,1,51.46,4,1,1,Promising / New
-CUST_1227,103,2,554.32,4,4,4,Champions
-CUST_1228,48,1,152.42,5,1,3,Promising / New
-CUST_1229,265,1,205.98,2,1,3,Hibernating / Lost
-CUST_1230,253,1,70.5,2,1,1,Hibernating / Lost
-CUST_1231,137,1,494.94,3,1,4,Promising / New
-CUST_1232,233,1,712.67,2,1,5,Hibernating / Lost
-CUST_1233,152,2,1285.04,3,4,5,Loyal Customers
-CUST_1234,34,3,3654.84,5,5,5,Champions
-CUST_1235,32,1,3484.59,5,1,5,Promising / New
-CUST_1236,64,2,221.57,4,4,3,Loyal Customers
-CUST_1237,278,1,140.39,1,1,2,Hibernating / Lost
-CUST_1238,157,1,98.35000000000001,3,1,2,Promising / New
-CUST_1239,304,1,133.16,1,1,2,Hibernating / Lost
-CUST_1240,201,1,107.1,2,1,2,Hibernating / Lost
-CUST_1241,1,1,88.54,5,1,1,Promising / New
-CUST_1242,151,1,254.9,3,1,3,Promising / New
-CUST_1243,6,2,246.81,5,4,3,Loyal Customers
-CUST_1244,277,1,465.66,1,1,4,Hibernating / Lost
-CUST_1245,64,2,177.66000000000003,4,4,3,Loyal Customers
-CUST_1246,301,1,105.54,1,1,2,Hibernating / Lost
-CUST_1247,16,5,5167.89,5,5,5,Champions
-CUST_1248,204,2,3320.8999999999996,2,4,5,At Risk / Can't Lose Them
-CUST_1249,20,4,407.18,5,5,4,Champions
-CUST_1250,263,1,309.86,2,1,4,Hibernating / Lost
-CUST_1251,341,1,154.2,1,1,3,Hibernating / Lost
-CUST_1252,57,2,201.51999999999998,4,4,3,Loyal Customers
-CUST_1253,65,1,75.69,4,1,1,Promising / New
-CUST_1254,169,1,41.9,3,1,1,Promising / New
-CUST_1255,48,3,574.98,5,5,5,Champions
-CUST_1256,37,3,16555.63,5,5,5,Champions
-CUST_1257,301,1,452.87,1,1,4,Hibernating / Lost
-CUST_1258,18,1,311.86,5,1,4,Promising / New
-CUST_1259,9,1,37.16,5,1,1,Promising / New
-CUST_1260,225,1,665.79,2,1,5,Hibernating / Lost
-CUST_1261,55,2,209.99,4,4,3,Loyal Customers
-CUST_1262,178,3,398.65999999999997,3,5,4,Loyal Customers
-CUST_1263,64,1,54.28,4,1,1,Promising / New
-CUST_1264,233,1,100.96,2,1,2,Hibernating / Lost
-CUST_1265,136,2,145.97,3,4,2,About to Sleep / Average
-CUST_1266,192,1,108.65,2,1,2,Hibernating / Lost
-CUST_1267,344,1,160.59,1,1,3,Hibernating / Lost
-CUST_1268,175,1,3232.88,3,1,5,Promising / New
-CUST_1269,301,1,120.8,1,1,2,Hibernating / Lost
-CUST_1270,213,1,380.3,2,1,4,Hibernating / Lost
-CUST_1271,291,1,152.27,1,1,3,Hibernating / Lost
-CUST_1272,14,1,99.64,5,1,2,Promising / New
-CUST_1273,80,2,548.74,4,4,4,Champions
-CUST_1274,31,1,553.55,5,1,4,Promising / New
-CUST_1275,37,2,296.25,5,4,4,Champions
-CUST_1276,286,1,20.18,1,1,1,Hibernating / Lost
-CUST_1277,268,2,352.5,2,4,4,At Risk / Can't Lose Them
-CUST_1278,73,1,924.08,4,1,5,Promising / New
-CUST_1279,25,1,96.77,5,1,2,Promising / New
-CUST_1280,11,1,100.64,5,1,2,Promising / New
-CUST_1281,239,1,149.08,2,1,3,Hibernating / Lost
-CUST_1282,129,3,721.97,3,5,5,Loyal Customers
-CUST_1283,272,1,171.96,1,1,3,Hibernating / Lost
-CUST_1284,29,1,685.05,5,1,5,Promising / New
-CUST_1285,154,1,2516.3999999999996,3,1,5,Promising / New
-CUST_1286,291,1,200.28,1,1,3,Hibernating / Lost
-CUST_1287,195,1,93.35,2,1,2,Hibernating / Lost
-CUST_1288,102,2,325.76,4,4,4,Champions
-CUST_1289,83,1,139.0,4,1,2,Promising / New
-CUST_1290,154,1,88.64,3,1,1,Promising / New
-CUST_1291,17,7,1913.83,5,5,5,Champions
-CUST_1292,319,1,469.98,1,1,4,Hibernating / Lost
-CUST_1293,213,1,190.11,2,1,3,Hibernating / Lost
-CUST_1294,171,2,334.14,3,4,4,Loyal Customers
-CUST_1295,53,4,413.4,4,5,4,Champions
-CUST_1296,26,1,702.46,5,1,5,Promising / New
-CUST_1297,112,4,451.73,4,5,4,Champions
-CUST_1298,276,1,777.4,1,1,5,Hibernating / Lost
-CUST_1299,330,2,39.78,1,4,1,At Risk / Can't Lose Them
-CUST_1300,175,1,196.97,3,1,3,Promising / New
-CUST_1301,36,1,320.44,5,1,4,Promising / New
-CUST_1302,340,1,137.33,1,1,2,Hibernating / Lost
-CUST_1303,31,1,132.51,5,1,2,Promising / New
-CUST_1304,30,2,331.84,5,4,4,Champions
-CUST_1305,17,2,207.26,5,4,3,Loyal Customers
-CUST_1306,224,1,20.13,2,1,1,Hibernating / Lost
-CUST_1307,167,1,202.91,3,1,3,Promising / New
-CUST_1308,324,1,72.16,1,1,1,Hibernating / Lost
-CUST_1309,333,1,72.01,1,1,1,Hibernating / Lost
-CUST_1310,262,1,1335.16,2,1,5,Hibernating / Lost
-CUST_1311,9,1,1364.42,5,1,5,Promising / New
-CUST_1312,233,1,66.33,2,1,1,Hibernating / Lost
-CUST_1313,24,2,309.6,5,4,4,Champions
-CUST_1314,325,1,49.45,1,1,1,Hibernating / Lost
-CUST_1315,164,2,790.2399999999999,3,4,5,Loyal Customers
-CUST_1316,298,1,3256.9,1,1,5,Hibernating / Lost
-CUST_1317,127,1,153.72,3,1,3,Promising / New
-CUST_1318,151,1,197.16,3,1,3,Promising / New
-CUST_1319,184,1,19.27,3,1,1,Promising / New
-CUST_1320,98,1,176.95,4,1,3,Promising / New
-CUST_1321,125,2,266.7,3,4,4,Loyal Customers
-CUST_1322,73,1,237.17,4,1,3,Promising / New
-CUST_1323,11,3,342.85,5,5,4,Champions
-CUST_1324,22,3,470.97,5,5,4,Champions
-CUST_1325,120,1,70.02,3,1,1,Promising / New
-CUST_1326,147,1,565.69,3,1,5,Promising / New
-CUST_1327,94,1,3305.68,4,1,5,Promising / New
-CUST_1328,221,1,662.46,2,1,5,Hibernating / Lost
-CUST_1329,259,1,92.18,2,1,1,Hibernating / Lost
-CUST_1330,223,1,36.01,2,1,1,Hibernating / Lost
-CUST_1331,266,1,292.48,2,1,4,Hibernating / Lost
-CUST_1332,326,1,208.31,1,1,3,Hibernating / Lost
-CUST_1333,68,1,39.25,4,1,1,Promising / New
-CUST_1334,33,1,491.61,5,1,4,Promising / New
-CUST_1335,91,1,424.6,4,1,4,Promising / New
-CUST_1336,106,3,3592.83,4,5,5,Champions
-CUST_1337,50,2,3573.71,4,4,5,Champions
-CUST_1338,194,1,511.96,2,1,4,Hibernating / Lost
-CUST_1339,185,1,672.95,2,1,5,Hibernating / Lost
-CUST_1340,84,1,141.08,4,1,2,Promising / New
-CUST_1341,2,1,1058.56,5,1,5,Promising / New
-CUST_1342,2,1,39.43,5,1,1,Promising / New
-CUST_1343,156,2,93.03999999999999,3,4,2,About to Sleep / Average
-CUST_1344,121,1,96.28,3,1,2,Promising / New
-CUST_1345,295,1,820.25,1,1,5,Hibernating / Lost
-CUST_1346,15,1,133.29,5,1,2,Promising / New
-CUST_1347,190,2,293.53,2,4,4,At Risk / Can't Lose Them
-CUST_1348,13,3,1047.1599999999999,5,5,5,Champions
-CUST_1349,61,1,201.21,4,1,3,Promising / New
-CUST_1350,308,1,115.28,1,1,2,Hibernating / Lost
-CUST_1351,230,1,348.84999999999997,2,1,4,Hibernating / Lost
-CUST_1352,305,1,215.64,1,1,3,Hibernating / Lost
-CUST_1353,215,1,36.23,2,1,1,Hibernating / Lost
-CUST_1354,279,1,647.13,1,1,5,Hibernating / Lost
-CUST_1355,260,1,91.0,2,1,1,Hibernating / Lost
-CUST_1356,178,1,71.19,3,1,1,Promising / New
-CUST_1357,219,1,138.09,2,1,2,Hibernating / Lost
-CUST_1358,11,2,474.41,5,4,4,Champions
-CUST_1359,31,1,139.01,5,1,2,Promising / New
-CUST_1360,146,1,20.69,3,1,1,Promising / New
-CUST_1361,319,1,114.57,1,1,2,Hibernating / Lost
-CUST_1362,307,1,20.5,1,1,1,Hibernating / Lost
-CUST_1363,92,1,104.99,4,1,2,Promising / New
-CUST_1364,15,1,115.37,5,1,2,Promising / New
-CUST_1365,32,1,315.47,5,1,4,Promising / New
-CUST_1366,68,1,281.68,4,1,4,Promising / New
-CUST_1367,30,1,114.71,5,1,2,Promising / New
-CUST_1368,330,1,96.93,1,1,2,Hibernating / Lost
-CUST_1369,262,1,68.11,2,1,1,Hibernating / Lost
-CUST_1370,258,1,130.9,2,1,2,Hibernating / Lost
-CUST_1371,124,2,458.66,3,4,4,Loyal Customers
-CUST_1372,67,1,76.21,4,1,1,Promising / New
-CUST_1373,50,1,450.98,5,1,4,Promising / New
-CUST_1374,97,1,50.88,4,1,1,Promising / New
-CUST_1375,13,2,275.0,5,4,4,Champions
-CUST_1376,27,1,3511.6,5,1,5,Promising / New
-CUST_1377,61,3,386.27,4,5,4,Champions
-CUST_1378,168,3,556.44,3,5,4,Loyal Customers
-CUST_1379,36,1,50.05,5,1,1,Promising / New
-CUST_1380,333,1,3507.63,1,1,5,Hibernating / Lost
-CUST_1381,338,1,6517.22,1,1,5,Hibernating / Lost
-CUST_1382,23,1,48.58,5,1,1,Promising / New
-CUST_1383,51,2,250.13,4,4,3,Loyal Customers
-CUST_1384,74,1,98.92,4,1,2,Promising / New
-CUST_1385,58,1,19.41,4,1,1,Promising / New
-CUST_1386,128,1,145.08,3,1,2,Promising / New
-CUST_1387,33,1,201.2,5,1,3,Promising / New
-CUST_1388,246,1,76.83,2,1,1,Hibernating / Lost
-CUST_1389,112,1,72.03,4,1,1,Promising / New
-CUST_1390,62,1,193.53,4,1,3,Promising / New
-CUST_1391,94,1,716.57,4,1,5,Promising / New
-CUST_1392,26,1,19.06,5,1,1,Promising / New
-CUST_1393,186,1,40.09,2,1,1,Hibernating / Lost
-CUST_1394,6,5,669.87,5,5,5,Champions
-CUST_1395,195,1,132.94,2,1,2,Hibernating / Lost
-CUST_1396,287,1,211.46,1,1,3,Hibernating / Lost
-CUST_1397,157,1,196.47,3,1,3,Promising / New
-CUST_1398,183,3,806.37,3,5,5,Loyal Customers
-CUST_1399,281,1,194.51,1,1,3,Hibernating / Lost
-CUST_1400,56,2,1070.22,4,4,5,Champions
-CUST_1401,3,1,160.17,5,1,3,Promising / New
-CUST_1402,283,1,689.48,1,1,5,Hibernating / Lost
-CUST_1403,255,1,19.31,2,1,1,Hibernating / Lost
-CUST_1404,271,3,426.73,2,5,4,At Risk / Can't Lose Them
-CUST_1405,161,1,336.01,3,1,4,Promising / New
-CUST_1406,171,1,291.86,3,1,4,Promising / New
-CUST_1407,55,1,459.76,4,1,4,Promising / New
-CUST_1408,40,1,674.93,5,1,5,Promising / New
-CUST_1409,253,2,1161.03,2,4,5,At Risk / Can't Lose Them
-CUST_1410,119,1,1304.58,3,1,5,Promising / New
-CUST_1411,204,1,454.7,2,1,4,Hibernating / Lost
-CUST_1412,38,1,63.53,5,1,1,Promising / New
-CUST_1413,291,1,70.42,1,1,1,Hibernating / Lost
-CUST_1414,95,1,313.05,4,1,4,Promising / New
-CUST_1415,284,1,205.82,1,1,3,Hibernating / Lost
-CUST_1416,175,1,125.31,3,2,2,Promising / New
-CUST_1417,31,2,774.5400000000001,5,4,5,Champions
-CUST_1418,306,1,3474.14,1,2,5,Hibernating / Lost
-CUST_1419,146,4,785.0,3,5,5,Loyal Customers
-CUST_1420,76,3,466.77,4,5,4,Champions
-CUST_1421,11,1,212.0,5,2,3,Promising / New
-CUST_1422,124,1,246.6,3,2,3,Promising / New
-CUST_1423,95,1,317.33,4,2,4,Promising / New
-CUST_1424,357,1,47.85,1,2,1,Hibernating / Lost
-CUST_1425,21,2,3627.36,5,4,5,Champions
-CUST_1426,293,1,424.42,1,2,4,Hibernating / Lost
-CUST_1427,55,1,142.4,4,2,2,Promising / New
-CUST_1428,121,1,105.14,3,2,2,Promising / New
-CUST_1429,119,1,675.21,3,2,5,Promising / New
-CUST_1430,250,1,405.9,2,2,4,Hibernating / Lost
-CUST_1431,26,2,411.65,5,4,4,Champions
-CUST_1432,297,1,19.09,1,2,1,Hibernating / Lost
-CUST_1433,115,1,120.03,3,2,2,Promising / New
-CUST_1434,115,1,39.93,3,2,1,Promising / New
-CUST_1435,141,1,410.66,3,2,4,Promising / New
-CUST_1436,289,2,203.07,1,4,3,At Risk / Can't Lose Them
-CUST_1437,228,1,104.8,2,2,2,Hibernating / Lost
-CUST_1438,61,1,69.38,4,2,1,Promising / New
-CUST_1439,22,1,68.52,5,2,1,Promising / New
-CUST_1440,96,1,497.01,4,2,4,Promising / New
-CUST_1441,350,1,224.29,1,2,3,Hibernating / Lost
-CUST_1442,189,2,437.84000000000003,2,4,4,At Risk / Can't Lose Them
-CUST_1443,9,1,98.08,5,2,2,Promising / New
-CUST_1444,5,1,133.86,5,2,2,Promising / New
-CUST_1445,10,2,440.04999999999995,5,4,4,Champions
-CUST_1446,33,1,535.83,5,2,4,Promising / New
-CUST_1447,9,1,96.04,5,2,2,Promising / New
-CUST_1448,229,1,677.3000000000001,2,2,5,Hibernating / Lost
-CUST_1449,79,2,167.84,4,4,3,Loyal Customers
-CUST_1450,350,1,417.86,1,2,4,Hibernating / Lost
-CUST_1451,37,1,391.1,5,2,4,Promising / New
-CUST_1452,35,1,69.49,5,2,1,Promising / New
-CUST_1453,24,1,76.18,5,2,1,Promising / New
-CUST_1454,175,3,438.30999999999995,3,5,4,Loyal Customers
-CUST_1455,360,1,136.6,1,2,2,Hibernating / Lost
-CUST_1456,32,1,142.19,5,2,2,Promising / New
-CUST_1457,227,1,102.16,2,2,2,Hibernating / Lost
-CUST_1458,237,1,71.97,2,2,1,Hibernating / Lost
-CUST_1459,27,1,592.96,5,2,5,Promising / New
-CUST_1460,274,3,654.0600000000001,1,5,5,At Risk / Can't Lose Them
-CUST_1461,86,1,539.15,4,2,4,Promising / New
-CUST_1462,135,4,1419.3,3,5,5,Loyal Customers
-CUST_1463,353,1,176.6,1,2,3,Hibernating / Lost
-CUST_1464,125,1,20.02,3,2,1,Promising / New
-CUST_1465,202,1,142.94,2,2,2,Hibernating / Lost
-CUST_1466,95,1,19.93,4,2,1,Promising / New
-CUST_1467,182,1,143.73,3,2,2,Promising / New
-CUST_1468,13,1,204.07,5,2,3,Promising / New
-CUST_1469,272,1,123.96,1,2,2,Hibernating / Lost
-CUST_1470,66,2,665.8299999999999,4,4,5,Champions
-CUST_1471,131,2,124.99000000000001,3,4,2,About to Sleep / Average
-CUST_1472,361,2,419.81,1,4,4,At Risk / Can't Lose Them
-CUST_1473,208,3,354.62,2,5,4,At Risk / Can't Lose Them
-CUST_1474,321,1,141.64,1,2,2,Hibernating / Lost
-CUST_1475,10,4,552.53,5,5,4,Champions
-CUST_1476,38,1,210.28,5,2,3,Promising / New
-CUST_1477,324,1,189.18,1,2,3,Hibernating / Lost
-CUST_1478,52,1,156.61,4,2,3,Promising / New
-CUST_1479,273,1,702.38,1,2,5,Hibernating / Lost
-CUST_1480,23,1,74.34,5,2,1,Promising / New
-CUST_1481,231,1,185.15,2,2,3,Hibernating / Lost
-CUST_1482,253,1,456.12,2,2,4,Hibernating / Lost
-CUST_1483,137,1,107.49,3,2,2,Promising / New
-CUST_1484,321,1,108.94,1,2,2,Hibernating / Lost
-CUST_1485,33,1,19.06,5,2,1,Promising / New
-CUST_1486,355,1,76.36,1,2,1,Hibernating / Lost
-CUST_1487,180,2,190.04000000000002,3,4,3,Loyal Customers
-CUST_1488,329,1,733.34,1,2,5,Hibernating / Lost
-CUST_1489,103,3,349.89,4,5,4,Champions
-CUST_1490,113,1,217.53,4,2,3,Promising / New
-CUST_1491,331,1,681.5999999999999,1,2,5,Hibernating / Lost
-CUST_1492,144,1,299.1,3,2,4,Promising / New
-CUST_1493,188,2,103.12,2,4,2,At Risk / Can't Lose Them
-CUST_1494,278,1,70.85,1,2,1,Hibernating / Lost
-CUST_1495,188,1,82.96,2,2,1,Hibernating / Lost
-CUST_1496,111,2,1211.0,4,4,5,Champions
-CUST_1497,179,3,439.08,3,5,4,Loyal Customers
-CUST_1498,18,1,403.56,5,2,4,Promising / New
-CUST_1499,341,1,89.18,1,2,1,Hibernating / Lost
-CUST_1500,62,1,381.1,4,2,4,Promising / New
-CUST_1501,154,1,198.71,3,2,3,Promising / New
-CUST_1502,4,3,3656.79,5,5,5,Champions
-CUST_1503,340,1,909.24,1,2,5,Hibernating / Lost
-CUST_1504,40,2,3614.1099999999997,5,4,5,Champions
-CUST_1505,264,2,497.05,2,4,4,At Risk / Can't Lose Them
-CUST_1506,107,2,287.73,4,4,4,Champions
-CUST_1507,311,1,212.27,1,2,3,Hibernating / Lost
-CUST_1508,269,1,152.87,2,2,3,Hibernating / Lost
-CUST_1509,197,1,106.27,2,2,2,Hibernating / Lost
-CUST_1510,73,3,1588.78,4,5,5,Champions
-CUST_1511,112,1,102.37,4,2,2,Promising / New
-CUST_1512,243,1,90.13,2,2,1,Hibernating / Lost
-CUST_1513,92,1,19.86,4,2,1,Promising / New
-CUST_1514,221,1,32.37,2,2,1,Hibernating / Lost
-CUST_1515,296,1,142.47,1,2,2,Hibernating / Lost
-CUST_1516,62,2,272.94,4,4,4,Champions
-CUST_1517,111,2,123.47,4,4,2,About to Sleep / Average
-CUST_1518,223,2,218.37,2,4,3,At Risk / Can't Lose Them
-CUST_1519,326,1,73.81,1,2,1,Hibernating / Lost
-CUST_1520,300,2,227.92,1,4,3,At Risk / Can't Lose Them
-CUST_1521,19,2,1662.81,5,4,5,Champions
-CUST_1522,195,1,49.08,2,2,1,Hibernating / Lost
-CUST_1523,248,1,162.98,2,2,3,Hibernating / Lost
-CUST_1524,363,1,150.37,1,2,3,Hibernating / Lost
-CUST_1525,292,1,97.39,1,2,2,Hibernating / Lost
-CUST_1526,106,2,356.58000000000004,4,4,4,Champions
-CUST_1527,103,1,115.32,4,2,2,Promising / New
-CUST_1528,163,3,973.31,3,5,5,Loyal Customers
-CUST_1529,285,1,515.69,1,2,4,Hibernating / Lost
-CUST_1530,242,2,263.73,2,4,4,At Risk / Can't Lose Them
-CUST_1531,347,1,35.93,1,2,1,Hibernating / Lost
-CUST_1532,60,1,19.14,4,2,1,Promising / New
-CUST_1533,52,3,347.65999999999997,4,5,4,Champions
-CUST_1534,60,4,17998.38,4,5,5,Champions
-CUST_1535,288,1,36.66,1,2,1,Hibernating / Lost
-CUST_1536,79,2,793.1899999999999,4,4,5,Champions
-CUST_1537,22,1,100.4,5,2,2,Promising / New
-CUST_1538,250,1,19.26,2,2,1,Hibernating / Lost
-CUST_1539,60,1,34.59,4,2,1,Promising / New
-CUST_1540,259,1,340.84,2,2,4,Hibernating / Lost
-CUST_1541,33,1,216.12,5,2,3,Promising / New
-CUST_1542,353,1,151.75,1,2,3,Hibernating / Lost
-CUST_1543,16,1,132.14,5,2,2,Promising / New
-CUST_1544,62,1,136.33,4,2,2,Promising / New
-CUST_1545,274,1,87.42,1,2,1,Hibernating / Lost
-CUST_1546,119,2,144.19,3,4,2,About to Sleep / Average
-CUST_1547,131,1,121.07,3,2,2,Promising / New
-CUST_1548,141,1,163.6,3,2,3,Promising / New
-CUST_1549,118,1,665.3,3,2,5,Promising / New
-CUST_1550,13,4,1192.1,5,5,5,Champions
-CUST_1551,240,2,3425.2200000000003,2,4,5,At Risk / Can't Lose Them
-CUST_1552,315,1,101.91,1,2,2,Hibernating / Lost
-CUST_1553,27,1,132.33,5,2,2,Promising / New
-CUST_1554,292,1,104.13,1,2,2,Hibernating / Lost
-CUST_1555,201,1,119.09,2,2,2,Hibernating / Lost
-CUST_1556,154,3,844.3700000000001,3,5,5,Loyal Customers
-CUST_1557,217,1,53.27,2,2,1,Hibernating / Lost
-CUST_1558,197,1,67.05,2,2,1,Hibernating / Lost
-CUST_1559,141,1,205.05,3,2,3,Promising / New
-CUST_1560,176,3,262.78000000000003,3,5,4,Loyal Customers
-CUST_1561,51,1,199.67,4,2,3,Promising / New
-CUST_1562,105,1,33.56,4,2,1,Promising / New
-CUST_1563,161,1,123.79,3,2,2,Promising / New
-CUST_1564,227,2,631.19,2,4,5,At Risk / Can't Lose Them
-CUST_1565,68,4,896.5799999999999,4,5,5,Champions
-CUST_1566,235,2,736.99,2,4,5,At Risk / Can't Lose Them
-CUST_1567,26,6,3800.9,5,5,5,Champions
-CUST_1568,341,1,135.98,1,2,2,Hibernating / Lost
-CUST_1569,200,1,114.79,2,2,2,Hibernating / Lost
-CUST_1570,159,1,20.78,3,2,1,Promising / New
-CUST_1571,276,1,35.71,1,2,1,Hibernating / Lost
-CUST_1572,261,1,69.85,2,2,1,Hibernating / Lost
-CUST_1573,220,1,167.19,2,2,3,Hibernating / Lost
-CUST_1574,153,1,925.34,3,2,5,Promising / New
-CUST_1575,54,1,463.69,4,2,4,Promising / New
-CUST_1576,152,3,3453.15,3,5,5,Loyal Customers
-CUST_1577,19,1,124.29,5,2,2,Promising / New
-CUST_1578,24,1,183.15,5,2,3,Promising / New
-CUST_1579,48,1,115.04,5,2,2,Promising / New
-CUST_1580,237,1,68.22,2,2,1,Hibernating / Lost
-CUST_1581,303,1,32.48,1,2,1,Hibernating / Lost
-CUST_1582,174,1,35.87,3,2,1,Promising / New
-CUST_1583,4,1,1058.1,5,2,5,Promising / New
-CUST_1584,58,1,457.92,4,2,4,Promising / New
-CUST_1585,79,1,20.1,4,2,1,Promising / New
-CUST_1586,149,1,140.77,3,2,2,Promising / New
-CUST_1587,159,2,539.39,3,4,4,Loyal Customers
-CUST_1588,48,2,552.14,5,4,4,Champions
-CUST_1589,234,1,165.08,2,2,3,Hibernating / Lost
-CUST_1590,22,2,124.44999999999999,5,4,2,About to Sleep / Average
-CUST_1591,74,1,111.86,4,2,2,Promising / New
-CUST_1592,258,2,366.86,2,4,4,At Risk / Can't Lose Them
-CUST_1593,339,1,88.04,1,2,1,Hibernating / Lost
-CUST_1594,15,2,702.65,5,4,5,Champions
-CUST_1595,236,1,679.3,2,2,5,Hibernating / Lost
-CUST_1596,178,2,449.62,3,4,4,Loyal Customers
-CUST_1597,286,1,75.97,1,2,1,Hibernating / Lost
-CUST_1598,236,2,204.39999999999998,2,4,3,At Risk / Can't Lose Them
-CUST_1599,5,1,709.52,5,2,5,Promising / New
-CUST_1600,143,1,241.12,3,2,3,Promising / New
-CUST_1601,306,2,237.58,1,4,3,At Risk / Can't Lose Them
-CUST_1602,292,1,104.28,1,2,2,Hibernating / Lost
-CUST_1603,47,1,85.56,5,2,1,Promising / New
-CUST_1604,91,1,129.42,4,2,2,Promising / New
-CUST_1605,260,1,598.05,2,2,5,Hibernating / Lost
-CUST_1606,175,1,19.58,3,2,1,Promising / New
-CUST_1607,92,2,154.51,4,4,3,Loyal Customers
-CUST_1608,175,1,105.56,3,2,2,Promising / New
-CUST_1609,230,1,278.46,2,2,4,Hibernating / Lost
-CUST_1610,151,1,204.48,3,2,3,Promising / New
-CUST_1611,297,2,3533.99,1,4,5,At Risk / Can't Lose Them
-CUST_1612,132,3,866.31,3,5,5,Loyal Customers
-CUST_1613,124,1,100.19,3,2,2,Promising / New
-CUST_1614,61,1,159.8,4,2,3,Promising / New
-CUST_1615,208,2,275.6,2,4,4,At Risk / Can't Lose Them
-CUST_1616,29,1,102.15,5,2,2,Promising / New
-CUST_1617,322,1,204.38,1,2,3,Hibernating / Lost
-CUST_1618,228,2,199.26,2,4,3,At Risk / Can't Lose Them
-CUST_1619,245,1,152.43,2,2,3,Hibernating / Lost
-CUST_1620,218,1,91.96,2,2,1,Hibernating / Lost
-CUST_1621,291,1,686.89,1,2,5,Hibernating / Lost
-CUST_1622,155,2,277.36,3,4,4,Loyal Customers
-CUST_1623,29,1,553.72,5,2,4,Promising / New
-CUST_1624,272,1,506.94,1,2,4,Hibernating / Lost
-CUST_1625,54,1,92.46,4,2,1,Promising / New
-CUST_1626,272,1,135.08,1,2,2,Hibernating / Lost
-CUST_1627,116,1,676.1,3,2,5,Promising / New
-CUST_1628,78,1,89.78,4,2,1,Promising / New
-CUST_1629,187,2,354.5,2,4,4,At Risk / Can't Lose Them
-CUST_1630,123,1,771.7,3,2,5,Promising / New
-CUST_1631,105,4,550.38,4,5,4,Champions
-CUST_1632,194,1,68.16,2,2,1,Hibernating / Lost
-CUST_1633,12,2,360.73,5,4,4,Champions
-CUST_1634,33,1,147.75,5,2,3,Promising / New
-CUST_1635,329,1,232.9,1,2,3,Hibernating / Lost
-CUST_1636,293,1,32.43,1,2,1,Hibernating / Lost
-CUST_1637,74,2,146.76,4,4,2,About to Sleep / Average
-CUST_1638,302,1,426.32,1,2,4,Hibernating / Lost
-CUST_1639,142,1,656.86,3,2,5,Promising / New
-CUST_1640,29,4,941.85,5,5,5,Champions
-CUST_1641,117,2,804.62,3,4,5,Loyal Customers
-CUST_1642,54,1,511.43,4,2,4,Promising / New
-CUST_1643,8,1,406.56,5,2,4,Promising / New
-CUST_1644,171,1,56.11,3,2,1,Promising / New
-CUST_1645,325,1,32.3,1,2,1,Hibernating / Lost
-CUST_1646,85,1,147.65,4,2,3,Promising / New
-CUST_1647,19,1,215.2,5,2,3,Promising / New
-CUST_1648,111,4,674.04,4,5,5,Champions
-CUST_1649,268,1,690.28,2,2,5,Hibernating / Lost
-CUST_1650,32,2,754.5899999999999,5,4,5,Champions
-CUST_1651,364,1,19.51,1,2,1,Hibernating / Lost
-CUST_1652,117,1,158.21,3,2,3,Promising / New
-CUST_1653,29,2,552.79,5,4,4,Champions
-CUST_1654,58,1,103.14999999999999,4,2,2,Promising / New
-CUST_1655,287,1,36.74,1,2,1,Hibernating / Lost
-CUST_1656,128,1,261.42,3,2,4,Promising / New
-CUST_1657,299,1,218.93,1,2,3,Hibernating / Lost
-CUST_1658,125,1,193.21,3,2,3,Promising / New
-CUST_1659,242,1,40.5,2,2,1,Hibernating / Lost
-CUST_1660,169,1,198.51,3,2,3,Promising / New
-CUST_1661,8,5,504.35,5,5,4,Champions
-CUST_1662,269,1,114.49,2,2,2,Hibernating / Lost
-CUST_1663,335,1,203.06,1,2,3,Hibernating / Lost
-CUST_1664,344,1,211.04,1,2,3,Hibernating / Lost
-CUST_1665,119,1,3519.99,3,2,5,Promising / New
-CUST_1666,364,1,3524.8,1,2,5,Hibernating / Lost
-CUST_1667,201,1,162.97,2,2,3,Hibernating / Lost
-CUST_1668,77,1,102.65,4,2,2,Promising / New
-CUST_1669,156,2,328.01,3,4,4,Loyal Customers
-CUST_1670,168,1,66.1,3,2,1,Promising / New
-CUST_1671,330,1,231.6,1,2,3,Hibernating / Lost
-CUST_1672,148,1,3437.71,3,2,5,Promising / New
-CUST_1673,302,1,651.39,1,2,5,Hibernating / Lost
-CUST_1674,256,1,124.45,2,2,2,Hibernating / Lost
-CUST_1675,236,1,37.88,2,2,1,Hibernating / Lost
-CUST_1676,322,1,118.97,1,2,2,Hibernating / Lost
-CUST_1677,14,1,106.93,5,2,2,Promising / New
-CUST_1678,167,2,756.6899999999999,3,5,5,Loyal Customers
-CUST_1679,5,1,153.32,5,2,3,Promising / New
-CUST_1680,352,1,212.13,1,2,3,Hibernating / Lost
-CUST_1681,133,3,815.97,3,5,5,Loyal Customers
-CUST_1682,259,1,248.32,2,2,3,Hibernating / Lost
-CUST_1683,294,1,153.3,1,2,3,Hibernating / Lost
-CUST_1684,105,2,190.82999999999998,4,5,3,Loyal Customers
-CUST_1685,25,1,94.14,5,2,2,Promising / New
-CUST_1686,288,1,19.32,1,2,1,Hibernating / Lost
-CUST_1687,190,3,576.69,2,5,5,At Risk / Can't Lose Them
-CUST_1688,67,1,191.69,4,2,3,Promising / New
-CUST_1689,263,1,468.32,2,2,4,Hibernating / Lost
-CUST_1690,195,1,222.08,2,2,3,Hibernating / Lost
-CUST_1691,294,1,217.9,1,2,3,Hibernating / Lost
-CUST_1692,202,1,142.21,2,2,2,Hibernating / Lost
-CUST_1693,17,1,73.94,5,2,1,Promising / New
-CUST_1694,44,1,697.18,5,2,5,Promising / New
-CUST_1695,28,2,176.93,5,5,3,Loyal Customers
-CUST_1696,118,2,308.95,3,5,4,Loyal Customers
-CUST_1697,352,1,196.51,1,2,3,Hibernating / Lost
-CUST_1698,360,1,179.95,1,2,3,Hibernating / Lost
-CUST_1699,191,1,399.56,2,2,4,Hibernating / Lost
-CUST_1700,88,2,78.03999999999999,4,5,1,About to Sleep / Average
-CUST_1701,108,1,542.44,4,2,4,Promising / New
-CUST_1702,256,2,221.87,2,5,3,At Risk / Can't Lose Them
-CUST_1703,331,1,51.55,1,2,1,Hibernating / Lost
-CUST_1704,100,1,32.37,4,2,1,Promising / New
-CUST_1705,21,2,547.07,5,5,4,Champions
-CUST_1706,192,1,72.92,2,2,1,Hibernating / Lost
-CUST_1707,249,1,35.81,2,2,1,Hibernating / Lost
-CUST_1708,162,2,396.42,3,5,4,Loyal Customers
-CUST_1709,166,1,138.88,3,2,2,Promising / New
-CUST_1710,11,1,129.5,5,2,2,Promising / New
-CUST_1711,207,1,326.93,2,2,4,Hibernating / Lost
-CUST_1712,341,1,153.25,1,2,3,Hibernating / Lost
-CUST_1713,16,2,225.3,5,5,3,Loyal Customers
-CUST_1714,95,1,112.74,4,2,2,Promising / New
-CUST_1715,66,1,131.71,4,2,2,Promising / New
-CUST_1716,41,1,494.85,5,2,4,Promising / New
-CUST_1717,354,1,195.41,1,2,3,Hibernating / Lost
-CUST_1718,13,6,1274.83,5,5,5,Champions
-CUST_1719,79,2,319.68,4,5,4,Champions
-CUST_1720,365,1,37.73,1,2,1,Hibernating / Lost
-CUST_1721,40,1,104.65,5,2,2,Promising / New
-CUST_1722,189,1,132.76,2,2,2,Hibernating / Lost
-CUST_1723,29,1,145.63,5,2,2,Promising / New
-CUST_1724,205,2,878.51,2,5,5,At Risk / Can't Lose Them
-CUST_1725,58,3,404.31,4,5,4,Champions
-CUST_1726,202,2,711.88,2,5,5,At Risk / Can't Lose Them
-CUST_1727,174,1,164.67,3,2,3,Promising / New
-CUST_1728,1,1,278.86,5,2,4,Promising / New
-CUST_1729,135,3,405.54,3,5,4,Loyal Customers
-CUST_1730,178,2,224.34,3,5,3,Loyal Customers
-CUST_1731,51,1,154.07,4,2,3,Promising / New
-CUST_1732,209,1,32.3,2,2,1,Hibernating / Lost
-CUST_1733,66,1,103.24,4,2,2,Promising / New
-CUST_1734,250,1,265.6,2,2,4,Hibernating / Lost
-CUST_1735,269,1,50.35,2,2,1,Hibernating / Lost
-CUST_1736,23,1,109.73,5,2,2,Promising / New
-CUST_1737,66,1,130.78,4,2,2,Promising / New
-CUST_1738,340,2,197.35,1,5,3,At Risk / Can't Lose Them
-CUST_1739,358,1,451.45,1,2,4,Hibernating / Lost
-CUST_1740,178,2,130.45,3,5,2,About to Sleep / Average
-CUST_1741,218,2,180.01,2,5,3,At Risk / Can't Lose Them
-CUST_1742,3,2,1139.98,5,5,5,Champions
-CUST_1743,64,1,703.01,4,2,5,Promising / New
-CUST_1744,117,2,3342.39,3,5,5,Loyal Customers
-CUST_1745,87,2,115.02,4,5,2,About to Sleep / Average
-CUST_1746,163,2,119.43,3,5,2,About to Sleep / Average
-CUST_1747,99,2,1164.1100000000001,4,5,5,Champions
-CUST_1748,209,1,33.05,2,2,1,Hibernating / Lost
-CUST_1749,70,1,202.68,4,2,3,Promising / New
-CUST_1750,31,1,106.36,5,2,2,Promising / New
-CUST_1751,143,1,194.02,3,2,3,Promising / New
-CUST_1752,4,1,117.22,5,2,2,Promising / New
-CUST_1753,208,1,254.82,2,2,3,Hibernating / Lost
-CUST_1754,136,2,322.36,3,5,4,Loyal Customers
-CUST_1755,108,1,456.75,4,2,4,Promising / New
-CUST_1756,202,1,311.48,2,2,4,Hibernating / Lost
-CUST_1757,229,2,196.2,2,5,3,At Risk / Can't Lose Them
-CUST_1758,240,3,1059.0,2,5,5,At Risk / Can't Lose Them
-CUST_1759,154,3,233.24,3,5,3,Loyal Customers
-CUST_1760,46,3,417.2,5,5,4,Champions
-CUST_1761,30,3,739.0699999999999,5,5,5,Champions
-CUST_1762,300,1,123.15,1,2,2,Hibernating / Lost
-CUST_1763,87,1,217.8,4,2,3,Promising / New
-CUST_1764,309,1,679.63,1,2,5,Hibernating / Lost
-CUST_1765,302,2,111.59,1,5,2,At Risk / Can't Lose Them
-CUST_1766,93,1,356.2,4,2,4,Promising / New
-CUST_1767,81,1,35.69,4,2,1,Promising / New
-CUST_1768,62,6,1598.6499999999999,4,5,5,Champions
-CUST_1769,43,1,326.35,5,2,4,Promising / New
-CUST_1770,183,1,1382.14,3,2,5,Promising / New
-CUST_1771,225,2,180.63,2,5,3,At Risk / Can't Lose Them
-CUST_1772,156,1,104.27,3,2,2,Promising / New
-CUST_1773,112,1,137.34,4,2,2,Promising / New
-CUST_1774,218,1,109.13,2,2,2,Hibernating / Lost
-CUST_1775,122,1,652.59,3,2,5,Promising / New
-CUST_1776,83,1,73.75,4,2,1,Promising / New
-CUST_1777,165,2,837.6800000000001,3,5,5,Loyal Customers
-CUST_1778,324,1,19.72,1,2,1,Hibernating / Lost
-CUST_1779,68,1,81.58,4,2,1,Promising / New
-CUST_1780,21,1,89.86,5,2,1,Promising / New
-CUST_1781,289,1,584.03,1,2,5,Hibernating / Lost
-CUST_1782,229,3,2165.86,2,5,5,At Risk / Can't Lose Them
-CUST_1783,288,1,105.37,1,2,2,Hibernating / Lost
-CUST_1784,326,1,150.95,1,2,3,Hibernating / Lost
-CUST_1785,46,2,266.66,5,5,4,Champions
-CUST_1786,257,1,96.11,2,2,2,Hibernating / Lost
-CUST_1787,187,2,749.0,2,5,5,At Risk / Can't Lose Them
-CUST_1788,27,3,655.49,5,5,5,Champions
-CUST_1789,18,1,19.3,5,2,1,Promising / New
-CUST_1790,262,1,196.12,2,2,3,Hibernating / Lost
-CUST_1791,256,1,162.73,2,2,3,Hibernating / Lost
-CUST_1792,79,2,284.28000000000003,4,5,4,Champions
-CUST_1793,106,3,348.17999999999995,4,5,4,Champions
-CUST_1794,226,1,218.21,2,2,3,Hibernating / Lost
-CUST_1795,99,1,530.35,4,2,4,Promising / New
-CUST_1796,71,3,258.97,4,5,4,Champions
-CUST_1797,64,2,153.89,4,5,3,Loyal Customers
-CUST_1798,36,1,135.24,5,2,2,Promising / New
-CUST_1799,304,1,697.6,1,2,5,Hibernating / Lost
-CUST_1800,72,1,216.71,4,2,3,Promising / New
-CUST_1801,179,1,162.48,3,2,3,Promising / New
-CUST_1802,89,1,119.63,4,2,2,Promising / New
-CUST_1803,201,1,106.53,2,2,2,Hibernating / Lost
-CUST_1804,191,1,84.96,2,2,1,Hibernating / Lost
-CUST_1805,246,1,263.48,2,2,4,Hibernating / Lost
-CUST_1806,126,1,207.86,3,2,3,Promising / New
-CUST_1807,22,1,125.78,5,2,2,Promising / New
-CUST_1808,327,1,513.11,1,2,4,Hibernating / Lost
-CUST_1809,14,1,70.97,5,2,1,Promising / New
-CUST_1810,27,1,122.28,5,2,2,Promising / New
-CUST_1811,238,1,400.54,2,2,4,Hibernating / Lost
-CUST_1812,171,2,3558.33,3,5,5,Loyal Customers
-CUST_1813,81,1,214.95,4,2,3,Promising / New
-CUST_1814,50,3,7223.41,5,5,5,Champions
-CUST_1815,122,1,210.9,3,2,3,Promising / New
-CUST_1816,78,3,815.46,4,5,5,Champions
-CUST_1817,223,1,140.64,2,2,2,Hibernating / Lost
-CUST_1818,165,1,1187.86,3,2,5,Promising / New
-CUST_1819,102,1,189.4,4,2,3,Promising / New
-CUST_1820,337,1,122.89,1,2,2,Hibernating / Lost
-CUST_1821,205,1,179.27,2,2,3,Hibernating / Lost
-CUST_1822,350,1,230.88,1,2,3,Hibernating / Lost
-CUST_1823,15,1,645.87,5,2,5,Promising / New
-CUST_1824,57,1,79.0,4,2,1,Promising / New
-CUST_1825,223,1,203.8,2,2,3,Hibernating / Lost
-CUST_1826,42,1,153.01,5,2,3,Promising / New
-CUST_1827,119,1,160.36,3,2,3,Promising / New
-CUST_1828,58,1,19.16,4,2,1,Promising / New
-CUST_1829,291,1,208.19,1,2,3,Hibernating / Lost
-CUST_1830,262,1,32.95,2,2,1,Hibernating / Lost
-CUST_1831,10,1,107.93,5,2,2,Promising / New
-CUST_1832,106,1,110.19,4,2,2,Promising / New
-CUST_1833,175,1,108.57,3,2,2,Promising / New
-CUST_1834,89,1,97.64,4,2,2,Promising / New
-CUST_1835,51,2,306.69,4,5,4,Champions
-CUST_1836,329,2,275.73,1,5,4,At Risk / Can't Lose Them
-CUST_1837,76,4,1466.1799999999998,4,5,5,Champions
-CUST_1838,187,1,164.21,2,2,3,Hibernating / Lost
-CUST_1839,130,3,783.65,3,5,5,Loyal Customers
-CUST_1840,331,1,126.02,1,3,2,At Risk / Can't Lose Them
-CUST_1841,33,1,157.08,5,3,3,Loyal Customers
-CUST_1842,234,1,132.88,2,3,2,At Risk / Can't Lose Them
-CUST_1843,332,2,296.46,1,5,4,At Risk / Can't Lose Them
-CUST_1844,53,1,56.02,4,3,1,About to Sleep / Average
-CUST_1845,258,1,34.39,2,3,1,At Risk / Can't Lose Them
-CUST_1846,122,1,268.96,3,3,4,Loyal Customers
-CUST_1847,327,1,66.29,1,3,1,At Risk / Can't Lose Them
-CUST_1848,123,1,676.77,3,3,5,Loyal Customers
-CUST_1849,277,2,381.78,1,5,4,At Risk / Can't Lose Them
-CUST_1850,34,1,977.0,5,3,5,Loyal Customers
-CUST_1851,346,1,76.6,1,3,1,At Risk / Can't Lose Them
-CUST_1852,286,1,136.72,1,3,2,At Risk / Can't Lose Them
-CUST_1853,339,1,49.99,1,3,1,At Risk / Can't Lose Them
-CUST_1854,121,1,325.84,3,3,4,Loyal Customers
-CUST_1855,331,1,40.42,1,3,1,At Risk / Can't Lose Them
-CUST_1856,133,2,1157.0,3,5,5,Loyal Customers
-CUST_1857,298,1,109.49,1,3,2,At Risk / Can't Lose Them
-CUST_1858,25,2,73.19,5,5,1,About to Sleep / Average
-CUST_1859,159,1,100.86,3,3,2,About to Sleep / Average
-CUST_1860,101,4,1221.21,4,5,5,Champions
-CUST_1861,36,1,75.14,5,3,1,About to Sleep / Average
-CUST_1862,84,1,504.24,4,3,4,Loyal Customers
-CUST_1863,132,2,425.94,3,5,4,Loyal Customers
-CUST_1864,177,1,338.0,3,3,4,Loyal Customers
-CUST_1865,90,1,153.12,4,3,3,Loyal Customers
-CUST_1866,205,1,992.25,2,3,5,At Risk / Can't Lose Them
-CUST_1867,19,1,167.2,5,3,3,Loyal Customers
-CUST_1868,192,2,144.45,2,5,2,At Risk / Can't Lose Them
-CUST_1869,73,1,152.19,4,3,3,Loyal Customers
-CUST_1870,43,1,112.36,5,3,2,About to Sleep / Average
-CUST_1871,299,1,32.16,1,3,1,At Risk / Can't Lose Them
-CUST_1872,325,2,144.45,1,5,2,At Risk / Can't Lose Them
-CUST_1873,308,1,72.34,1,3,1,At Risk / Can't Lose Them
-CUST_1874,357,1,107.07,1,3,2,At Risk / Can't Lose Them
-CUST_1875,140,1,1039.72,3,3,5,Loyal Customers
-CUST_1876,287,1,212.85,1,3,3,At Risk / Can't Lose Them
-CUST_1877,114,2,331.09000000000003,3,5,4,Loyal Customers
-CUST_1878,119,1,64.99,3,3,1,About to Sleep / Average
-CUST_1879,331,1,236.46,1,3,3,At Risk / Can't Lose Them
-CUST_1880,242,1,76.42,2,3,1,At Risk / Can't Lose Them
-CUST_1881,85,1,660.85,4,3,5,Loyal Customers
-CUST_1882,218,1,671.52,2,3,5,At Risk / Can't Lose Them
-CUST_1883,194,2,808.51,2,5,5,At Risk / Can't Lose Them
-CUST_1884,313,1,71.62,1,3,1,At Risk / Can't Lose Them
-CUST_1885,114,2,711.37,4,5,5,Champions
-CUST_1886,225,3,339.63,2,5,4,At Risk / Can't Lose Them
-CUST_1887,217,2,747.25,2,5,5,At Risk / Can't Lose Them
-CUST_1888,104,1,672.76,4,3,5,Loyal Customers
-CUST_1889,129,2,269.81,3,5,4,Loyal Customers
-CUST_1890,95,2,217.29,4,5,3,Loyal Customers
-CUST_1891,132,1,697.74,3,3,5,Loyal Customers
-CUST_1892,216,3,340.14,2,5,4,At Risk / Can't Lose Them
-CUST_1893,142,1,227.97,3,3,3,Loyal Customers
-CUST_1894,32,1,48.84,5,3,1,About to Sleep / Average
-CUST_1895,317,1,72.85,1,3,1,At Risk / Can't Lose Them
-CUST_1896,20,2,169.93,5,5,3,Loyal Customers
-CUST_1897,9,3,881.76,5,5,5,Champions
-CUST_1898,31,1,20.83,5,3,1,About to Sleep / Average
-CUST_1899,91,1,196.33,4,3,3,Loyal Customers
-CUST_1900,335,1,333.58,1,3,4,At Risk / Can't Lose Them
-CUST_1901,118,1,90.46,3,3,1,About to Sleep / Average
-CUST_1902,159,1,135.54,3,3,2,About to Sleep / Average
-CUST_1903,47,1,287.82,5,3,4,Loyal Customers
-CUST_1904,188,1,36.17,2,3,1,At Risk / Can't Lose Them
-CUST_1905,92,3,881.55,4,5,5,Champions
-CUST_1906,3,5,718.63,5,5,5,Champions
-CUST_1907,267,2,90.51,2,5,1,At Risk / Can't Lose Them
-CUST_1908,360,1,338.68,1,3,4,At Risk / Can't Lose Them
-CUST_1909,57,1,210.16,4,3,3,Loyal Customers
-CUST_1910,179,1,110.03,3,3,2,About to Sleep / Average
-CUST_1911,63,2,175.26,4,5,3,Loyal Customers
-CUST_1912,332,1,131.36,1,3,2,At Risk / Can't Lose Them
-CUST_1913,288,1,485.8,1,3,4,At Risk / Can't Lose Them
-CUST_1914,80,1,140.07,4,3,2,About to Sleep / Average
-CUST_1915,318,1,314.02,1,3,4,At Risk / Can't Lose Them
-CUST_1916,176,1,450.21,3,3,4,Loyal Customers
-CUST_1917,70,1,88.46,4,3,1,About to Sleep / Average
-CUST_1918,249,1,34.2,2,3,1,At Risk / Can't Lose Them
-CUST_1919,79,4,671.6999999999999,4,5,5,Champions
-CUST_1920,199,4,917.0999999999999,2,5,5,At Risk / Can't Lose Them
-CUST_1921,223,2,231.45000000000002,2,5,3,At Risk / Can't Lose Them
-CUST_1922,117,1,36.07,3,3,1,About to Sleep / Average
-CUST_1923,20,5,857.8,5,5,5,Champions
-CUST_1924,248,1,40.64,2,3,1,At Risk / Can't Lose Them
-CUST_1925,341,1,102.46,1,3,2,At Risk / Can't Lose Them
-CUST_1926,359,1,38.78,1,3,1,At Risk / Can't Lose Them
-CUST_1927,228,2,334.4,2,5,4,At Risk / Can't Lose Them
-CUST_1928,162,1,95.6,3,3,2,About to Sleep / Average
-CUST_1929,102,2,319.14,4,5,4,Champions
-CUST_1930,137,1,211.39,3,3,3,Loyal Customers
-CUST_1931,95,1,158.42,4,3,3,Loyal Customers
-CUST_1932,205,1,19.93,2,3,1,At Risk / Can't Lose Them
-CUST_1933,312,1,51.24,1,3,1,At Risk / Can't Lose Them
-CUST_1934,18,4,392.39,5,5,4,Champions
-CUST_1935,294,1,280.04,1,3,4,At Risk / Can't Lose Them
-CUST_1936,65,1,90.51,4,3,1,About to Sleep / Average
-CUST_1937,103,1,98.88,4,3,2,About to Sleep / Average
-CUST_1938,204,1,33.96,2,3,1,At Risk / Can't Lose Them
-CUST_1939,89,1,142.57,4,3,2,About to Sleep / Average
-CUST_1940,165,1,71.59,3,3,1,About to Sleep / Average
-CUST_1941,30,1,193.51,5,3,3,Loyal Customers
-CUST_1942,22,1,94.09,5,3,2,About to Sleep / Average
-CUST_1943,83,1,201.29,4,3,3,Loyal Customers
-CUST_1944,236,1,208.63,2,3,3,At Risk / Can't Lose Them
-CUST_1945,149,1,133.02,3,3,2,About to Sleep / Average
-CUST_1946,329,1,19.64,1,3,1,At Risk / Can't Lose Them
-CUST_1947,230,1,143.64,2,3,2,At Risk / Can't Lose Them
-CUST_1948,21,6,1274.43,5,5,5,Champions
-CUST_1949,45,1,98.7,5,3,2,About to Sleep / Average
-CUST_1950,158,1,154.28,3,3,3,Loyal Customers
-CUST_1951,10,1,107.75,5,3,2,About to Sleep / Average
-CUST_1952,99,1,50.37,4,3,1,About to Sleep / Average
-CUST_1953,212,1,233.95,2,3,3,At Risk / Can't Lose Them
-CUST_1954,39,1,135.53,5,3,2,About to Sleep / Average
-CUST_1955,280,1,118.98,1,3,2,At Risk / Can't Lose Them
-CUST_1956,77,4,502.51,4,5,4,Champions
-CUST_1957,63,1,20.94,4,3,1,About to Sleep / Average
-CUST_1958,300,1,199.18,1,3,3,At Risk / Can't Lose Them
-CUST_1959,325,1,38.38,1,3,1,At Risk / Can't Lose Them
-CUST_1960,286,1,342.1,1,3,4,At Risk / Can't Lose Them
-CUST_1961,53,1,104.18,4,3,2,About to Sleep / Average
-CUST_1962,10,2,475.12,5,5,4,Champions
-CUST_1963,77,6,934.61,4,5,5,Champions
-CUST_1964,130,1,176.71,3,3,3,Loyal Customers
-CUST_1965,26,3,311.29,5,5,4,Champions
-CUST_1966,344,2,911.26,1,5,5,At Risk / Can't Lose Them
-CUST_1967,148,2,251.36,3,5,3,Loyal Customers
-CUST_1968,182,1,158.38,3,3,3,Loyal Customers
-CUST_1969,182,1,201.22,3,3,3,Loyal Customers
-CUST_1970,313,1,3356.07,1,3,5,At Risk / Can't Lose Them
-CUST_1971,236,1,198.58,2,3,3,At Risk / Can't Lose Them
-CUST_1972,240,1,141.99,2,3,2,At Risk / Can't Lose Them
-CUST_1973,274,1,231.82,1,3,3,At Risk / Can't Lose Them
-CUST_1974,46,1,145.22,5,3,2,About to Sleep / Average
-CUST_1975,28,2,563.54,5,5,4,Champions
-CUST_1976,64,1,264.44,4,3,4,Loyal Customers
-CUST_1977,306,1,113.95,1,3,2,At Risk / Can't Lose Them
-CUST_1978,44,2,2579.17,5,5,5,Champions
-CUST_1979,77,1,3422.93,4,3,5,Loyal Customers
-CUST_1980,55,1,131.37,4,3,2,About to Sleep / Average
-CUST_1981,280,1,162.89,1,3,3,At Risk / Can't Lose Them
-CUST_1982,294,2,700.78,1,5,5,At Risk / Can't Lose Them
-CUST_1983,11,3,780.89,5,5,5,Champions
-CUST_1984,310,1,75.38,1,3,1,At Risk / Can't Lose Them
-CUST_1985,50,1,92.82,5,3,1,About to Sleep / Average
-CUST_1986,131,1,90.61,3,3,1,About to Sleep / Average
-CUST_1987,179,1,340.8,3,3,4,Loyal Customers
-CUST_1988,191,1,51.0,2,3,1,At Risk / Can't Lose Them
-CUST_1989,265,2,336.7,2,5,4,At Risk / Can't Lose Them
-CUST_1990,341,1,65.86,1,3,1,At Risk / Can't Lose Them
-CUST_1991,114,1,131.97,4,3,2,About to Sleep / Average
-CUST_1992,113,1,189.29,4,3,3,Loyal Customers
-CUST_1993,30,1,204.47,5,3,3,Loyal Customers
-CUST_1994,325,1,635.4,1,3,5,At Risk / Can't Lose Them
-CUST_1995,326,1,100.44,1,3,2,At Risk / Can't Lose Them
-CUST_1996,131,1,139.43,3,3,2,About to Sleep / Average
-CUST_1997,70,1,148.23,4,3,3,Loyal Customers
-CUST_1998,118,1,33.89,3,3,1,About to Sleep / Average
-CUST_1999,314,1,638.98,1,3,5,At Risk / Can't Lose Them
-CUST_2000,130,2,232.22,3,5,3,Loyal Customers
-CUST_2001,53,1,126.11,4,3,2,About to Sleep / Average
-CUST_2002,41,1,514.53,5,3,4,Loyal Customers
-CUST_2003,82,1,641.15,4,3,5,Loyal Customers
-CUST_2004,205,1,123.66,2,3,2,At Risk / Can't Lose Them
-CUST_2005,144,3,248.92000000000002,3,5,3,Loyal Customers
-CUST_2006,20,2,494.48,5,5,4,Champions
-CUST_2007,150,1,55.89,3,3,1,About to Sleep / Average
-CUST_2008,106,1,19.84,4,3,1,About to Sleep / Average
-CUST_2009,39,2,726.1800000000001,5,5,5,Champions
-CUST_2010,297,1,131.0,1,3,2,At Risk / Can't Lose Them
-CUST_2011,347,1,70.16,1,3,1,At Risk / Can't Lose Them
-CUST_2012,253,2,329.8,2,5,4,At Risk / Can't Lose Them
-CUST_2013,172,1,112.15,3,3,2,About to Sleep / Average
-CUST_2014,248,1,238.1,2,3,3,At Risk / Can't Lose Them
-CUST_2015,182,1,163.52,3,3,3,Loyal Customers
-CUST_2016,165,1,161.76,3,3,3,Loyal Customers
-CUST_2017,107,1,165.28,4,3,3,Loyal Customers
-CUST_2018,90,1,48.71,4,3,1,About to Sleep / Average
-CUST_2019,99,2,3540.64,4,5,5,Champions
-CUST_2020,89,2,586.36,4,5,5,Champions
-CUST_2021,238,3,512.81,2,5,4,At Risk / Can't Lose Them
-CUST_2022,222,2,817.44,2,5,5,At Risk / Can't Lose Them
-CUST_2023,197,1,65.22,2,3,1,At Risk / Can't Lose Them
-CUST_2024,7,3,807.81,5,5,5,Champions
-CUST_2025,180,1,451.08,3,3,4,Loyal Customers
-CUST_2026,165,3,778.59,3,5,5,Loyal Customers
-CUST_2027,265,1,230.13,2,3,3,At Risk / Can't Lose Them
-CUST_2028,298,1,140.06,1,3,2,At Risk / Can't Lose Them
-CUST_2029,149,1,108.47,3,3,2,About to Sleep / Average
-CUST_2030,111,2,438.46000000000004,4,5,4,Champions
-CUST_2031,245,2,75.2,2,5,1,At Risk / Can't Lose Them
-CUST_2032,230,1,80.44,2,3,1,At Risk / Can't Lose Them
-CUST_2033,99,1,38.12,4,3,1,About to Sleep / Average
-CUST_2034,63,2,3483.83,4,5,5,Champions
-CUST_2035,181,1,763.3499999999999,3,3,5,Loyal Customers
-CUST_2036,30,1,88.48,5,3,1,About to Sleep / Average
-CUST_2037,134,1,67.97,3,3,1,About to Sleep / Average
-CUST_2038,248,1,152.99,2,3,3,At Risk / Can't Lose Them
-CUST_2039,224,1,546.89,2,3,4,At Risk / Can't Lose Them
-CUST_2040,154,2,1208.79,3,5,5,Loyal Customers
-CUST_2041,112,1,128.81,4,3,2,About to Sleep / Average
-CUST_2042,138,2,684.92,3,5,5,Loyal Customers
-CUST_2043,41,1,115.25,5,3,2,About to Sleep / Average
-CUST_2044,115,4,564.24,3,5,5,Loyal Customers
-CUST_2045,153,4,1008.29,3,5,5,Loyal Customers
-CUST_2046,322,1,97.25,1,3,2,At Risk / Can't Lose Them
-CUST_2047,101,2,105.81,4,5,2,About to Sleep / Average
-CUST_2048,126,1,164.27,3,3,3,Loyal Customers
-CUST_2049,138,3,1010.25,3,5,5,Loyal Customers
-CUST_2050,2,2,307.44,5,5,4,Champions
-CUST_2051,220,2,885.2,2,5,5,At Risk / Can't Lose Them
-CUST_2052,163,1,206.14,3,3,3,Loyal Customers
-CUST_2053,73,1,139.08,4,3,2,About to Sleep / Average
-CUST_2054,208,1,331.07,2,3,4,At Risk / Can't Lose Them
-CUST_2055,52,1,147.74,4,3,3,Loyal Customers
-CUST_2056,240,1,83.96,2,3,1,At Risk / Can't Lose Them
-CUST_2057,362,1,97.03,1,3,2,At Risk / Can't Lose Them
-CUST_2058,30,1,687.54,5,3,5,Loyal Customers
-CUST_2059,153,1,100.83,3,3,2,About to Sleep / Average
-CUST_2060,74,1,17271.199999999997,4,3,5,Loyal Customers
-CUST_2061,307,1,92.79,1,3,1,At Risk / Can't Lose Them
-CUST_2062,268,1,64.71,2,3,1,At Risk / Can't Lose Them
-CUST_2063,109,1,98.04,4,3,2,About to Sleep / Average
-CUST_2064,92,2,320.78,4,5,4,Champions
-CUST_2065,124,1,93.05,3,3,2,About to Sleep / Average
-CUST_2066,291,1,145.28,1,3,2,At Risk / Can't Lose Them
-CUST_2067,280,1,140.83,1,3,2,At Risk / Can't Lose Them
-CUST_2068,15,1,94.75,5,3,2,About to Sleep / Average
-CUST_2069,80,2,3351.56,4,5,5,Champions
-CUST_2070,99,1,72.47,4,3,1,About to Sleep / Average
-CUST_2071,149,1,262.04,3,3,4,Loyal Customers
-CUST_2072,85,1,283.0,4,3,4,Loyal Customers
-CUST_2073,24,3,1688.79,5,5,5,Champions
-CUST_2074,5,2,663.12,5,5,5,Champions
-CUST_2075,307,1,151.28,1,3,3,At Risk / Can't Lose Them
-CUST_2076,109,1,125.0,4,3,2,About to Sleep / Average
-CUST_2077,165,1,143.31,3,3,2,About to Sleep / Average
-CUST_2078,7,1,95.49,5,3,2,About to Sleep / Average
-CUST_2079,138,1,38.54,3,3,1,About to Sleep / Average
-CUST_2080,142,1,696.61,3,3,5,Loyal Customers
-CUST_2081,284,1,100.64,1,3,2,At Risk / Can't Lose Them
-CUST_2082,176,1,157.56,3,3,3,Loyal Customers
-CUST_2083,79,1,132.71,4,3,2,About to Sleep / Average
-CUST_2084,37,1,20.55,5,3,1,About to Sleep / Average
-CUST_2085,131,1,217.88,3,3,3,Loyal Customers
-CUST_2086,52,1,20.76,4,3,1,About to Sleep / Average
-CUST_2087,256,2,338.56,2,5,4,At Risk / Can't Lose Them
-CUST_2088,240,2,608.39,2,5,5,At Risk / Can't Lose Them
-CUST_2089,27,1,195.83,5,3,3,Loyal Customers
-CUST_2090,75,1,33.62,4,3,1,About to Sleep / Average
-CUST_2091,164,1,32.84,3,3,1,About to Sleep / Average
-CUST_2092,10,1,149.7,5,3,3,Loyal Customers
-CUST_2093,183,1,49.46,3,3,1,About to Sleep / Average
-CUST_2094,210,4,932.6600000000001,2,5,5,At Risk / Can't Lose Them
-CUST_2095,245,1,98.19,2,3,2,At Risk / Can't Lose Them
-CUST_2096,86,2,181.2,4,5,3,Loyal Customers
-CUST_2097,347,2,162.32000000000002,1,5,3,At Risk / Can't Lose Them
-CUST_2098,142,1,654.02,3,3,5,Loyal Customers
-CUST_2099,129,1,99.03,3,3,2,About to Sleep / Average
-CUST_2100,21,1,553.06,5,3,4,Loyal Customers
-CUST_2101,348,1,74.8,1,3,1,At Risk / Can't Lose Them
-CUST_2102,151,1,140.26,3,3,2,About to Sleep / Average
-CUST_2103,364,1,153.54,1,3,3,At Risk / Can't Lose Them
-CUST_2104,290,1,461.79,1,3,4,At Risk / Can't Lose Them
-CUST_2105,14,2,323.95,5,5,4,Champions
-CUST_2106,3,1,193.3,5,3,3,Loyal Customers
-CUST_2107,272,1,206.41,1,3,3,At Risk / Can't Lose Them
-CUST_2108,84,2,1318.3799999999999,4,5,5,Champions
-CUST_2109,339,1,122.67,1,3,2,At Risk / Can't Lose Them
-CUST_2110,185,1,127.07,2,3,2,At Risk / Can't Lose Them
-CUST_2111,243,2,1299.56,2,5,5,At Risk / Can't Lose Them
-CUST_2112,332,1,500.48,1,3,4,At Risk / Can't Lose Them
-CUST_2113,87,3,955.62,4,5,5,Champions
-CUST_2114,108,1,204.64,4,3,3,Loyal Customers
-CUST_2115,206,1,231.44,2,3,3,At Risk / Can't Lose Them
-CUST_2116,213,1,136.41,2,3,2,At Risk / Can't Lose Them
-CUST_2117,292,1,209.94,1,3,3,At Risk / Can't Lose Them
-CUST_2118,2,1,715.16,5,3,5,Loyal Customers
-CUST_2119,57,2,223.67,4,5,3,Loyal Customers
-CUST_2120,192,3,553.68,2,5,4,At Risk / Can't Lose Them
-CUST_2121,338,2,753.3499999999999,1,5,5,At Risk / Can't Lose Them
-CUST_2122,215,1,141.5,2,3,2,At Risk / Can't Lose Them
-CUST_2123,226,1,114.74,2,3,2,At Risk / Can't Lose Them
-CUST_2124,300,1,20.15,1,3,1,At Risk / Can't Lose Them
-CUST_2125,36,2,560.73,5,5,4,Champions
-CUST_2126,22,1,203.75,5,3,3,Loyal Customers
-CUST_2127,87,1,193.41,4,3,3,Loyal Customers
-CUST_2128,306,1,71.08,1,3,1,At Risk / Can't Lose Them
-CUST_2129,361,1,96.93,1,3,2,At Risk / Can't Lose Them
-CUST_2130,317,1,130.81,1,3,2,At Risk / Can't Lose Them
-CUST_2131,221,1,101.32,2,3,2,At Risk / Can't Lose Them
-CUST_2132,239,1,498.95,2,3,4,At Risk / Can't Lose Them
-CUST_2133,312,1,141.5,1,3,2,At Risk / Can't Lose Them
-CUST_2134,202,1,153.27,2,3,3,At Risk / Can't Lose Them
-CUST_2135,307,1,578.46,1,3,5,At Risk / Can't Lose Them
-CUST_2136,141,1,50.56,3,3,1,About to Sleep / Average
-CUST_2137,48,1,99.77,5,3,2,About to Sleep / Average
-CUST_2138,214,1,722.0,2,3,5,At Risk / Can't Lose Them
-CUST_2139,81,2,139.71,4,5,2,About to Sleep / Average
-CUST_2140,214,1,490.93,2,3,4,At Risk / Can't Lose Them
-CUST_2141,42,2,359.37,5,5,4,Champions
-CUST_2142,357,1,20.23,1,3,1,At Risk / Can't Lose Them
-CUST_2143,250,1,144.84,2,3,2,At Risk / Can't Lose Them
-CUST_2144,71,2,223.66000000000003,4,5,3,Loyal Customers
-CUST_2145,63,1,157.37,4,3,3,Loyal Customers
-CUST_2146,141,2,355.64,3,5,4,Loyal Customers
-CUST_2147,165,2,169.86,3,5,3,Loyal Customers
-CUST_2148,256,1,178.5,2,3,3,At Risk / Can't Lose Them
-CUST_2149,179,2,195.8,3,5,3,Loyal Customers
-CUST_2150,181,1,38.28,3,3,1,About to Sleep / Average
-CUST_2151,202,2,4065.5299999999997,2,5,5,At Risk / Can't Lose Them
-CUST_2152,256,1,163.07,2,3,3,At Risk / Can't Lose Them
-CUST_2153,194,1,600.0500000000001,2,3,5,At Risk / Can't Lose Them
-CUST_2154,5,2,517.16,5,5,4,Champions
-CUST_2155,25,1,133.81,5,3,2,About to Sleep / Average
-CUST_2156,250,1,207.32,2,3,3,At Risk / Can't Lose Them
-CUST_2157,204,2,244.1,2,5,3,At Risk / Can't Lose Them
-CUST_2158,307,1,584.01,1,3,5,At Risk / Can't Lose Them
-CUST_2159,67,1,114.13,4,3,2,About to Sleep / Average
-CUST_2160,306,2,180.48000000000002,1,5,3,At Risk / Can't Lose Them
-CUST_2161,156,1,203.02,3,3,3,Loyal Customers
-CUST_2162,132,1,647.03,3,3,5,Loyal Customers
-CUST_2163,60,2,269.24,4,5,4,Champions
-CUST_2164,230,1,70.6,2,3,1,At Risk / Can't Lose Them
-CUST_2165,135,1,93.78,3,3,2,About to Sleep / Average
-CUST_2166,125,1,140.04,3,3,2,About to Sleep / Average
-CUST_2167,1,1,277.3,5,3,4,Loyal Customers
-CUST_2168,183,1,103.84,3,3,2,About to Sleep / Average
-CUST_2169,228,2,166.31,2,5,3,At Risk / Can't Lose Them
-CUST_2170,164,1,128.97,3,3,2,About to Sleep / Average
-CUST_2171,211,2,363.96000000000004,2,5,4,At Risk / Can't Lose Them
-CUST_2172,47,1,108.13,5,3,2,About to Sleep / Average
-CUST_2173,79,1,196.6,4,3,3,Loyal Customers
-CUST_2174,189,1,200.92,2,3,3,At Risk / Can't Lose Them
-CUST_2175,295,1,105.54,1,3,2,At Risk / Can't Lose Them
-CUST_2176,26,1,139.56,5,3,2,About to Sleep / Average
-CUST_2177,21,3,678.01,5,5,5,Champions
-CUST_2178,228,1,3537.78,2,3,5,At Risk / Can't Lose Them
-CUST_2179,91,1,1466.34,4,3,5,Loyal Customers
-CUST_2180,351,1,164.02,1,3,3,At Risk / Can't Lose Them
-CUST_2181,165,1,51.87,3,3,1,About to Sleep / Average
-CUST_2182,282,1,644.9,1,3,5,At Risk / Can't Lose Them
-CUST_2183,124,1,381.82,3,3,4,Loyal Customers
-CUST_2184,262,2,94.35,2,5,2,At Risk / Can't Lose Them
-CUST_2185,302,1,75.23,1,3,1,At Risk / Can't Lose Them
-CUST_2186,115,1,176.83,3,3,3,Loyal Customers
-CUST_2187,183,1,207.57,3,3,3,Loyal Customers
-CUST_2188,167,1,206.36,3,3,3,Loyal Customers
-CUST_2189,225,1,317.78,2,3,4,At Risk / Can't Lose Them
-CUST_2190,265,1,160.79,2,3,3,At Risk / Can't Lose Them
-CUST_2191,123,2,849.5,3,5,5,Loyal Customers
-CUST_2192,130,2,75.07,3,5,1,About to Sleep / Average
-CUST_2193,341,1,684.16,1,3,5,At Risk / Can't Lose Them
-CUST_2194,82,2,127.5,4,5,2,About to Sleep / Average
-CUST_2195,348,1,136.11,1,3,2,At Risk / Can't Lose Them
-CUST_2196,8,1,264.88,5,3,4,Loyal Customers
-CUST_2197,340,1,140.92,1,3,2,At Risk / Can't Lose Them
-CUST_2198,336,1,2452.6499999999996,1,3,5,At Risk / Can't Lose Them
-CUST_2199,344,1,20.66,1,3,1,At Risk / Can't Lose Them
-CUST_2200,326,1,189.21,1,3,3,At Risk / Can't Lose Them
-CUST_2201,106,1,142.16,4,3,2,About to Sleep / Average
-CUST_2202,4,1,49.4,5,3,1,About to Sleep / Average
-CUST_2203,207,1,102.5,2,3,2,At Risk / Can't Lose Them
-CUST_2204,75,1,77.44,4,3,1,About to Sleep / Average
-CUST_2205,74,1,64.31,4,3,1,About to Sleep / Average
-CUST_2206,3,2,200.62,5,5,3,Loyal Customers
-CUST_2207,272,1,177.3,1,3,3,At Risk / Can't Lose Them
-CUST_2208,138,1,65.47,3,3,1,About to Sleep / Average
-CUST_2209,36,1,224.28,5,3,3,Loyal Customers
-CUST_2210,54,1,1404.04,4,3,5,Loyal Customers
-CUST_2211,19,4,432.44,5,5,4,Champions
-CUST_2212,161,2,222.10000000000002,3,5,3,Loyal Customers
-CUST_2213,53,1,76.63,4,3,1,About to Sleep / Average
-CUST_2214,123,1,152.66,3,3,3,Loyal Customers
-CUST_2215,20,2,257.54999999999995,5,5,4,Champions
-CUST_2216,14,1,66.89,5,3,1,About to Sleep / Average
-CUST_2217,115,1,141.62,3,3,2,About to Sleep / Average
-CUST_2218,2,1,75.58,5,3,1,About to Sleep / Average
-CUST_2219,73,1,75.04,4,3,1,About to Sleep / Average
-CUST_2220,86,1,151.47,4,3,3,Loyal Customers
-CUST_2221,39,1,132.6,5,3,2,About to Sleep / Average
-CUST_2222,50,1,112.79,5,3,2,About to Sleep / Average
-CUST_2223,13,2,254.2,5,5,3,Loyal Customers
-CUST_2224,89,1,112.09,4,3,2,About to Sleep / Average
-CUST_2225,226,1,127.64,2,3,2,At Risk / Can't Lose Them
-CUST_2226,19,5,1445.41,5,5,5,Champions
-CUST_2227,28,3,832.36,5,5,5,Champions
-CUST_2228,7,1,69.44,5,3,1,About to Sleep / Average
-CUST_2229,173,1,41.8,3,3,1,About to Sleep / Average
-CUST_2230,69,1,19.64,4,3,1,About to Sleep / Average
-CUST_2231,45,1,1282.82,5,3,5,Loyal Customers
-CUST_2232,69,2,823.37,4,5,5,Champions
-CUST_2233,18,2,1075.98,5,5,5,Champions
-CUST_2234,45,1,203.31,5,3,3,Loyal Customers
-CUST_2235,29,3,770.23,5,5,5,Champions
-CUST_2236,213,1,279.28,2,3,4,At Risk / Can't Lose Them
-CUST_2237,14,2,860.9300000000001,5,5,5,Champions
-CUST_2238,193,1,73.56,2,3,1,At Risk / Can't Lose Them
-CUST_2239,115,1,140.01,3,3,2,About to Sleep / Average
-CUST_2240,101,4,994.56,4,5,5,Champions
-CUST_2241,330,1,319.06,1,3,4,At Risk / Can't Lose Them
-CUST_2242,158,2,308.65,3,5,4,Loyal Customers
-CUST_2243,153,2,351.19,3,5,4,Loyal Customers
-CUST_2244,138,1,131.76,3,3,2,About to Sleep / Average
-CUST_2245,66,1,494.4,4,3,4,Loyal Customers
-CUST_2246,4,1,310.8,5,3,4,Loyal Customers
-CUST_2247,120,1,209.67,3,3,3,Loyal Customers
-CUST_2248,193,1,101.93,2,3,2,At Risk / Can't Lose Them
-CUST_2249,227,2,397.21,2,5,4,At Risk / Can't Lose Them
-CUST_2250,185,1,200.36,2,3,3,At Risk / Can't Lose Them
-CUST_2251,79,1,237.52,4,3,3,Loyal Customers
-CUST_2252,56,1,31.84,4,3,1,About to Sleep / Average
-CUST_2253,151,1,164.41,3,4,3,Loyal Customers
-CUST_2254,290,1,270.52,1,4,4,At Risk / Can't Lose Them
-CUST_2255,27,2,93.69,5,5,2,About to Sleep / Average
-CUST_2256,86,1,72.43,4,4,1,About to Sleep / Average
-CUST_2257,317,1,187.6,1,4,3,At Risk / Can't Lose Them
-CUST_2258,171,1,111.75,3,4,2,About to Sleep / Average
-CUST_2259,196,1,140.3,2,4,2,At Risk / Can't Lose Them
-CUST_2260,124,8,1158.78,3,5,5,Loyal Customers
-CUST_2261,349,1,112.19,1,4,2,At Risk / Can't Lose Them
-CUST_2262,133,1,215.84,3,4,3,Loyal Customers
-CUST_2263,75,3,741.84,4,5,5,Champions
-CUST_2264,169,1,138.96,3,4,2,About to Sleep / Average
-CUST_2265,42,2,106.37,5,5,2,About to Sleep / Average
-CUST_2266,73,1,229.54,4,4,3,Loyal Customers
-CUST_2267,166,1,33.9,3,4,1,About to Sleep / Average
-CUST_2268,284,1,275.12,1,4,4,At Risk / Can't Lose Them
-CUST_2269,197,3,1024.2,2,5,5,At Risk / Can't Lose Them
-CUST_2270,300,1,88.94,1,4,1,At Risk / Can't Lose Them
-CUST_2271,12,1,482.48,5,4,4,Champions
-CUST_2272,142,1,361.78,3,4,4,Loyal Customers
-CUST_2273,154,4,1459.3400000000001,3,5,5,Loyal Customers
-CUST_2274,116,1,76.84,3,4,1,About to Sleep / Average
-CUST_2275,14,1,510.33,5,4,4,Champions
-CUST_2276,339,1,41.84,1,4,1,At Risk / Can't Lose Them
-CUST_2277,322,1,310.96,1,4,4,At Risk / Can't Lose Them
-CUST_2278,224,1,50.4,2,4,1,At Risk / Can't Lose Them
-CUST_2279,88,1,90.7,4,4,1,About to Sleep / Average
-CUST_2280,109,1,208.91,4,4,3,Loyal Customers
-CUST_2281,19,1,306.06,5,4,4,Champions
-CUST_2282,158,1,130.37,3,4,2,About to Sleep / Average
-CUST_2283,28,1,3373.86,5,4,5,Champions
-CUST_2284,65,1,447.97,4,4,4,Champions
-CUST_2285,210,1,92.14,2,4,1,At Risk / Can't Lose Them
-CUST_2286,346,1,230.75,1,4,3,At Risk / Can't Lose Them
-CUST_2287,56,1,261.95,4,4,4,Champions
-CUST_2288,28,1,101.84,5,4,2,About to Sleep / Average
-CUST_2289,219,1,83.54,2,4,1,At Risk / Can't Lose Them
-CUST_2290,211,1,91.72,2,4,1,At Risk / Can't Lose Them
-CUST_2291,361,1,122.76,1,4,2,At Risk / Can't Lose Them
-CUST_2292,302,1,20.84,1,4,1,At Risk / Can't Lose Them
-CUST_2293,353,1,391.22,1,4,4,At Risk / Can't Lose Them
-CUST_2294,116,1,120.26,3,4,2,About to Sleep / Average
-CUST_2295,341,1,291.7,1,4,4,At Risk / Can't Lose Them
-CUST_2296,114,2,917.25,4,5,5,Champions
-CUST_2297,57,1,107.29,4,4,2,About to Sleep / Average
-CUST_2298,292,1,515.14,1,4,4,At Risk / Can't Lose Them
-CUST_2299,18,1,52.4,5,4,1,About to Sleep / Average
-CUST_2300,5,1,148.78,5,4,3,Loyal Customers
-CUST_2301,341,1,132.08,1,4,2,At Risk / Can't Lose Them
-CUST_2302,258,1,1004.88,2,4,5,At Risk / Can't Lose Them
-CUST_2303,269,1,74.6,2,4,1,At Risk / Can't Lose Them
-CUST_2304,80,1,74.1,4,4,1,About to Sleep / Average
-CUST_2305,317,2,147.08999999999997,1,5,2,At Risk / Can't Lose Them
-CUST_2306,24,1,105.39,5,4,2,About to Sleep / Average
-CUST_2307,262,1,107.26,2,4,2,At Risk / Can't Lose Them
-CUST_2308,29,1,76.08,5,4,1,About to Sleep / Average
-CUST_2309,117,3,1118.99,3,5,5,Loyal Customers
-CUST_2310,221,1,98.31,2,4,2,At Risk / Can't Lose Them
-CUST_2311,210,1,265.72,2,4,4,At Risk / Can't Lose Them
-CUST_2312,357,1,39.32,1,4,1,At Risk / Can't Lose Them
-CUST_2313,352,1,1265.2,1,4,5,At Risk / Can't Lose Them
-CUST_2314,32,2,741.66,5,5,5,Champions
-CUST_2315,143,1,152.26,3,4,3,Loyal Customers
-CUST_2316,7,2,276.77,5,5,4,Champions
-CUST_2317,112,4,479.83000000000004,4,5,4,Champions
-CUST_2318,312,1,192.4,1,4,3,At Risk / Can't Lose Them
-CUST_2319,57,1,32.24,4,4,1,About to Sleep / Average
-CUST_2320,228,1,149.15,2,4,3,At Risk / Can't Lose Them
-CUST_2321,294,1,160.71,1,4,3,At Risk / Can't Lose Them
-CUST_2322,69,4,1051.67,4,5,5,Champions
-CUST_2323,207,1,54.45,2,4,1,At Risk / Can't Lose Them
-CUST_2324,334,1,86.93,1,4,1,At Risk / Can't Lose Them
-CUST_2325,10,2,177.69,5,5,3,Loyal Customers
-CUST_2326,135,1,1254.72,3,4,5,Loyal Customers
-CUST_2327,14,1,140.27,5,4,2,About to Sleep / Average
-CUST_2328,5,1,228.54,5,4,3,Loyal Customers
-CUST_2329,51,2,160.88,4,5,3,Loyal Customers
-CUST_2330,308,1,262.62,1,4,4,At Risk / Can't Lose Them
-CUST_2331,73,1,497.59,4,4,4,Champions
-CUST_2332,124,1,541.81,3,4,4,Loyal Customers
-CUST_2333,287,2,308.42,1,5,4,At Risk / Can't Lose Them
-CUST_2334,71,2,730.89,4,5,5,Champions
-CUST_2335,33,5,466.06,5,5,4,Champions
-CUST_2336,24,1,3379.76,5,4,5,Champions
-CUST_2337,130,1,36.06,3,4,1,About to Sleep / Average
-CUST_2338,337,1,273.0,1,4,4,At Risk / Can't Lose Them
-CUST_2339,18,2,286.09000000000003,5,5,4,Champions
-CUST_2340,174,4,661.98,3,5,5,Loyal Customers
-CUST_2341,181,1,200.62,3,4,3,Loyal Customers
-CUST_2342,143,1,722.43,3,4,5,Loyal Customers
-CUST_2343,147,1,453.40000000000003,3,4,4,Loyal Customers
-CUST_2344,196,1,114.8,2,4,2,At Risk / Can't Lose Them
-CUST_2345,194,1,525.29,2,4,4,At Risk / Can't Lose Them
-CUST_2346,332,1,321.04,1,4,4,At Risk / Can't Lose Them
-CUST_2347,9,2,239.96,5,5,3,Loyal Customers
-CUST_2348,15,3,323.62,5,5,4,Champions
-CUST_2349,30,1,39.82,5,4,1,About to Sleep / Average
-CUST_2350,159,1,20.65,3,4,1,About to Sleep / Average
-CUST_2351,212,2,287.4,2,5,4,At Risk / Can't Lose Them
-CUST_2352,74,3,457.43,4,5,4,Champions
-CUST_2353,109,1,191.46,4,4,3,Loyal Customers
-CUST_2354,273,1,126.54,1,4,2,At Risk / Can't Lose Them
-CUST_2355,190,3,298.16999999999996,2,5,4,At Risk / Can't Lose Them
-CUST_2356,228,5,1607.25,2,5,5,At Risk / Can't Lose Them
-CUST_2357,319,1,175.38,1,4,3,At Risk / Can't Lose Them
-CUST_2358,198,1,447.06,2,4,4,At Risk / Can't Lose Them
-CUST_2359,15,2,913.72,5,5,5,Champions
-CUST_2360,261,3,315.67,2,5,4,At Risk / Can't Lose Them
-CUST_2361,289,1,204.24,1,4,3,At Risk / Can't Lose Them
-CUST_2362,330,1,56.89,1,4,1,At Risk / Can't Lose Them
-CUST_2363,127,2,224.14999999999998,3,5,3,Loyal Customers
-CUST_2364,13,2,186.24,5,5,3,Loyal Customers
-CUST_2365,357,1,20.31,1,4,1,At Risk / Can't Lose Them
-CUST_2366,321,1,40.04,1,4,1,At Risk / Can't Lose Them
-CUST_2367,38,2,498.0,5,5,4,Champions
-CUST_2368,359,1,135.03,1,4,2,At Risk / Can't Lose Them
-CUST_2369,310,1,175.68,1,4,3,At Risk / Can't Lose Them
-CUST_2370,269,1,147.02,2,4,2,At Risk / Can't Lose Them
-CUST_2371,122,1,50.31,3,4,1,About to Sleep / Average
-CUST_2372,109,1,651.2,4,4,5,Champions
-CUST_2373,268,1,157.08,2,4,3,At Risk / Can't Lose Them
-CUST_2374,155,1,648.78,3,4,5,Loyal Customers
-CUST_2375,324,1,153.45,1,4,3,At Risk / Can't Lose Them
-CUST_2376,76,1,694.35,4,4,5,Champions
-CUST_2377,97,1,121.58,4,4,2,About to Sleep / Average
-CUST_2378,244,1,64.52,2,4,1,At Risk / Can't Lose Them
-CUST_2379,56,1,91.66,4,4,1,About to Sleep / Average
-CUST_2380,171,1,702.84,3,4,5,Loyal Customers
-CUST_2381,45,1,111.91,5,4,2,About to Sleep / Average
-CUST_2382,81,1,180.79,4,4,3,Loyal Customers
-CUST_2383,300,1,86.91,1,4,1,At Risk / Can't Lose Them
-CUST_2384,277,1,62.88,1,4,1,At Risk / Can't Lose Them
-CUST_2385,129,2,337.89,3,5,4,Loyal Customers
-CUST_2386,253,1,210.1,2,4,3,At Risk / Can't Lose Them
-CUST_2387,108,1,83.57,4,4,1,About to Sleep / Average
-CUST_2388,243,2,377.03999999999996,2,5,4,At Risk / Can't Lose Them
-CUST_2389,275,1,689.75,1,4,5,At Risk / Can't Lose Them
-CUST_2390,258,1,136.49,2,4,2,At Risk / Can't Lose Them
-CUST_2391,50,1,107.29,5,4,2,About to Sleep / Average
-CUST_2392,124,1,528.72,3,4,4,Loyal Customers
-CUST_2393,282,1,150.01,1,4,3,At Risk / Can't Lose Them
-CUST_2394,133,2,288.85,3,5,4,Loyal Customers
-CUST_2395,140,1,1130.85,3,4,5,Loyal Customers
-CUST_2396,213,2,196.64,2,5,3,At Risk / Can't Lose Them
-CUST_2397,12,1,1285.58,5,4,5,Champions
-CUST_2398,256,4,735.9399999999999,2,5,5,At Risk / Can't Lose Them
-CUST_2399,13,1,94.51,5,4,2,About to Sleep / Average
-CUST_2400,218,1,211.91,2,4,3,At Risk / Can't Lose Them
-CUST_2401,331,1,132.49,1,4,2,At Risk / Can't Lose Them
-CUST_2402,207,2,176.61,2,5,3,At Risk / Can't Lose Them
-CUST_2403,285,1,3441.77,1,4,5,At Risk / Can't Lose Them
-CUST_2404,29,4,879.0899999999999,5,5,5,Champions
-CUST_2405,32,2,164.02,5,5,3,Loyal Customers
-CUST_2406,55,4,517.17,4,5,4,Champions
-CUST_2407,52,2,590.05,4,5,5,Champions
-CUST_2408,149,1,224.84,3,4,3,Loyal Customers
-CUST_2409,290,1,71.07,1,4,1,At Risk / Can't Lose Them
-CUST_2410,79,2,266.83,4,5,4,Champions
-CUST_2411,4,1,478.09,5,4,4,Champions
-CUST_2412,213,1,38.16,2,4,1,At Risk / Can't Lose Them
-CUST_2413,244,1,583.47,2,4,5,At Risk / Can't Lose Them
-CUST_2414,42,1,19.11,5,4,1,About to Sleep / Average
-CUST_2415,57,1,159.69,4,4,3,Loyal Customers
-CUST_2416,91,2,197.34,4,5,3,Loyal Customers
-CUST_2417,352,1,92.59,1,4,1,At Risk / Can't Lose Them
-CUST_2418,70,2,440.65999999999997,4,5,4,Champions
-CUST_2419,42,1,122.36,5,4,2,About to Sleep / Average
-CUST_2420,100,1,19.55,4,4,1,About to Sleep / Average
-CUST_2421,240,1,102.34,2,4,2,At Risk / Can't Lose Them
-CUST_2422,40,1,96.11,5,4,2,About to Sleep / Average
-CUST_2423,185,1,239.44,3,4,3,Loyal Customers
-CUST_2424,351,1,124.76,1,4,2,At Risk / Can't Lose Them
-CUST_2425,137,1,460.5,3,4,4,Loyal Customers
-CUST_2426,340,1,255.48,1,4,4,At Risk / Can't Lose Them
-CUST_2427,168,2,269.93,3,5,4,Loyal Customers
-CUST_2428,88,1,73.58,4,4,1,About to Sleep / Average
-CUST_2429,35,2,157.51,5,5,3,Loyal Customers
-CUST_2430,316,1,169.9,1,4,3,At Risk / Can't Lose Them
-CUST_2431,157,2,294.94,3,5,4,Loyal Customers
-CUST_2432,204,4,717.31,2,5,5,At Risk / Can't Lose Them
-CUST_2433,32,4,1320.23,5,5,5,Champions
-CUST_2434,173,3,520.35,3,5,4,Loyal Customers
-CUST_2435,150,1,199.98,3,4,3,Loyal Customers
-CUST_2436,351,1,85.65,1,4,1,At Risk / Can't Lose Them
-CUST_2437,238,1,227.37,2,4,3,At Risk / Can't Lose Them
-CUST_2438,174,2,1230.02,3,5,5,Loyal Customers
-CUST_2439,102,1,90.41,4,4,1,About to Sleep / Average
-CUST_2440,44,3,914.11,5,5,5,Champions
-CUST_2441,89,1,216.03,4,4,3,Loyal Customers
-CUST_2442,9,1,74.25,5,4,1,About to Sleep / Average
-CUST_2443,296,1,68.55,1,4,1,At Risk / Can't Lose Them
-CUST_2444,87,1,598.27,4,4,5,Champions
-CUST_2445,173,1,225.48,3,4,3,Loyal Customers
-CUST_2446,220,1,111.11,2,4,2,At Risk / Can't Lose Them
-CUST_2447,295,1,198.29,1,4,3,At Risk / Can't Lose Them
-CUST_2448,97,1,139.4,4,4,2,About to Sleep / Average
-CUST_2449,360,1,94.34,1,4,2,At Risk / Can't Lose Them
-CUST_2450,31,1,78.25,5,4,1,About to Sleep / Average
-CUST_2451,306,1,339.4,1,4,4,At Risk / Can't Lose Them
-CUST_2452,146,1,94.14,3,4,2,About to Sleep / Average
-CUST_2453,285,1,154.4,1,4,3,At Risk / Can't Lose Them
-CUST_2454,300,1,56.22,1,4,1,At Risk / Can't Lose Them
-CUST_2455,246,1,463.16,2,4,4,At Risk / Can't Lose Them
-CUST_2456,262,1,143.22,2,4,2,At Risk / Can't Lose Them
-CUST_2457,74,2,627.73,4,5,5,Champions
-CUST_2458,212,1,541.76,2,4,4,At Risk / Can't Lose Them
-CUST_2459,183,1,136.33,3,4,2,About to Sleep / Average
-CUST_2460,16,5,926.9300000000001,5,5,5,Champions
-CUST_2461,23,1,31.35,5,4,1,About to Sleep / Average
-CUST_2462,89,1,111.55,4,4,2,About to Sleep / Average
-CUST_2463,123,2,3407.48,3,5,5,Loyal Customers
-CUST_2464,104,1,136.27,4,4,2,About to Sleep / Average
-CUST_2465,112,1,86.17,4,4,1,About to Sleep / Average
-CUST_2466,155,2,292.0,3,5,4,Loyal Customers
-CUST_2467,122,1,74.75,3,4,1,About to Sleep / Average
-CUST_2468,305,1,3442.44,1,4,5,At Risk / Can't Lose Them
-CUST_2469,77,1,71.16,4,4,1,About to Sleep / Average
-CUST_2470,110,1,34.38,4,4,1,About to Sleep / Average
-CUST_2471,232,2,86.69,2,5,1,At Risk / Can't Lose Them
-CUST_2472,13,2,206.46,5,5,3,Loyal Customers
-CUST_2473,267,1,92.98,2,4,1,At Risk / Can't Lose Them
-CUST_2474,9,1,334.9,5,4,4,Champions
-CUST_2475,104,1,324.52,4,4,4,Champions
-CUST_2476,12,1,115.95,5,4,2,About to Sleep / Average
-CUST_2477,165,1,623.48,3,4,5,Loyal Customers
-CUST_2478,282,1,73.45,1,4,1,At Risk / Can't Lose Them
-CUST_2479,156,2,497.60999999999996,3,5,4,Loyal Customers
-CUST_2480,65,1,64.68,4,4,1,About to Sleep / Average
-CUST_2481,226,5,606.81,2,5,5,At Risk / Can't Lose Them
-CUST_2482,6,2,651.35,5,5,5,Champions
-CUST_2483,136,1,694.14,3,4,5,Loyal Customers
-CUST_2484,310,1,218.17,1,4,3,At Risk / Can't Lose Them
-CUST_2485,60,1,339.87,4,4,4,Champions
-CUST_2486,186,3,812.19,2,5,5,At Risk / Can't Lose Them
-CUST_2487,41,1,112.04,5,4,2,About to Sleep / Average
-CUST_2488,221,1,110.82,2,4,2,At Risk / Can't Lose Them
-CUST_2489,103,1,225.93,4,4,3,Loyal Customers
-CUST_2490,148,1,114.37,3,4,2,About to Sleep / Average
-CUST_2491,219,2,268.36,2,5,4,At Risk / Can't Lose Them
-CUST_2492,173,2,221.89000000000001,3,5,3,Loyal Customers
-CUST_2493,16,4,602.91,5,5,5,Champions
-CUST_2494,7,1,1461.76,5,4,5,Champions
-CUST_2495,14,1,133.62,5,4,2,About to Sleep / Average
-CUST_2496,243,2,173.75,2,5,3,At Risk / Can't Lose Them
-CUST_2497,53,1,449.06,4,4,4,Champions
-CUST_2498,320,1,137.54,1,4,2,At Risk / Can't Lose Them
-CUST_2499,59,2,3651.02,4,5,5,Champions
+CUST_1000,333,1,141.4,1,1,2,Hibernating / Lost
+CUST_1001,83,1,678.56,4,1,5,Promising / New
+CUST_1002,299,1,206.92,1,1,3,Hibernating / Lost
+CUST_1003,27,1,136.63,5,1,2,Promising / New
+CUST_1004,341,1,158.53,1,1,3,Hibernating / Lost
+CUST_1005,11,2,667.78,5,2,5,Promising / New
+CUST_1006,35,2,752.37,5,2,5,Promising / New
+CUST_1007,230,1,692.19,2,1,5,Hibernating / Lost
+CUST_1008,85,1,77.85,4,1,1,Promising / New
+CUST_1009,62,1,132.97,4,1,2,Promising / New
+CUST_1010,264,1,131.73,2,1,2,Hibernating / Lost
+CUST_1011,81,1,57.26,4,1,1,Promising / New
+CUST_1012,332,1,112.65,1,1,2,Hibernating / Lost
+CUST_1013,161,1,697.16,3,1,5,About to Sleep / Average
+CUST_1014,183,2,536.37,3,2,4,About to Sleep / Average
+CUST_1015,124,1,137.95,3,1,2,About to Sleep / Average
+CUST_1016,104,1,145.32,4,1,2,Promising / New
+CUST_1017,307,1,155.95,1,1,3,Hibernating / Lost
+CUST_1018,78,5,660.61,4,4,5,Champions
+CUST_1019,14,1,321.09,5,1,4,Promising / New
+CUST_1020,319,1,57.54,1,1,1,Hibernating / Lost
+CUST_1021,199,1,452.87,2,1,4,Hibernating / Lost
+CUST_1022,331,1,311.86,1,1,4,Hibernating / Lost
+CUST_1023,64,2,1347.24,4,2,5,Promising / New
+CUST_1024,3,2,209.99,5,2,3,Promising / New
+CUST_1025,153,1,64.85,3,1,1,About to Sleep / Average
+CUST_1026,129,5,811.85,3,4,5,Loyal Customers
+CUST_1027,157,1,106.95,3,1,2,About to Sleep / Average
+CUST_1028,250,1,99.54,2,1,2,Hibernating / Lost
+CUST_1029,326,1,149.12,1,1,3,Hibernating / Lost
+CUST_1030,26,5,1211.15,5,4,5,Champions
+CUST_1031,113,2,307.03000000000003,4,2,4,Promising / New
+CUST_1032,256,1,94.1,2,1,2,Hibernating / Lost
+CUST_1033,207,1,138.38,2,1,2,Hibernating / Lost
+CUST_1034,42,1,67.37,5,1,1,Promising / New
+CUST_1035,331,1,20.91,1,1,1,Hibernating / Lost
+CUST_1036,313,2,75.04,1,2,1,Hibernating / Lost
+CUST_1037,294,1,111.32,1,1,2,Hibernating / Lost
+CUST_1038,257,1,125.25,2,1,2,Hibernating / Lost
+CUST_1039,181,1,48.13,3,1,1,About to Sleep / Average
+CUST_1040,10,1,37.13,5,1,1,Promising / New
+CUST_1041,256,1,72.68,2,1,1,Hibernating / Lost
+CUST_1042,92,1,409.88,4,1,4,Promising / New
+CUST_1043,213,1,121.63,2,1,2,Hibernating / Lost
+CUST_1044,95,3,2888.66,4,3,5,Champions
+CUST_1045,155,2,187.13,3,2,3,About to Sleep / Average
+CUST_1046,267,1,39.38,2,1,1,Hibernating / Lost
+CUST_1047,279,1,421.5,1,1,4,Hibernating / Lost
+CUST_1048,147,1,106.79,3,1,2,About to Sleep / Average
+CUST_1049,192,2,243.2,3,2,4,About to Sleep / Average
+CUST_1050,63,1,1413.42,4,1,5,Promising / New
+CUST_1051,242,2,106.04,2,2,2,Hibernating / Lost
+CUST_1052,363,1,3333.45,1,1,5,Hibernating / Lost
+CUST_1053,30,5,327.24,5,4,4,Champions
+CUST_1054,154,1,131.57,3,1,2,About to Sleep / Average
+CUST_1055,81,1,19.68,4,1,1,Promising / New
+CUST_1056,343,1,73.22,1,1,1,Hibernating / Lost
+CUST_1057,314,1,185.0,1,1,3,Hibernating / Lost
+CUST_1058,121,1,141.57,3,1,2,About to Sleep / Average
+CUST_1059,31,1,405.78,5,1,4,Promising / New
+CUST_1060,353,1,118.12,1,1,2,Hibernating / Lost
+CUST_1061,292,1,167.39,1,1,3,Hibernating / Lost
+CUST_1062,304,1,180.94,1,1,3,Hibernating / Lost
+CUST_1063,73,1,244.7,4,1,4,Promising / New
+CUST_1064,233,4,367.67,2,4,4,At Risk / Can't Lose Them
+CUST_1065,157,1,109.25,3,1,2,About to Sleep / Average
+CUST_1066,29,1,667.81,5,1,5,Promising / New
+CUST_1067,83,1,160.91,4,1,3,Promising / New
+CUST_1068,22,5,2316.08,5,4,5,Champions
+CUST_1069,206,1,167.62,2,1,3,Hibernating / Lost
+CUST_1070,211,1,212.96,2,1,3,Hibernating / Lost
+CUST_1071,322,1,730.33,1,1,5,Hibernating / Lost
+CUST_1072,250,1,101.35,2,1,2,Hibernating / Lost
+CUST_1073,204,1,47.64,2,1,1,Hibernating / Lost
+CUST_1074,45,2,601.4,5,2,5,Promising / New
+CUST_1075,355,1,1049.8999999999999,1,1,5,Hibernating / Lost
+CUST_1076,8,1,101.09,5,1,2,Promising / New
+CUST_1077,73,1,70.3,4,1,1,Promising / New
+CUST_1078,141,3,3800.2000000000003,3,3,5,Loyal Customers
+CUST_1079,52,2,212.85000000000002,5,2,3,Promising / New
+CUST_1080,92,1,206.93,4,1,3,Promising / New
+CUST_1081,142,1,135.44,3,1,2,About to Sleep / Average
+CUST_1082,167,1,186.5,3,1,3,About to Sleep / Average
+CUST_1083,79,1,41.64,4,1,1,Promising / New
+CUST_1084,32,1,111.8,5,1,2,Promising / New
+CUST_1085,192,1,102.4,3,1,2,About to Sleep / Average
+CUST_1086,19,1,206.58,5,1,3,Promising / New
+CUST_1087,50,3,762.89,5,3,5,Champions
+CUST_1088,70,2,6760.8099999999995,4,2,5,Promising / New
+CUST_1089,250,1,662.46,2,1,5,Hibernating / Lost
+CUST_1090,98,1,92.18,4,1,2,Promising / New
+CUST_1091,176,1,36.01,3,1,1,About to Sleep / Average
+CUST_1092,188,1,292.48,3,1,4,About to Sleep / Average
+CUST_1093,302,1,208.31,1,1,3,Hibernating / Lost
+CUST_1094,182,1,39.25,3,1,1,About to Sleep / Average
+CUST_1095,16,1,491.61,5,1,4,Promising / New
+CUST_1096,195,1,424.6,2,1,4,Hibernating / Lost
+CUST_1097,306,1,229.37,1,1,3,Hibernating / Lost
+CUST_1098,254,1,524.53,2,1,4,Hibernating / Lost
+CUST_1099,299,1,20.24,1,1,1,Hibernating / Lost
+CUST_1100,54,1,206.78,5,1,3,Promising / New
+CUST_1101,133,1,531.33,3,1,4,About to Sleep / Average
+CUST_1102,88,2,570.59,4,2,4,Promising / New
+CUST_1103,55,1,499.58,4,1,4,Promising / New
+CUST_1104,362,1,90.17,1,1,2,Hibernating / Lost
+CUST_1105,242,1,200.9,2,1,3,Hibernating / Lost
+CUST_1106,105,1,19.6,4,1,1,Promising / New
+CUST_1107,7,1,54.09,5,1,1,Promising / New
+CUST_1108,70,1,159.92,4,1,3,Promising / New
+CUST_1109,205,1,99.83,2,1,2,Hibernating / Lost
+CUST_1110,46,1,152.02,5,1,3,Promising / New
+CUST_1111,6,1,711.13,5,1,5,Promising / New
+CUST_1112,345,1,107.33,1,1,2,Hibernating / Lost
+CUST_1113,229,1,84.77,2,1,1,Hibernating / Lost
+CUST_1114,282,2,891.24,1,2,5,Hibernating / Lost
+CUST_1115,139,1,232.55,3,1,3,About to Sleep / Average
+CUST_1116,174,1,634.2,3,1,5,About to Sleep / Average
+CUST_1117,238,1,3672.45,2,1,5,Hibernating / Lost
+CUST_1118,210,1,348.84999999999997,2,1,4,Hibernating / Lost
+CUST_1119,71,1,215.64,4,1,3,Promising / New
+CUST_1120,328,1,36.23,1,1,1,Hibernating / Lost
+CUST_1121,232,1,647.13,2,1,5,Hibernating / Lost
+CUST_1122,8,1,91.0,5,1,2,Promising / New
+CUST_1123,262,1,71.19,2,1,1,Hibernating / Lost
+CUST_1124,256,1,138.09,2,1,2,Hibernating / Lost
+CUST_1125,103,4,362.88,4,4,4,Champions
+CUST_1126,177,2,201.56,3,2,3,About to Sleep / Average
+CUST_1127,68,1,104.99,4,1,2,Promising / New
+CUST_1128,23,1,115.37,5,1,2,Promising / New
+CUST_1129,15,1,315.47,5,1,4,Promising / New
+CUST_1130,82,1,281.68,4,1,4,Promising / New
+CUST_1131,343,1,114.71,1,1,2,Hibernating / Lost
+CUST_1132,265,1,96.93,2,1,2,Hibernating / Lost
+CUST_1133,164,2,164.84,3,2,3,About to Sleep / Average
+CUST_1134,94,2,458.66,4,2,4,Promising / New
+CUST_1135,245,1,76.21,2,1,1,Hibernating / Lost
+CUST_1136,67,1,450.98,4,1,4,Promising / New
+CUST_1137,354,1,50.88,1,1,1,Hibernating / Lost
+CUST_1138,38,1,138.6,5,1,2,Promising / New
+CUST_1139,56,2,4025.27,4,2,5,Promising / New
+CUST_1140,324,1,461.16,1,1,4,Hibernating / Lost
+CUST_1141,146,1,178.46,3,1,3,About to Sleep / Average
+CUST_1142,279,1,215.8,1,1,3,Hibernating / Lost
+CUST_1143,320,1,71.04,1,1,1,Hibernating / Lost
+CUST_1144,332,1,132.43,1,1,2,Hibernating / Lost
+CUST_1145,44,1,194.26,5,1,3,Promising / New
+CUST_1146,246,2,6997.05,2,2,5,Hibernating / Lost
+CUST_1147,281,1,6517.22,1,1,5,Hibernating / Lost
+CUST_1148,311,1,48.58,1,1,1,Hibernating / Lost
+CUST_1149,135,2,250.13,3,2,4,About to Sleep / Average
+CUST_1150,2,3,346.64,5,3,4,Champions
+CUST_1151,15,1,201.2,5,1,3,Promising / New
+CUST_1152,246,3,267.88,2,3,4,At Risk / Can't Lose Them
+CUST_1153,95,1,716.57,4,1,5,Promising / New
+CUST_1154,5,1,19.06,5,1,1,Promising / New
+CUST_1155,228,1,40.09,2,1,1,Hibernating / Lost
+CUST_1156,341,1,336.87,1,1,4,Hibernating / Lost
+CUST_1157,5,4,599.2,5,4,5,Champions
+CUST_1158,191,1,132.94,3,1,2,About to Sleep / Average
+CUST_1159,292,1,211.46,1,1,3,Hibernating / Lost
+CUST_1160,251,1,196.47,2,1,3,Hibernating / Lost
+CUST_1161,86,1,106.66,4,1,2,Promising / New
+CUST_1162,219,1,681.4499999999999,2,1,5,Hibernating / Lost
+CUST_1163,168,1,651.62,3,1,5,About to Sleep / Average
+CUST_1164,354,1,194.51,1,1,3,Hibernating / Lost
+CUST_1165,84,1,20.5,4,1,1,Promising / New
+CUST_1166,298,1,1000.5,1,1,5,Hibernating / Lost
+CUST_1167,276,1,160.17,1,1,3,Hibernating / Lost
+CUST_1168,364,1,689.48,1,1,5,Hibernating / Lost
+CUST_1169,82,1,19.31,4,1,1,Promising / New
+CUST_1170,6,2,741.5,5,2,5,Promising / New
+CUST_1171,290,1,125.91,1,1,2,Hibernating / Lost
+CUST_1172,59,1,97.37,4,1,2,Promising / New
+CUST_1173,5,1,217.88,5,1,3,Promising / New
+CUST_1174,346,1,37.58,1,1,1,Hibernating / Lost
+CUST_1175,91,1,92.09,4,1,2,Promising / New
+CUST_1176,71,2,224.98,4,2,3,Promising / New
+CUST_1177,318,1,39.4,1,1,1,Hibernating / Lost
+CUST_1178,163,1,19.17,3,1,1,About to Sleep / Average
+CUST_1179,301,1,130.3,1,1,2,Hibernating / Lost
+CUST_1180,97,1,3467.5,4,1,5,Promising / New
+CUST_1181,96,1,284.58,4,1,4,Promising / New
+CUST_1182,271,1,3236.97,2,1,5,Hibernating / Lost
+CUST_1183,91,4,562.15,4,4,4,Champions
+CUST_1184,32,1,35.39,5,1,1,Promising / New
+CUST_1185,100,2,251.17000000000002,4,2,4,Promising / New
+CUST_1186,42,3,305.84999999999997,5,3,4,Champions
+CUST_1187,89,3,565.44,4,3,4,Champions
+CUST_1188,233,1,77.0,2,1,1,Hibernating / Lost
+CUST_1189,203,1,19.01,2,1,1,Hibernating / Lost
+CUST_1190,229,2,272.37,2,2,4,Hibernating / Lost
+CUST_1191,58,1,206.89,4,1,3,Promising / New
+CUST_1192,173,2,247.13,3,2,4,About to Sleep / Average
+CUST_1193,152,1,77.69,3,1,1,About to Sleep / Average
+CUST_1194,59,2,468.94,4,2,4,Promising / New
+CUST_1195,83,1,1004.94,4,1,5,Promising / New
+CUST_1196,274,1,6749.42,2,1,5,Hibernating / Lost
+CUST_1197,260,2,305.78999999999996,2,2,4,Hibernating / Lost
+CUST_1198,365,1,479.45,1,1,4,Hibernating / Lost
+CUST_1199,3,1,610.0,5,1,5,Promising / New
+CUST_1200,35,1,204.83,5,1,3,Promising / New
+CUST_1201,66,1,159.15,4,1,3,Promising / New
+CUST_1202,253,1,218.84,2,1,3,Hibernating / Lost
+CUST_1203,162,2,600.77,3,2,5,About to Sleep / Average
+CUST_1204,171,2,418.45,3,2,4,About to Sleep / Average
+CUST_1205,51,1,85.31,5,1,1,Promising / New
+CUST_1206,56,2,198.56,4,2,3,Promising / New
+CUST_1207,196,1,131.81,2,1,2,Hibernating / Lost
+CUST_1208,74,2,3538.74,4,2,5,Promising / New
+CUST_1209,4,1,205.17,5,1,3,Promising / New
+CUST_1210,20,1,194.12,5,1,3,Promising / New
+CUST_1211,260,1,198.9,2,1,3,Hibernating / Lost
+CUST_1212,260,1,104.1,2,1,2,Hibernating / Lost
+CUST_1213,79,2,1091.88,4,2,5,Promising / New
+CUST_1214,233,1,640.3,2,1,5,Hibernating / Lost
+CUST_1215,267,2,211.14000000000001,2,2,3,Hibernating / Lost
+CUST_1216,77,2,390.77,4,2,4,Promising / New
+CUST_1217,76,3,1540.1399999999999,4,3,5,Champions
+CUST_1218,160,2,91.39,3,2,2,About to Sleep / Average
+CUST_1219,234,1,152.55,2,1,3,Hibernating / Lost
+CUST_1220,182,3,668.6800000000001,3,3,5,Loyal Customers
+CUST_1221,139,1,64.61,3,1,1,About to Sleep / Average
+CUST_1222,334,1,709.06,1,1,5,Hibernating / Lost
+CUST_1223,152,2,1275.29,3,2,5,About to Sleep / Average
+CUST_1224,127,1,182.88,3,1,3,About to Sleep / Average
+CUST_1225,102,3,3525.56,4,3,5,Champions
+CUST_1226,99,1,1024.6,4,1,5,Promising / New
+CUST_1227,223,1,70.87,2,1,1,Hibernating / Lost
+CUST_1228,254,1,200.52,2,1,3,Hibernating / Lost
+CUST_1229,245,3,883.98,2,3,5,At Risk / Can't Lose Them
+CUST_1230,3,1,38.22,5,1,1,Promising / New
+CUST_1231,346,1,93.75,1,1,2,Hibernating / Lost
+CUST_1232,278,1,954.7,1,1,5,Hibernating / Lost
+CUST_1233,184,1,73.32,3,1,1,About to Sleep / Average
+CUST_1234,67,4,785.29,4,4,5,Champions
+CUST_1235,184,1,211.22,3,1,3,About to Sleep / Average
+CUST_1236,181,1,38.88,3,1,1,About to Sleep / Average
+CUST_1237,172,2,3412.92,3,2,5,About to Sleep / Average
+CUST_1238,108,1,58.17,4,1,1,Promising / New
+CUST_1239,197,2,595.25,2,2,4,Hibernating / Lost
+CUST_1240,153,1,130.49,3,1,2,About to Sleep / Average
+CUST_1241,197,1,73.08,2,1,1,Hibernating / Lost
+CUST_1242,276,1,144.98,1,1,2,Hibernating / Lost
+CUST_1243,336,1,34.44,1,1,1,Hibernating / Lost
+CUST_1244,175,1,73.85,3,1,1,About to Sleep / Average
+CUST_1245,36,1,95.13,5,1,2,Promising / New
+CUST_1246,79,2,901.46,4,2,5,Promising / New
+CUST_1247,221,1,104.48,2,1,2,Hibernating / Lost
+CUST_1248,168,1,202.17,3,1,3,About to Sleep / Average
+CUST_1249,63,1,647.0,4,1,5,Promising / New
+CUST_1250,84,2,256.68,4,2,4,Promising / New
+CUST_1251,83,5,2031.1999999999998,4,4,5,Champions
+CUST_1252,126,2,205.73,3,2,3,About to Sleep / Average
+CUST_1253,353,1,133.32,1,1,2,Hibernating / Lost
+CUST_1254,25,1,1093.9,5,1,5,Promising / New
+CUST_1255,342,1,150.78,1,1,3,Hibernating / Lost
+CUST_1256,212,4,581.82,2,4,4,At Risk / Can't Lose Them
+CUST_1257,239,1,119.63,2,1,2,Hibernating / Lost
+CUST_1258,302,1,249.5,1,1,4,Hibernating / Lost
+CUST_1259,120,1,176.02,3,1,3,About to Sleep / Average
+CUST_1260,24,1,102.24,5,1,2,Promising / New
+CUST_1261,206,1,193.54,2,1,3,Hibernating / Lost
+CUST_1262,262,1,66.23,2,1,1,Hibernating / Lost
+CUST_1263,192,1,447.14,3,1,4,About to Sleep / Average
+CUST_1264,82,1,3426.5499999999997,4,1,5,Promising / New
+CUST_1265,120,1,199.42,3,1,3,About to Sleep / Average
+CUST_1266,224,1,476.25,2,1,4,Hibernating / Lost
+CUST_1267,293,1,149.12,1,1,3,Hibernating / Lost
+CUST_1268,296,1,148.83,1,1,3,Hibernating / Lost
+CUST_1269,43,1,209.16,5,1,3,Promising / New
+CUST_1270,63,1,385.85,4,1,4,Promising / New
+CUST_1271,108,1,226.08,4,1,3,Promising / New
+CUST_1272,281,1,115.79,1,1,2,Hibernating / Lost
+CUST_1273,195,1,104.89,2,1,2,Hibernating / Lost
+CUST_1274,11,2,240.82999999999998,5,2,4,Promising / New
+CUST_1275,184,1,1367.58,3,1,5,About to Sleep / Average
+CUST_1276,186,1,102.18,3,1,2,About to Sleep / Average
+CUST_1277,217,1,20.88,2,1,1,Hibernating / Lost
+CUST_1278,92,1,19.14,4,1,1,Promising / New
+CUST_1279,268,1,100.49,2,1,2,Hibernating / Lost
+CUST_1280,344,1,96.19999999999999,1,1,2,Hibernating / Lost
+CUST_1281,61,1,72.87,4,1,1,Promising / New
+CUST_1282,15,1,104.39,5,1,2,Promising / New
+CUST_1283,104,2,339.67,4,2,4,Promising / New
+CUST_1284,119,1,654.52,3,1,5,About to Sleep / Average
+CUST_1285,364,1,398.64,1,1,4,Hibernating / Lost
+CUST_1286,192,3,310.19,3,3,4,Loyal Customers
+CUST_1287,297,1,191.2,1,1,3,Hibernating / Lost
+CUST_1288,334,1,40.5,1,1,1,Hibernating / Lost
+CUST_1289,23,3,1278.37,5,3,5,Champions
+CUST_1290,103,2,305.13,4,2,4,Promising / New
+CUST_1291,265,1,1343.86,2,1,5,Hibernating / Lost
+CUST_1292,207,1,412.12,2,1,4,Hibernating / Lost
+CUST_1293,80,1,332.56,4,1,4,Promising / New
+CUST_1294,146,1,3317.75,3,1,5,About to Sleep / Average
+CUST_1295,319,1,627.17,1,1,5,Hibernating / Lost
+CUST_1296,91,2,182.17000000000002,4,2,3,Promising / New
+CUST_1297,322,1,163.82,1,1,3,Hibernating / Lost
+CUST_1298,4,3,166.73,5,3,3,Loyal Customers
+CUST_1299,73,8,5326.49,4,5,5,Champions
+CUST_1300,12,2,341.72,5,2,4,Promising / New
+CUST_1301,215,1,101.64999999999999,2,1,2,Hibernating / Lost
+CUST_1302,258,1,3394.8,2,1,5,Hibernating / Lost
+CUST_1303,125,1,207.96,3,1,3,About to Sleep / Average
+CUST_1304,40,2,1710.18,5,2,5,Promising / New
+CUST_1305,340,2,171.37,1,2,3,Hibernating / Lost
+CUST_1306,326,1,33.66,1,1,1,Hibernating / Lost
+CUST_1307,28,3,1060.31,5,3,5,Champions
+CUST_1308,287,2,516.7,1,2,4,Hibernating / Lost
+CUST_1309,314,1,1327.32,1,1,5,Hibernating / Lost
+CUST_1310,300,3,3590.11,1,3,5,At Risk / Can't Lose Them
+CUST_1311,338,1,155.77,1,1,3,Hibernating / Lost
+CUST_1312,108,1,20.11,4,1,1,Promising / New
+CUST_1313,239,1,325.51,2,1,4,Hibernating / Lost
+CUST_1314,44,1,34.06,5,1,1,Promising / New
+CUST_1315,337,1,88.1,1,1,1,Hibernating / Lost
+CUST_1316,203,1,72.98,2,1,1,Hibernating / Lost
+CUST_1317,143,1,73.04,3,1,1,About to Sleep / Average
+CUST_1318,245,1,20.12,2,1,1,Hibernating / Lost
+CUST_1319,9,5,1579.75,5,4,5,Champions
+CUST_1320,15,1,1188.7,5,1,5,Promising / New
+CUST_1321,36,7,1907.95,5,5,5,Champions
+CUST_1322,151,1,19.56,3,1,1,About to Sleep / Average
+CUST_1323,299,1,3211.15,1,1,5,Hibernating / Lost
+CUST_1324,13,1,145.09,5,1,2,Promising / New
+CUST_1325,266,2,195.67000000000002,2,2,3,Hibernating / Lost
+CUST_1326,79,2,241.2,4,2,4,Promising / New
+CUST_1327,1,1,76.44,5,1,1,Promising / New
+CUST_1328,219,1,32.17,2,1,1,Hibernating / Lost
+CUST_1329,25,1,97.68,5,1,2,Promising / New
+CUST_1330,332,2,149.71,1,2,3,Hibernating / Lost
+CUST_1331,161,1,303.72,3,1,4,About to Sleep / Average
+CUST_1332,345,1,38.06,1,1,1,Hibernating / Lost
+CUST_1333,282,1,34.62,1,1,1,Hibernating / Lost
+CUST_1334,72,1,167.19,4,1,3,Promising / New
+CUST_1335,358,1,925.34,1,1,5,Hibernating / Lost
+CUST_1336,149,1,463.69,3,1,4,About to Sleep / Average
+CUST_1337,36,1,75.0,5,1,1,Promising / New
+CUST_1338,84,1,98.97,4,1,2,Promising / New
+CUST_1339,181,2,144.09,3,2,2,About to Sleep / Average
+CUST_1340,285,1,183.15,1,1,3,Hibernating / Lost
+CUST_1341,106,1,115.04,4,1,2,Promising / New
+CUST_1342,158,1,68.22,3,1,1,About to Sleep / Average
+CUST_1343,28,1,32.48,5,1,1,Promising / New
+CUST_1344,296,1,35.87,1,1,1,Hibernating / Lost
+CUST_1345,165,1,1058.1,3,1,5,About to Sleep / Average
+CUST_1346,257,3,934.81,2,3,5,At Risk / Can't Lose Them
+CUST_1347,51,2,539.39,5,2,4,Promising / New
+CUST_1348,24,3,437.96000000000004,5,3,4,Champions
+CUST_1349,98,1,19.51,4,1,1,Promising / New
+CUST_1350,168,1,87.07,3,1,1,About to Sleep / Average
+CUST_1351,269,2,109.53,2,2,2,Hibernating / Lost
+CUST_1352,250,1,162.77,2,1,3,Hibernating / Lost
+CUST_1353,58,1,88.04,4,1,1,Promising / New
+CUST_1354,168,1,90.25,3,1,2,About to Sleep / Average
+CUST_1355,261,1,661.51,2,1,5,Hibernating / Lost
+CUST_1356,215,1,679.3,2,1,5,Hibernating / Lost
+CUST_1357,360,1,141.17,1,1,2,Hibernating / Lost
+CUST_1358,54,1,340.97,5,1,4,Promising / New
+CUST_1359,212,1,75.97,2,1,1,Hibernating / Lost
+CUST_1360,7,1,197.65,5,1,3,Promising / New
+CUST_1361,3,2,866.28,5,2,5,Promising / New
+CUST_1362,364,1,241.12,1,1,4,Hibernating / Lost
+CUST_1363,190,1,146.04,3,1,2,About to Sleep / Average
+CUST_1364,99,1,135.96,4,1,2,Promising / New
+CUST_1365,182,1,104.28,3,1,2,About to Sleep / Average
+CUST_1366,283,1,85.56,1,1,1,Hibernating / Lost
+CUST_1367,297,1,129.42,1,1,2,Hibernating / Lost
+CUST_1368,26,2,553.98,5,2,4,Promising / New
+CUST_1369,95,2,154.51,4,2,3,Promising / New
+CUST_1370,18,1,105.56,5,1,2,Promising / New
+CUST_1371,278,1,278.46,1,1,4,Hibernating / Lost
+CUST_1372,201,1,204.48,2,1,3,Hibernating / Lost
+CUST_1373,142,1,959.5999999999999,3,1,5,About to Sleep / Average
+CUST_1374,32,1,3493.97,5,1,5,Promising / New
+CUST_1375,181,3,866.31,3,3,5,Loyal Customers
+CUST_1376,225,2,473.72,2,2,4,Hibernating / Lost
+CUST_1377,83,1,104.68,4,1,2,Promising / New
+CUST_1378,265,1,199.12,2,1,3,Hibernating / Lost
+CUST_1379,126,1,102.15,3,1,2,About to Sleep / Average
+CUST_1380,197,1,204.38,2,1,3,Hibernating / Lost
+CUST_1381,269,1,497.59999999999997,2,1,4,Hibernating / Lost
+CUST_1382,229,1,39.85,2,1,1,Hibernating / Lost
+CUST_1383,117,2,326.18,4,2,4,Promising / New
+CUST_1384,305,1,686.89,1,1,5,Hibernating / Lost
+CUST_1385,275,2,277.36,1,2,4,Hibernating / Lost
+CUST_1386,243,1,553.72,2,1,4,Hibernating / Lost
+CUST_1387,147,1,506.94,3,1,4,About to Sleep / Average
+CUST_1388,321,1,92.46,1,1,2,Hibernating / Lost
+CUST_1389,151,1,135.08,3,1,2,About to Sleep / Average
+CUST_1390,126,1,676.1,3,1,5,About to Sleep / Average
+CUST_1391,20,1,89.78,5,1,1,Promising / New
+CUST_1392,151,1,464.78,3,1,4,About to Sleep / Average
+CUST_1393,126,1,211.88,3,1,3,About to Sleep / Average
+CUST_1394,123,1,771.7,3,1,5,About to Sleep / Average
+CUST_1395,225,1,730.8,2,1,5,Hibernating / Lost
+CUST_1396,256,1,524.9,2,1,4,Hibernating / Lost
+CUST_1397,175,1,38.17,3,1,1,About to Sleep / Average
+CUST_1398,50,2,229.51,5,2,3,Promising / New
+CUST_1399,91,1,74.2,4,1,1,Promising / New
+CUST_1400,107,1,154.92,4,1,3,Promising / New
+CUST_1401,287,1,147.75,1,1,3,Hibernating / Lost
+CUST_1402,335,1,232.9,1,1,3,Hibernating / Lost
+CUST_1403,186,3,707.92,3,3,5,Loyal Customers
+CUST_1404,251,1,426.32,2,1,4,Hibernating / Lost
+CUST_1405,50,2,54.129999999999995,5,2,1,Promising / New
+CUST_1406,87,1,331.69,4,1,4,Promising / New
+CUST_1407,237,1,114.65,2,1,2,Hibernating / Lost
+CUST_1408,220,1,37.17,2,1,1,Hibernating / Lost
+CUST_1409,6,1,433.0,5,1,4,Promising / New
+CUST_1410,289,1,167.92,1,1,3,Hibernating / Lost
+CUST_1411,21,2,1084.99,5,2,5,Promising / New
+CUST_1412,256,1,56.11,2,1,1,Hibernating / Lost
+CUST_1413,357,1,32.3,1,1,1,Hibernating / Lost
+CUST_1414,325,1,147.65,1,1,3,Hibernating / Lost
+CUST_1415,123,1,215.2,3,1,3,About to Sleep / Average
+CUST_1416,316,2,279.55,1,2,4,Hibernating / Lost
+CUST_1417,311,1,1429.44,1,1,5,Hibernating / Lost
+CUST_1418,301,1,108.48,1,1,2,Hibernating / Lost
+CUST_1419,5,1,690.28,5,1,5,Promising / New
+CUST_1420,221,2,754.5899999999999,2,2,5,Hibernating / Lost
+CUST_1421,296,1,19.51,1,1,1,Hibernating / Lost
+CUST_1422,47,1,158.21,5,1,3,Promising / New
+CUST_1423,243,2,552.79,2,2,4,Hibernating / Lost
+CUST_1424,55,1,103.14999999999999,4,1,2,Promising / New
+CUST_1425,26,1,36.74,5,1,1,Promising / New
+CUST_1426,344,1,261.42,1,1,4,Hibernating / Lost
+CUST_1427,14,2,266.46000000000004,5,2,4,Promising / New
+CUST_1428,113,1,40.5,4,1,1,Promising / New
+CUST_1429,169,1,198.51,3,1,3,About to Sleep / Average
+CUST_1430,74,1,199.54,4,1,3,Promising / New
+CUST_1431,137,1,70.36,3,1,1,About to Sleep / Average
+CUST_1432,360,1,76.63,1,1,1,Hibernating / Lost
+CUST_1433,98,1,39.83,4,1,1,Promising / New
+CUST_1434,80,1,241.66,4,1,4,Promising / New
+CUST_1435,185,2,633.38,3,2,5,About to Sleep / Average
+CUST_1436,73,1,211.04,4,1,3,Promising / New
+CUST_1437,73,1,3519.99,4,1,5,Promising / New
+CUST_1438,293,1,3524.8,1,1,5,Hibernating / Lost
+CUST_1439,353,1,162.97,1,1,3,Hibernating / Lost
+CUST_1440,116,1,102.65,4,1,2,Promising / New
+CUST_1441,212,1,123.91,2,1,2,Hibernating / Lost
+CUST_1442,71,1,32.21,4,1,1,Promising / New
+CUST_1443,231,1,66.1,2,1,1,Hibernating / Lost
+CUST_1444,173,1,231.6,3,1,3,About to Sleep / Average
+CUST_1445,359,1,3437.71,1,1,5,Hibernating / Lost
+CUST_1446,348,1,651.39,1,1,5,Hibernating / Lost
+CUST_1447,11,1,124.45,5,1,2,Promising / New
+CUST_1448,279,1,37.88,1,1,1,Hibernating / Lost
+CUST_1449,270,1,118.97,2,1,2,Hibernating / Lost
+CUST_1450,144,2,237.01999999999998,3,2,3,About to Sleep / Average
+CUST_1451,96,2,229.95999999999998,4,2,3,Promising / New
+CUST_1452,315,1,212.13,1,1,3,Hibernating / Lost
+CUST_1453,5,2,194.5,5,2,3,Promising / New
+CUST_1454,81,1,122.13,4,1,2,Promising / New
+CUST_1455,127,1,248.32,3,1,4,About to Sleep / Average
+CUST_1456,186,1,153.3,3,1,3,About to Sleep / Average
+CUST_1457,221,3,490.8,2,3,4,At Risk / Can't Lose Them
+CUST_1458,208,3,448.11,2,3,4,At Risk / Can't Lose Them
+CUST_1459,185,1,47.91,3,1,1,About to Sleep / Average
+CUST_1460,239,1,191.69,2,1,3,Hibernating / Lost
+CUST_1461,240,1,468.32,2,1,4,Hibernating / Lost
+CUST_1462,274,1,222.08,2,1,3,Hibernating / Lost
+CUST_1463,20,2,241.99,5,2,4,Promising / New
+CUST_1464,303,1,73.94,1,1,1,Hibernating / Lost
+CUST_1465,57,1,697.18,4,1,5,Promising / New
+CUST_1466,251,1,143.38,2,1,2,Hibernating / Lost
+CUST_1467,59,1,41.28,4,1,1,Promising / New
+CUST_1468,159,1,1370.5,3,1,5,About to Sleep / Average
+CUST_1469,202,1,123.64,2,1,2,Hibernating / Lost
+CUST_1470,266,1,72.45,2,1,1,Hibernating / Lost
+CUST_1471,53,2,336.25,5,2,4,Promising / New
+CUST_1472,234,2,434.88,2,2,4,Hibernating / Lost
+CUST_1473,5,1,19.02,5,1,1,Promising / New
+CUST_1474,146,4,653.01,3,4,5,Loyal Customers
+CUST_1475,40,1,105.94,5,1,2,Promising / New
+CUST_1476,211,1,155.96,2,1,3,Hibernating / Lost
+CUST_1477,162,1,642.96,3,1,5,About to Sleep / Average
+CUST_1478,37,1,111.9,5,1,2,Promising / New
+CUST_1479,261,3,308.99,2,3,4,At Risk / Can't Lose Them
+CUST_1480,255,1,450.32,2,1,4,Hibernating / Lost
+CUST_1481,57,1,92.25,4,1,2,Promising / New
+CUST_1482,171,1,95.05,3,1,2,About to Sleep / Average
+CUST_1483,60,1,463.11,4,1,4,Promising / New
+CUST_1484,151,1,539.67,3,1,4,About to Sleep / Average
+CUST_1485,12,2,145.01999999999998,5,2,2,Promising / New
+CUST_1486,285,1,3396.25,1,1,5,Hibernating / Lost
+CUST_1487,90,1,70.26,4,1,1,Promising / New
+CUST_1488,87,1,131.35,4,1,2,Promising / New
+CUST_1489,48,3,3610.2400000000002,5,3,5,Champions
+CUST_1490,171,1,153.56,3,1,3,About to Sleep / Average
+CUST_1491,117,1,20.96,4,1,1,Promising / New
+CUST_1492,36,1,473.64,5,1,4,Promising / New
+CUST_1493,46,2,599.19,5,2,4,Promising / New
+CUST_1494,5,6,526.26,5,5,4,Champions
+CUST_1495,260,1,196.52,2,1,3,Hibernating / Lost
+CUST_1496,51,1,35.26,5,1,1,Promising / New
+CUST_1497,201,1,52.32,2,1,1,Hibernating / Lost
+CUST_1498,167,1,93.56,3,1,2,About to Sleep / Average
+CUST_1499,206,1,151.12,2,1,3,Hibernating / Lost
+CUST_1500,41,3,1049.92,5,3,5,Champions
+CUST_1501,23,1,115.75,5,1,2,Promising / New
+CUST_1502,58,1,397.9,4,1,4,Promising / New
+CUST_1503,216,1,552.46,2,1,4,Hibernating / Lost
+CUST_1504,313,1,154.07,1,1,3,Hibernating / Lost
+CUST_1505,219,1,32.3,2,1,1,Hibernating / Lost
+CUST_1506,220,1,103.24,2,1,2,Hibernating / Lost
+CUST_1507,326,1,265.6,1,1,4,Hibernating / Lost
+CUST_1508,320,1,50.35,1,1,1,Hibernating / Lost
+CUST_1509,30,3,660.36,5,3,5,Champions
+CUST_1510,245,1,198.17,2,1,3,Hibernating / Lost
+CUST_1511,309,1,451.45,1,1,4,Hibernating / Lost
+CUST_1512,215,1,77.46,2,1,1,Hibernating / Lost
+CUST_1513,151,1,695.89,3,1,5,About to Sleep / Average
+CUST_1514,16,2,180.01,5,2,3,Promising / New
+CUST_1515,276,1,645.06,1,1,5,Hibernating / Lost
+CUST_1516,122,2,129.99,3,2,2,About to Sleep / Average
+CUST_1517,46,1,88.2,5,1,1,Promising / New
+CUST_1518,272,2,358.01,2,2,4,Hibernating / Lost
+CUST_1519,74,1,155.54,4,1,3,Promising / New
+CUST_1520,293,1,41.0,1,1,1,Hibernating / Lost
+CUST_1521,128,1,37.36,3,1,1,About to Sleep / Average
+CUST_1522,94,1,538.56,4,1,4,Promising / New
+CUST_1523,329,1,475.82,1,1,4,Hibernating / Lost
+CUST_1524,32,1,33.05,5,1,1,Promising / New
+CUST_1525,165,1,202.68,3,1,3,About to Sleep / Average
+CUST_1526,340,1,106.36,1,1,2,Hibernating / Lost
+CUST_1527,335,1,194.02,1,1,3,Hibernating / Lost
+CUST_1528,46,1,117.22,5,1,2,Promising / New
+CUST_1529,107,1,254.82,4,1,4,Promising / New
+CUST_1530,223,2,322.36,2,2,4,Hibernating / Lost
+CUST_1531,268,1,456.75,2,1,4,Hibernating / Lost
+CUST_1532,155,1,311.48,3,1,4,About to Sleep / Average
+CUST_1533,133,2,196.2,3,2,3,About to Sleep / Average
+CUST_1534,273,3,1059.0,2,3,5,At Risk / Can't Lose Them
+CUST_1535,42,1,20.38,5,1,1,Promising / New
+CUST_1536,73,1,98.47,4,1,2,Promising / New
+CUST_1537,204,1,31.71,2,1,1,Hibernating / Lost
+CUST_1538,340,1,193.52,1,1,3,Hibernating / Lost
+CUST_1539,68,1,142.6,4,1,2,Promising / New
+CUST_1540,255,1,19.85,2,1,1,Hibernating / Lost
+CUST_1541,80,1,159.46,4,1,3,Promising / New
+CUST_1542,318,1,1381.0,1,1,5,Hibernating / Lost
+CUST_1543,196,1,206.33,2,1,3,Hibernating / Lost
+CUST_1544,344,1,133.72,1,1,2,Hibernating / Lost
+CUST_1545,119,1,287.7,3,1,4,About to Sleep / Average
+CUST_1546,310,1,86.32,1,1,1,Hibernating / Lost
+CUST_1547,307,1,323.28,1,1,4,Hibernating / Lost
+CUST_1548,98,1,93.96,4,1,2,Promising / New
+CUST_1549,21,1,95.66,5,1,2,Promising / New
+CUST_1550,360,1,205.8,1,1,3,Hibernating / Lost
+CUST_1551,133,6,1598.6499999999999,3,5,5,Loyal Customers
+CUST_1552,71,1,326.35,4,1,4,Promising / New
+CUST_1553,320,1,1382.14,1,1,5,Hibernating / Lost
+CUST_1554,337,1,71.76,1,1,1,Hibernating / Lost
+CUST_1555,120,2,767.26,3,2,5,About to Sleep / Average
+CUST_1556,241,1,137.34,2,1,2,Hibernating / Lost
+CUST_1557,351,1,109.13,1,1,2,Hibernating / Lost
+CUST_1558,313,1,652.59,1,1,5,Hibernating / Lost
+CUST_1559,313,1,73.75,1,1,1,Hibernating / Lost
+CUST_1560,78,2,837.6800000000001,4,2,5,Promising / New
+CUST_1561,25,1,19.72,5,1,1,Promising / New
+CUST_1562,11,1,81.58,5,1,1,Promising / New
+CUST_1563,77,1,89.86,4,1,1,Promising / New
+CUST_1564,78,1,584.03,4,1,4,Promising / New
+CUST_1565,71,1,144.83,4,1,2,Promising / New
+CUST_1566,202,1,146.42,2,1,2,Hibernating / Lost
+CUST_1567,17,1,39.0,5,1,1,Promising / New
+CUST_1568,263,1,105.37,2,1,2,Hibernating / Lost
+CUST_1569,73,1,150.95,4,1,3,Promising / New
+CUST_1570,266,1,203.22,2,1,3,Hibernating / Lost
+CUST_1571,159,1,106.92,3,1,2,About to Sleep / Average
+CUST_1572,247,1,96.11,2,1,2,Hibernating / Lost
+CUST_1573,314,1,530.0,1,1,4,Hibernating / Lost
+CUST_1574,203,2,422.54,2,2,4,Hibernating / Lost
+CUST_1575,331,1,684.28,1,1,5,Hibernating / Lost
+CUST_1576,279,1,474.79999999999995,1,1,4,Hibernating / Lost
+CUST_1577,86,6,832.0699999999999,4,5,5,Champions
+CUST_1578,243,1,208.98,2,1,3,Hibernating / Lost
+CUST_1579,348,1,99.06,1,1,2,Hibernating / Lost
+CUST_1580,295,1,218.21,1,1,3,Hibernating / Lost
+CUST_1581,96,1,530.35,4,1,4,Promising / New
+CUST_1582,171,3,258.97,3,3,4,Loyal Customers
+CUST_1583,56,1,127.26,4,1,2,Promising / New
+CUST_1584,297,1,675.84,1,1,5,Hibernating / Lost
+CUST_1585,241,1,135.24,2,1,2,Hibernating / Lost
+CUST_1586,174,1,697.6,3,1,5,About to Sleep / Average
+CUST_1587,323,1,216.71,1,1,3,Hibernating / Lost
+CUST_1588,265,1,162.48,2,1,3,Hibernating / Lost
+CUST_1589,152,1,119.63,3,1,2,About to Sleep / Average
+CUST_1590,43,4,658.41,5,4,5,Champions
+CUST_1591,85,2,223.66,4,2,3,Promising / New
+CUST_1592,160,1,68.56,3,1,1,About to Sleep / Average
+CUST_1593,115,1,103.18,4,1,2,Promising / New
+CUST_1594,55,1,604.7,4,1,5,Promising / New
+CUST_1595,325,2,588.9100000000001,1,2,4,Hibernating / Lost
+CUST_1596,231,1,570.6,2,1,4,Hibernating / Lost
+CUST_1597,274,1,53.46,2,1,1,Hibernating / Lost
+CUST_1598,104,1,322.94,4,1,4,Promising / New
+CUST_1599,345,1,207.45,1,1,3,Hibernating / Lost
+CUST_1600,209,1,109.84,2,1,2,Hibernating / Lost
+CUST_1601,66,1,47.66,4,1,1,Promising / New
+CUST_1602,272,3,643.87,2,3,5,At Risk / Can't Lose Them
+CUST_1603,351,1,488.49,1,1,4,Hibernating / Lost
+CUST_1604,258,1,96.46,2,1,2,Hibernating / Lost
+CUST_1605,23,1,702.37,5,1,5,Promising / New
+CUST_1606,223,1,20.45,2,1,1,Hibernating / Lost
+CUST_1607,199,2,294.67,2,2,4,Hibernating / Lost
+CUST_1608,165,3,914.01,3,3,5,Loyal Customers
+CUST_1609,25,1,33.94,5,1,1,Promising / New
+CUST_1610,140,1,20.7,3,1,1,About to Sleep / Average
+CUST_1611,55,2,52.53,4,2,1,Promising / New
+CUST_1612,36,2,196.03,5,2,3,Promising / New
+CUST_1613,214,1,108.57,2,1,2,Hibernating / Lost
+CUST_1614,146,1,97.64,3,1,2,About to Sleep / Average
+CUST_1615,107,1,316.52,4,1,4,Promising / New
+CUST_1616,11,2,434.3,5,2,4,Promising / New
+CUST_1617,181,1,124.27,3,1,2,About to Sleep / Average
+CUST_1618,257,1,432.08,2,1,4,Hibernating / Lost
+CUST_1619,75,1,39.06,4,1,1,Promising / New
+CUST_1620,185,2,292.70000000000005,3,2,4,About to Sleep / Average
+CUST_1621,162,2,2903.5299999999997,3,2,5,About to Sleep / Average
+CUST_1622,41,3,347.33,5,3,4,Champions
+CUST_1623,28,1,135.14,5,1,2,Promising / New
+CUST_1624,159,1,102.31,3,1,2,About to Sleep / Average
+CUST_1625,60,1,73.15,4,1,1,Promising / New
+CUST_1626,229,3,374.15,2,3,4,At Risk / Can't Lose Them
+CUST_1627,153,3,1034.9,3,3,5,Loyal Customers
+CUST_1628,203,1,112.31,2,1,2,Hibernating / Lost
+CUST_1629,72,1,176.54,4,1,3,Promising / New
+CUST_1630,5,1,654.55,5,1,5,Promising / New
+CUST_1631,285,1,76.6,1,1,1,Hibernating / Lost
+CUST_1632,31,1,136.72,5,1,2,Promising / New
+CUST_1633,93,2,68.66,4,2,1,Promising / New
+CUST_1634,241,1,40.42,2,1,1,Hibernating / Lost
+CUST_1635,161,1,565.24,3,1,4,About to Sleep / Average
+CUST_1636,158,1,581.27,3,1,4,About to Sleep / Average
+CUST_1637,65,1,109.49,4,1,2,Promising / New
+CUST_1638,279,1,20.25,1,1,1,Hibernating / Lost
+CUST_1639,223,1,97.62,2,1,2,Hibernating / Lost
+CUST_1640,88,2,506.47999999999996,4,2,4,Promising / New
+CUST_1641,44,1,240.36,5,1,4,Promising / New
+CUST_1642,326,1,229.52,1,1,3,Hibernating / Lost
+CUST_1643,155,1,152.82,3,1,3,About to Sleep / Average
+CUST_1644,365,1,683.58,1,1,5,Hibernating / Lost
+CUST_1645,303,1,49.53,1,1,1,Hibernating / Lost
+CUST_1646,138,1,629.41,3,1,5,About to Sleep / Average
+CUST_1647,332,1,74.49,1,1,1,Hibernating / Lost
+CUST_1648,5,1,105.81,5,1,2,Promising / New
+CUST_1649,18,7,2493.07,5,5,5,Champions
+CUST_1650,33,2,202.17000000000002,5,2,3,Promising / New
+CUST_1651,33,2,144.45,5,2,2,Promising / New
+CUST_1652,81,1,72.34,4,1,1,Promising / New
+CUST_1653,74,1,107.07,4,1,2,Promising / New
+CUST_1654,285,1,1039.72,1,1,5,Hibernating / Lost
+CUST_1655,272,1,212.85,2,1,3,Hibernating / Lost
+CUST_1656,51,1,137.82,5,1,2,Promising / New
+CUST_1657,35,2,201.05,5,2,3,Promising / New
+CUST_1658,361,1,236.46,1,1,3,Hibernating / Lost
+CUST_1659,27,1,76.42,5,1,1,Promising / New
+CUST_1660,131,3,1648.07,3,3,5,Loyal Customers
+CUST_1661,135,1,31.51,3,1,1,About to Sleep / Average
+CUST_1662,124,1,71.62,3,1,1,About to Sleep / Average
+CUST_1663,244,2,711.37,2,2,5,Hibernating / Lost
+CUST_1664,46,3,339.63,5,3,4,Champions
+CUST_1665,247,1,627.35,2,1,5,Hibernating / Lost
+CUST_1666,337,1,92.43,1,1,2,Hibernating / Lost
+CUST_1667,251,1,672.76,2,1,5,Hibernating / Lost
+CUST_1668,285,1,72.09,1,1,1,Hibernating / Lost
+CUST_1669,343,1,637.18,1,1,5,Hibernating / Lost
+CUST_1670,57,5,575.17,4,4,4,Champions
+CUST_1671,102,1,106.48,4,1,2,Promising / New
+CUST_1672,284,2,169.23000000000002,1,2,3,Hibernating / Lost
+CUST_1673,72,5,624.77,4,4,5,Champions
+CUST_1674,229,1,169.42,2,1,3,Hibernating / Lost
+CUST_1675,98,1,219.54,4,1,3,Promising / New
+CUST_1676,313,1,333.58,1,1,4,Hibernating / Lost
+CUST_1677,206,1,90.46,2,1,2,Hibernating / Lost
+CUST_1678,305,1,135.54,1,1,2,Hibernating / Lost
+CUST_1679,40,4,1042.8,5,4,5,Champions
+CUST_1680,45,1,141.65,5,1,2,Promising / New
+CUST_1681,67,2,178.31,4,2,3,Promising / New
+CUST_1682,19,1,39.1,5,1,1,Promising / New
+CUST_1683,139,1,88.58,3,1,1,About to Sleep / Average
+CUST_1684,330,1,1418.2,1,1,5,Hibernating / Lost
+CUST_1685,69,1,162.19,4,1,3,Promising / New
+CUST_1686,29,1,110.47,5,1,2,Promising / New
+CUST_1687,167,1,211.98,3,1,3,About to Sleep / Average
+CUST_1688,177,2,144.57999999999998,3,2,2,About to Sleep / Average
+CUST_1689,315,1,216.0,1,1,3,Hibernating / Lost
+CUST_1690,7,2,197.14,5,2,3,Promising / New
+CUST_1691,331,1,322.02,1,1,4,Hibernating / Lost
+CUST_1692,324,1,359.9,1,1,4,Hibernating / Lost
+CUST_1693,210,1,40.19,2,1,1,Hibernating / Lost
+CUST_1694,173,1,233.74,3,1,3,About to Sleep / Average
+CUST_1695,318,1,682.3,1,1,5,Hibernating / Lost
+CUST_1696,4,1,84.52,5,1,1,Promising / New
+CUST_1697,175,1,3452.18,3,1,5,About to Sleep / Average
+CUST_1698,289,1,140.89,1,1,2,Hibernating / Lost
+CUST_1699,280,1,153.26,1,1,3,Hibernating / Lost
+CUST_1700,18,3,301.62,5,3,4,Champions
+CUST_1701,242,1,39.91,2,1,1,Hibernating / Lost
+CUST_1702,277,1,409.1,1,1,4,Hibernating / Lost
+CUST_1703,142,1,538.42,3,1,4,About to Sleep / Average
+CUST_1704,28,3,386.51,5,3,4,Champions
+CUST_1705,285,1,138.25,1,1,2,Hibernating / Lost
+CUST_1706,300,1,50.77,1,1,1,Hibernating / Lost
+CUST_1707,185,2,549.1,3,2,4,About to Sleep / Average
+CUST_1708,112,1,114.92,4,1,2,Promising / New
+CUST_1709,250,3,397.67,2,3,4,At Risk / Can't Lose Them
+CUST_1710,186,1,62.28,3,1,1,About to Sleep / Average
+CUST_1711,202,1,19.53,2,1,1,Hibernating / Lost
+CUST_1712,289,1,204.86,1,1,3,Hibernating / Lost
+CUST_1713,322,1,146.85,1,1,3,Hibernating / Lost
+CUST_1714,207,1,320.06,2,1,4,Hibernating / Lost
+CUST_1715,156,1,34.93,3,1,1,About to Sleep / Average
+CUST_1716,141,6,2868.31,3,5,5,Loyal Customers
+CUST_1717,339,1,70.83,1,1,1,Hibernating / Lost
+CUST_1718,178,1,284.58,3,1,4,About to Sleep / Average
+CUST_1719,35,1,88.55,5,1,1,Promising / New
+CUST_1720,240,2,654.71,2,2,5,Hibernating / Lost
+CUST_1721,248,1,730.77,2,1,5,Hibernating / Lost
+CUST_1722,165,1,94.87,3,1,2,About to Sleep / Average
+CUST_1723,74,1,151.55,4,1,3,Promising / New
+CUST_1724,288,2,169.58,1,2,3,Hibernating / Lost
+CUST_1725,179,1,146.74,3,1,2,About to Sleep / Average
+CUST_1726,5,2,104.13999999999999,5,2,2,Promising / New
+CUST_1727,192,1,116.39,3,1,2,About to Sleep / Average
+CUST_1728,34,3,456.67,5,3,4,Champions
+CUST_1729,201,1,140.74,2,1,2,Hibernating / Lost
+CUST_1730,84,4,899.4200000000001,4,4,5,Champions
+CUST_1731,132,3,336.53999999999996,3,3,4,Loyal Customers
+CUST_1732,84,1,191.07,4,1,3,Promising / New
+CUST_1733,319,1,317.97,1,1,4,Hibernating / Lost
+CUST_1734,2,1,120.15,5,1,2,Promising / New
+CUST_1735,98,2,362.27000000000004,4,2,4,Promising / New
+CUST_1736,332,1,3272.45,1,1,5,Hibernating / Lost
+CUST_1737,141,1,131.93,3,1,2,About to Sleep / Average
+CUST_1738,137,3,576.3100000000001,3,3,4,Loyal Customers
+CUST_1739,158,1,166.66,3,1,3,About to Sleep / Average
+CUST_1740,159,1,90.52,3,1,2,About to Sleep / Average
+CUST_1741,47,1,70.42,5,1,1,Promising / New
+CUST_1742,188,1,222.4,3,1,3,About to Sleep / Average
+CUST_1743,225,1,112.7,2,1,2,Hibernating / Lost
+CUST_1744,9,1,19.25,5,1,1,Promising / New
+CUST_1745,294,1,105.97,1,1,2,Hibernating / Lost
+CUST_1746,6,2,611.4300000000001,5,2,5,Promising / New
+CUST_1747,19,3,1423.8899999999999,5,3,5,Champions
+CUST_1748,180,1,114.02,3,1,2,About to Sleep / Average
+CUST_1749,1,1,267.36,5,1,4,Promising / New
+CUST_1750,9,1,276.2,5,1,4,Promising / New
+CUST_1751,236,1,106.86,2,1,2,Hibernating / Lost
+CUST_1752,294,1,444.58,1,1,4,Hibernating / Lost
+CUST_1753,338,1,69.33,1,1,1,Hibernating / Lost
+CUST_1754,291,1,450.0,1,1,4,Hibernating / Lost
+CUST_1755,320,1,19.55,1,1,1,Hibernating / Lost
+CUST_1756,204,1,209.86,2,1,3,Hibernating / Lost
+CUST_1757,24,1,125.24,5,1,2,Promising / New
+CUST_1758,359,1,54.07,1,1,1,Hibernating / Lost
+CUST_1759,95,1,180.08,4,1,3,Promising / New
+CUST_1760,75,1,126.38,4,1,2,Promising / New
+CUST_1761,4,4,689.78,5,4,5,Champions
+CUST_1762,204,1,131.37,2,1,2,Hibernating / Lost
+CUST_1763,62,1,162.89,4,1,3,Promising / New
+CUST_1764,26,1,96.16,5,1,2,Promising / New
+CUST_1765,125,1,3364.85,3,1,5,About to Sleep / Average
+CUST_1766,335,1,461.23,1,1,4,Hibernating / Lost
+CUST_1767,305,1,114.02,1,1,2,Hibernating / Lost
+CUST_1768,327,1,221.01,1,1,3,Hibernating / Lost
+CUST_1769,58,1,75.38,4,1,1,Promising / New
+CUST_1770,166,1,92.82,3,1,2,About to Sleep / Average
+CUST_1771,205,1,90.61,2,1,2,Hibernating / Lost
+CUST_1772,165,1,340.8,3,1,4,About to Sleep / Average
+CUST_1773,30,1,51.0,5,1,1,Promising / New
+CUST_1774,23,1,99.81,5,1,2,Promising / New
+CUST_1775,360,1,20.86,1,1,1,Hibernating / Lost
+CUST_1776,73,1,65.86,4,1,1,Promising / New
+CUST_1777,62,1,131.97,4,1,2,Promising / New
+CUST_1778,53,2,763.76,5,2,5,Promising / New
+CUST_1779,33,1,635.4,5,1,5,Promising / New
+CUST_1780,245,1,100.44,2,1,2,Hibernating / Lost
+CUST_1781,173,1,139.43,3,1,2,About to Sleep / Average
+CUST_1782,234,1,148.23,2,1,3,Hibernating / Lost
+CUST_1783,125,1,33.89,3,1,1,About to Sleep / Average
+CUST_1784,130,1,638.98,3,1,5,About to Sleep / Average
+CUST_1785,63,1,182.10000000000002,4,1,3,Promising / New
+CUST_1786,86,1,51.33,4,1,1,Promising / New
+CUST_1787,12,3,425.99,5,3,4,Champions
+CUST_1788,120,1,123.66,3,1,2,About to Sleep / Average
+CUST_1789,199,1,87.93,2,1,1,Hibernating / Lost
+CUST_1790,52,1,74.34,5,1,1,Promising / New
+CUST_1791,45,1,158.77,5,1,3,Promising / New
+CUST_1792,27,1,77.04,5,1,1,Promising / New
+CUST_1793,55,1,146.62,4,1,2,Promising / New
+CUST_1794,182,1,55.89,3,1,1,About to Sleep / Average
+CUST_1795,182,1,19.84,3,1,1,About to Sleep / Average
+CUST_1796,108,1,666.94,4,1,5,Promising / New
+CUST_1797,8,1,196.43,5,1,3,Promising / New
+CUST_1798,176,1,131.0,3,1,2,About to Sleep / Average
+CUST_1799,101,1,70.16,4,1,1,Promising / New
+CUST_1800,72,2,329.8,4,2,4,Promising / New
+CUST_1801,163,1,112.15,3,1,2,About to Sleep / Average
+CUST_1802,121,3,1954.17,3,3,5,Loyal Customers
+CUST_1803,129,5,4357.67,3,4,5,Loyal Customers
+CUST_1804,22,2,860.6700000000001,5,2,5,Promising / New
+CUST_1805,184,1,68.2,3,1,1,About to Sleep / Average
+CUST_1806,81,2,88.33000000000001,4,2,1,Promising / New
+CUST_1807,5,1,132.46,5,1,2,Promising / New
+CUST_1808,102,1,65.22,4,1,1,Promising / New
+CUST_1809,62,3,807.81,4,3,5,Champions
+CUST_1810,181,1,451.08,3,1,4,About to Sleep / Average
+CUST_1811,326,1,537.45,1,1,4,Hibernating / Lost
+CUST_1812,341,1,113.3,1,1,2,Hibernating / Lost
+CUST_1813,114,1,244.14,4,1,4,Promising / New
+CUST_1814,292,1,140.87,1,1,2,Hibernating / Lost
+CUST_1815,57,1,32.48,4,1,1,Promising / New
+CUST_1816,66,1,284.42,4,1,4,Promising / New
+CUST_1817,31,1,177.48,5,1,3,Promising / New
+CUST_1818,48,2,359.11,5,2,4,Promising / New
+CUST_1819,291,2,180.5,1,2,3,Hibernating / Lost
+CUST_1820,357,1,19.04,1,1,1,Hibernating / Lost
+CUST_1821,261,1,85.12,2,1,1,Hibernating / Lost
+CUST_1822,304,1,159.46,1,1,3,Hibernating / Lost
+CUST_1823,191,1,337.4,3,1,4,About to Sleep / Average
+CUST_1824,286,3,444.74,1,3,4,At Risk / Can't Lose Them
+CUST_1825,239,1,88.09,2,1,1,Hibernating / Lost
+CUST_1826,213,1,702.0,2,1,5,Hibernating / Lost
+CUST_1827,28,2,682.81,5,2,5,Promising / New
+CUST_1828,148,2,285.44,3,2,4,About to Sleep / Average
+CUST_1829,31,1,72.94,5,1,1,Promising / New
+CUST_1830,178,3,310.88,3,3,4,Loyal Customers
+CUST_1831,261,1,218.75,2,1,3,Hibernating / Lost
+CUST_1832,68,1,147.49,4,1,3,Promising / New
+CUST_1833,28,1,73.03,5,1,1,Promising / New
+CUST_1834,119,1,115.57,3,1,2,About to Sleep / Average
+CUST_1835,266,1,99.94,2,1,2,Hibernating / Lost
+CUST_1836,187,1,235.63,3,1,3,About to Sleep / Average
+CUST_1837,208,1,32.68,2,1,1,Hibernating / Lost
+CUST_1838,316,1,35.08,1,1,1,Hibernating / Lost
+CUST_1839,91,2,494.96000000000004,4,2,4,Promising / New
+CUST_1840,208,1,146.91,2,1,3,Hibernating / Lost
+CUST_1841,349,1,727.49,1,1,5,Hibernating / Lost
+CUST_1842,224,1,174.5,2,1,3,Hibernating / Lost
+CUST_1843,22,1,156.97,5,1,3,Promising / New
+CUST_1844,8,1,1060.2,5,1,5,Promising / New
+CUST_1845,215,1,76.64,2,1,1,Hibernating / Lost
+CUST_1846,119,1,639.81,3,1,5,About to Sleep / Average
+CUST_1847,64,1,203.16,4,1,3,Promising / New
+CUST_1848,150,1,153.82,3,1,3,About to Sleep / Average
+CUST_1849,300,2,275.72,1,2,4,Hibernating / Lost
+CUST_1850,115,1,99.69,4,1,2,Promising / New
+CUST_1851,135,1,108.81,3,1,2,About to Sleep / Average
+CUST_1852,214,4,3895.08,2,4,5,At Risk / Can't Lose Them
+CUST_1853,204,1,134.76,2,1,2,Hibernating / Lost
+CUST_1854,41,1,177.53,5,1,3,Promising / New
+CUST_1855,233,1,210.05,2,1,3,Hibernating / Lost
+CUST_1856,12,2,760.69,5,2,5,Promising / New
+CUST_1857,204,1,450.46,2,1,4,Hibernating / Lost
+CUST_1858,43,1,19.04,5,1,1,Promising / New
+CUST_1859,45,1,19.47,5,1,1,Promising / New
+CUST_1860,14,2,187.76000000000002,5,2,3,Promising / New
+CUST_1861,247,1,232.5,2,1,3,Hibernating / Lost
+CUST_1862,56,1,696.55,4,1,5,Promising / New
+CUST_1863,227,2,181.34,2,2,3,Hibernating / Lost
+CUST_1864,45,1,672.41,5,1,5,Promising / New
+CUST_1865,101,1,200.78,4,1,3,Promising / New
+CUST_1866,73,1,568.07,4,1,4,Promising / New
+CUST_1867,126,1,225.74,3,1,3,About to Sleep / Average
+CUST_1868,120,1,107.31,3,1,2,About to Sleep / Average
+CUST_1869,105,1,459.32,4,1,4,Promising / New
+CUST_1870,156,1,645.28,3,1,5,About to Sleep / Average
+CUST_1871,16,3,1935.8600000000001,5,3,5,Champions
+CUST_1872,21,2,228.95,5,2,3,Promising / New
+CUST_1873,284,1,99.88,1,1,2,Hibernating / Lost
+CUST_1874,268,1,38.19,2,1,1,Hibernating / Lost
+CUST_1875,52,2,254.93,5,2,4,Promising / New
+CUST_1876,48,3,324.46000000000004,5,3,4,Champions
+CUST_1877,305,1,147.18,1,1,3,Hibernating / Lost
+CUST_1878,27,3,370.73,5,3,4,Champions
+CUST_1879,150,2,765.13,3,2,5,About to Sleep / Average
+CUST_1880,246,1,708.36,2,1,5,Hibernating / Lost
+CUST_1881,18,4,475.04999999999995,5,4,4,Champions
+CUST_1882,231,1,54.32,2,1,1,Hibernating / Lost
+CUST_1883,39,1,91.22,5,1,2,Promising / New
+CUST_1884,132,1,194.78,3,1,3,About to Sleep / Average
+CUST_1885,8,1,89.04,5,1,1,Promising / New
+CUST_1886,162,1,113.13,3,1,2,About to Sleep / Average
+CUST_1887,304,1,408.92,1,1,4,Hibernating / Lost
+CUST_1888,157,2,695.83,3,2,5,About to Sleep / Average
+CUST_1889,194,2,549.07,2,2,4,Hibernating / Lost
+CUST_1890,137,3,4403.0599999999995,3,3,5,Loyal Customers
+CUST_1891,332,2,1318.3799999999999,1,2,5,Hibernating / Lost
+CUST_1892,323,1,122.67,1,1,2,Hibernating / Lost
+CUST_1893,2,1,127.07,5,1,2,Promising / New
+CUST_1894,262,2,1299.56,2,2,5,Hibernating / Lost
+CUST_1895,201,1,500.48,2,1,4,Hibernating / Lost
+CUST_1896,300,1,722.67,1,1,5,Hibernating / Lost
+CUST_1897,146,1,99.34,3,1,2,About to Sleep / Average
+CUST_1898,320,1,20.3,1,1,1,Hibernating / Lost
+CUST_1899,287,1,204.64,1,1,3,Hibernating / Lost
+CUST_1900,53,1,231.44,5,1,3,Promising / New
+CUST_1901,190,2,804.01,3,2,5,About to Sleep / Average
+CUST_1902,85,1,715.16,4,1,5,Promising / New
+CUST_1903,130,2,223.67,3,2,3,About to Sleep / Average
+CUST_1904,7,2,200.42000000000002,5,2,3,Promising / New
+CUST_1905,4,1,50.61,5,1,1,Promising / New
+CUST_1906,60,1,679.6,4,1,5,Promising / New
+CUST_1907,106,2,289.23,4,2,4,Promising / New
+CUST_1908,151,1,114.74,3,1,2,About to Sleep / Average
+CUST_1909,364,1,20.15,1,1,1,Hibernating / Lost
+CUST_1910,124,2,560.73,3,2,4,About to Sleep / Average
+CUST_1911,119,1,203.75,3,1,3,About to Sleep / Average
+CUST_1912,230,1,193.41,2,1,3,Hibernating / Lost
+CUST_1913,79,4,404.62,4,4,4,Champions
+CUST_1914,155,1,498.95,3,1,4,About to Sleep / Average
+CUST_1915,202,1,141.5,2,1,2,Hibernating / Lost
+CUST_1916,24,1,153.27,5,1,3,Promising / New
+CUST_1917,315,1,578.46,1,1,4,Hibernating / Lost
+CUST_1918,221,1,50.56,2,1,1,Hibernating / Lost
+CUST_1919,326,1,99.77,1,1,2,Hibernating / Lost
+CUST_1920,165,1,722.0,3,1,5,About to Sleep / Average
+CUST_1921,311,2,139.71,1,2,2,Hibernating / Lost
+CUST_1922,4,1,113.48,5,1,2,Promising / New
+CUST_1923,43,2,1377.6999999999998,5,2,5,Promising / New
+CUST_1924,148,1,185.42,3,1,3,About to Sleep / Average
+CUST_1925,64,1,725.59,4,1,5,Promising / New
+CUST_1926,160,3,214.03,3,3,3,Loyal Customers
+CUST_1927,48,3,203.23000000000002,5,3,3,Loyal Customers
+CUST_1928,22,1,144.08,5,1,2,Promising / New
+CUST_1929,87,1,20.71,4,1,1,Promising / New
+CUST_1930,16,1,93.24,5,1,2,Promising / New
+CUST_1931,234,2,145.99,2,2,2,Hibernating / Lost
+CUST_1932,185,1,38.24,3,1,1,About to Sleep / Average
+CUST_1933,109,4,4741.59,4,4,5,Champions
+CUST_1934,201,2,226.39999999999998,2,2,3,Hibernating / Lost
+CUST_1935,307,1,483.57,1,1,4,Hibernating / Lost
+CUST_1936,56,1,71.05,4,1,1,Promising / New
+CUST_1937,224,2,587.14,2,2,4,Hibernating / Lost
+CUST_1938,68,3,415.53,4,3,4,Champions
+CUST_1939,1,2,636.93,5,2,5,Promising / New
+CUST_1940,279,1,664.98,1,1,5,Hibernating / Lost
+CUST_1941,209,1,74.29,2,1,1,Hibernating / Lost
+CUST_1942,288,2,141.59,1,2,2,Hibernating / Lost
+CUST_1943,287,1,1085.95,1,1,5,Hibernating / Lost
+CUST_1944,260,1,151.72,2,1,3,Hibernating / Lost
+CUST_1945,26,1,164.06,5,1,3,Promising / New
+CUST_1946,63,2,665.34,4,2,5,Promising / New
+CUST_1947,91,2,281.40999999999997,4,2,4,Promising / New
+CUST_1948,325,1,20.9,1,1,1,Hibernating / Lost
+CUST_1949,83,1,20.98,4,1,1,Promising / New
+CUST_1950,87,1,205.18,4,1,3,Promising / New
+CUST_1951,79,1,205.08,4,1,3,Promising / New
+CUST_1952,250,1,72.37,2,1,1,Hibernating / Lost
+CUST_1953,210,1,135.1,2,1,2,Hibernating / Lost
+CUST_1954,70,2,168.06,4,2,3,Promising / New
+CUST_1955,267,1,189.28,2,1,3,Hibernating / Lost
+CUST_1956,207,1,749.5,2,1,5,Hibernating / Lost
+CUST_1957,295,1,314.81,1,1,4,Hibernating / Lost
+CUST_1958,230,1,1138.12,2,1,5,Hibernating / Lost
+CUST_1959,135,1,138.66,3,1,2,About to Sleep / Average
+CUST_1960,25,1,638.64,5,1,5,Promising / New
+CUST_1961,232,1,36.32,2,1,1,Hibernating / Lost
+CUST_1962,197,1,822.25,2,1,5,Hibernating / Lost
+CUST_1963,51,1,102.0,5,1,2,Promising / New
+CUST_1964,172,1,692.88,3,1,5,About to Sleep / Average
+CUST_1965,233,1,72.2,2,1,1,Hibernating / Lost
+CUST_1966,139,1,89.64,3,1,1,About to Sleep / Average
+CUST_1967,301,1,697.64,1,1,5,Hibernating / Lost
+CUST_1968,315,1,155.86,1,1,3,Hibernating / Lost
+CUST_1969,247,2,182.13,2,2,3,Hibernating / Lost
+CUST_1970,190,1,70.39,3,1,1,About to Sleep / Average
+CUST_1971,231,1,165.12,2,1,3,Hibernating / Lost
+CUST_1972,41,1,96.81,5,1,2,Promising / New
+CUST_1973,260,1,207.65,2,1,3,Hibernating / Lost
+CUST_1974,271,1,212.82,2,1,3,Hibernating / Lost
+CUST_1975,63,2,1524.5,4,2,5,Promising / New
+CUST_1976,56,1,153.36,4,1,3,Promising / New
+CUST_1977,247,1,1179.35,2,1,5,Hibernating / Lost
+CUST_1978,55,3,539.38,4,3,4,Champions
+CUST_1979,19,1,224.3,5,1,3,Promising / New
+CUST_1980,118,1,102.5,3,1,2,About to Sleep / Average
+CUST_1981,31,1,138.58,5,1,2,Promising / New
+CUST_1982,192,1,3364.28,3,1,5,About to Sleep / Average
+CUST_1983,147,1,149.16,3,1,3,About to Sleep / Average
+CUST_1984,11,1,34.76,5,1,1,Promising / New
+CUST_1985,95,2,165.08999999999997,4,2,3,Promising / New
+CUST_1986,131,1,200.57,3,1,3,About to Sleep / Average
+CUST_1987,255,1,1043.0,2,1,5,Hibernating / Lost
+CUST_1988,264,2,781.1400000000001,2,2,5,Hibernating / Lost
+CUST_1989,223,1,248.45,2,1,4,Hibernating / Lost
+CUST_1990,318,1,151.09,1,1,3,Hibernating / Lost
+CUST_1991,203,1,114.34,2,1,2,Hibernating / Lost
+CUST_1992,349,1,33.14,1,1,1,Hibernating / Lost
+CUST_1993,289,1,65.54,1,1,1,Hibernating / Lost
+CUST_1994,138,1,81.54,3,1,1,About to Sleep / Average
+CUST_1995,36,1,116.77,5,1,2,Promising / New
+CUST_1996,89,1,133.79,4,1,2,Promising / New
+CUST_1997,340,1,3499.41,1,1,5,Hibernating / Lost
+CUST_1998,122,1,95.8,3,1,2,About to Sleep / Average
+CUST_1999,54,1,517.19,5,1,4,Promising / New
+CUST_2000,139,1,75.04,3,1,1,About to Sleep / Average
+CUST_2001,141,1,141.03,3,1,2,About to Sleep / Average
+CUST_2002,141,2,150.9,3,2,3,About to Sleep / Average
+CUST_2003,340,1,1288.98,1,1,5,Hibernating / Lost
+CUST_2004,86,1,116.87,4,1,2,Promising / New
+CUST_2005,39,1,68.01,5,1,1,Promising / New
+CUST_2006,210,2,137.07999999999998,2,2,2,Hibernating / Lost
+CUST_2007,117,1,75.12,4,1,1,Promising / New
+CUST_2008,247,1,324.74,2,1,4,Hibernating / Lost
+CUST_2009,143,1,658.38,3,1,5,About to Sleep / Average
+CUST_2010,131,1,327.26,3,1,4,About to Sleep / Average
+CUST_2011,237,1,146.51,2,1,2,Hibernating / Lost
+CUST_2012,292,3,827.43,1,3,5,At Risk / Can't Lose Them
+CUST_2013,49,1,244.6,5,1,4,Promising / New
+CUST_2014,38,1,560.06,5,1,4,Promising / New
+CUST_2015,84,1,272.1,4,1,4,Promising / New
+CUST_2016,242,1,566.9,2,1,4,Hibernating / Lost
+CUST_2017,100,1,72.26,4,1,1,Promising / New
+CUST_2018,113,5,3646.71,4,4,5,Champions
+CUST_2019,256,1,88.1,2,1,1,Hibernating / Lost
+CUST_2020,100,1,469.62,4,1,4,Promising / New
+CUST_2021,275,1,288.42,1,1,4,Hibernating / Lost
+CUST_2022,43,1,112.38,5,1,2,Promising / New
+CUST_2023,193,1,565.89,3,1,4,About to Sleep / Average
+CUST_2024,15,1,142.76,5,1,2,Promising / New
+CUST_2025,79,1,153.59,4,1,3,Promising / New
+CUST_2026,194,1,277.62,2,1,4,Hibernating / Lost
+CUST_2027,146,1,95.52,3,1,2,About to Sleep / Average
+CUST_2028,130,2,873.77,3,2,5,About to Sleep / Average
+CUST_2029,260,1,122.7,2,1,2,Hibernating / Lost
+CUST_2030,235,1,191.62,2,1,3,Hibernating / Lost
+CUST_2031,186,1,416.85,3,1,4,About to Sleep / Average
+CUST_2032,110,1,104.3,4,1,2,Promising / New
+CUST_2033,82,1,446.56,4,1,4,Promising / New
+CUST_2034,154,1,68.71,3,1,1,About to Sleep / Average
+CUST_2035,259,1,161.89,2,1,3,Hibernating / Lost
+CUST_2036,85,3,334.46,4,3,4,Champions
+CUST_2037,227,3,950.57,2,3,5,At Risk / Can't Lose Them
+CUST_2038,54,1,49.76,5,1,1,Promising / New
+CUST_2039,253,1,251.75,2,1,4,Hibernating / Lost
+CUST_2040,40,1,73.34,5,1,1,Promising / New
+CUST_2041,352,1,223.41,1,1,3,Hibernating / Lost
+CUST_2042,289,1,225.49,1,1,3,Hibernating / Lost
+CUST_2043,132,1,183.82,3,1,3,About to Sleep / Average
+CUST_2044,238,1,130.56,2,1,2,Hibernating / Lost
+CUST_2045,139,1,515.17,3,1,4,About to Sleep / Average
+CUST_2046,316,1,103.17,1,1,2,Hibernating / Lost
+CUST_2047,169,1,19.43,3,1,1,About to Sleep / Average
+CUST_2048,116,1,122.56,4,1,2,Promising / New
+CUST_2049,14,1,67.56,5,1,1,Promising / New
+CUST_2050,163,1,229.99,3,1,3,About to Sleep / Average
+CUST_2051,308,1,53.2,1,1,1,Hibernating / Lost
+CUST_2052,168,1,98.96,3,1,2,About to Sleep / Average
+CUST_2053,322,1,126.2,1,1,2,Hibernating / Lost
+CUST_2054,327,1,237.02,1,1,3,Hibernating / Lost
+CUST_2055,48,1,83.73,5,1,1,Promising / New
+CUST_2056,197,1,39.73,2,1,1,Hibernating / Lost
+CUST_2057,32,1,482.86,5,1,4,Promising / New
+CUST_2058,311,1,51.03,1,1,1,Hibernating / Lost
+CUST_2059,167,1,84.12,3,1,1,About to Sleep / Average
+CUST_2060,263,1,162.95,2,1,3,Hibernating / Lost
+CUST_2061,309,1,166.57,1,1,3,Hibernating / Lost
+CUST_2062,321,1,197.24,1,1,3,Hibernating / Lost
+CUST_2063,174,1,34.73,3,1,1,About to Sleep / Average
+CUST_2064,175,1,117.02,3,1,2,About to Sleep / Average
+CUST_2065,186,1,640.2,3,1,5,About to Sleep / Average
+CUST_2066,226,1,19.03,2,1,1,Hibernating / Lost
+CUST_2067,315,1,33.97,1,1,1,Hibernating / Lost
+CUST_2068,191,1,157.51,3,1,3,About to Sleep / Average
+CUST_2069,270,1,1368.32,2,1,5,Hibernating / Lost
+CUST_2070,301,1,67.04,1,1,1,Hibernating / Lost
+CUST_2071,74,4,1055.23,4,4,5,Champions
+CUST_2072,265,1,153.06,2,1,3,Hibernating / Lost
+CUST_2073,245,1,837.4,2,1,5,Hibernating / Lost
+CUST_2074,67,1,76.81,4,1,1,Promising / New
+CUST_2075,98,1,576.8,4,1,4,Promising / New
+CUST_2076,304,2,545.72,1,2,4,Hibernating / Lost
+CUST_2077,100,2,273.77,4,2,4,Promising / New
+CUST_2078,221,1,236.78,2,1,3,Hibernating / Lost
+CUST_2079,210,1,573.07,2,1,4,Hibernating / Lost
+CUST_2080,196,4,7122.9,2,4,5,At Risk / Can't Lose Them
+CUST_2081,69,1,203.55,4,1,3,Promising / New
+CUST_2082,170,1,125.81,3,1,2,About to Sleep / Average
+CUST_2083,188,1,197.5,3,1,3,About to Sleep / Average
+CUST_2084,260,1,124.46,2,1,2,Hibernating / Lost
+CUST_2085,255,2,227.35000000000002,2,2,3,Hibernating / Lost
+CUST_2086,265,1,70.64,2,1,1,Hibernating / Lost
+CUST_2087,309,1,236.42,1,1,3,Hibernating / Lost
+CUST_2088,54,1,32.25,5,1,1,Promising / New
+CUST_2089,188,1,153.46,3,1,3,About to Sleep / Average
+CUST_2090,64,1,281.48,4,1,4,Promising / New
+CUST_2091,91,2,1652.1399999999999,4,2,5,Promising / New
+CUST_2092,236,1,684.17,2,1,5,Hibernating / Lost
+CUST_2093,141,1,39.08,3,1,1,About to Sleep / Average
+CUST_2094,105,1,983.1,4,1,5,Promising / New
+CUST_2095,276,1,657.85,1,1,5,Hibernating / Lost
+CUST_2096,68,1,179.46,4,1,3,Promising / New
+CUST_2097,197,1,50.28,2,1,1,Hibernating / Lost
+CUST_2098,111,1,104.24,4,1,2,Promising / New
+CUST_2099,86,4,790.83,4,4,5,Champions
+CUST_2100,53,1,225.38,5,1,3,Promising / New
+CUST_2101,34,1,698.78,5,1,5,Promising / New
+CUST_2102,52,4,1529.22,5,4,5,Champions
+CUST_2103,90,3,1698.9399999999998,4,3,5,Champions
+CUST_2104,315,1,723.29,1,1,5,Hibernating / Lost
+CUST_2105,113,1,802.3000000000001,4,1,5,Promising / New
+CUST_2106,221,2,201.32999999999998,2,2,3,Hibernating / Lost
+CUST_2107,3,5,4302.29,5,4,5,Champions
+CUST_2108,202,3,985.0,2,3,5,At Risk / Can't Lose Them
+CUST_2109,209,1,1361.96,2,1,5,Hibernating / Lost
+CUST_2110,69,2,533.5,4,2,4,Promising / New
+CUST_2111,100,1,235.78,4,1,3,Promising / New
+CUST_2112,30,1,3411.97,5,1,5,Promising / New
+CUST_2113,176,1,140.12,3,1,2,About to Sleep / Average
+CUST_2114,245,2,370.45,2,2,4,Hibernating / Lost
+CUST_2115,57,2,323.32,4,2,4,Promising / New
+CUST_2116,131,3,1224.3500000000001,3,3,5,Loyal Customers
+CUST_2117,302,1,78.43,1,1,1,Hibernating / Lost
+CUST_2118,186,3,744.6800000000001,3,3,5,Loyal Customers
+CUST_2119,88,1,88.28,4,1,1,Promising / New
+CUST_2120,133,1,316.64,3,1,4,About to Sleep / Average
+CUST_2121,14,1,223.28,5,1,3,Promising / New
+CUST_2122,249,1,75.53,2,1,1,Hibernating / Lost
+CUST_2123,291,1,194.5,1,1,3,Hibernating / Lost
+CUST_2124,318,1,141.36,1,1,2,Hibernating / Lost
+CUST_2125,195,1,39.1,2,1,1,Hibernating / Lost
+CUST_2126,276,1,511.41,1,1,4,Hibernating / Lost
+CUST_2127,106,2,194.57999999999998,4,2,3,Promising / New
+CUST_2128,28,1,150.13,5,1,3,Promising / New
+CUST_2129,186,1,555.3,3,1,4,About to Sleep / Average
+CUST_2130,109,1,127.5,4,1,2,Promising / New
+CUST_2131,62,8,1846.97,4,5,5,Champions
+CUST_2132,155,1,124.01,3,1,2,About to Sleep / Average
+CUST_2133,204,7,1713.59,2,5,5,At Risk / Can't Lose Them
+CUST_2134,34,1,153.24,5,1,3,Promising / New
+CUST_2135,273,1,1276.58,2,1,5,Hibernating / Lost
+CUST_2136,251,2,219.61,2,2,3,Hibernating / Lost
+CUST_2137,193,1,469.37,3,1,4,About to Sleep / Average
+CUST_2138,88,1,479.65,4,1,4,Promising / New
+CUST_2139,78,1,155.92,4,1,3,Promising / New
+CUST_2140,277,1,216.52,1,1,3,Hibernating / Lost
+CUST_2141,202,1,341.53,2,1,4,Hibernating / Lost
+CUST_2142,179,2,283.87,3,2,4,About to Sleep / Average
+CUST_2143,321,1,20.49,1,1,1,Hibernating / Lost
+CUST_2144,347,1,456.72,1,1,4,Hibernating / Lost
+CUST_2145,69,3,7328.31,4,3,5,Champions
+CUST_2146,152,1,114.81,3,1,2,About to Sleep / Average
+CUST_2147,46,1,100.45,5,1,2,Promising / New
+CUST_2148,91,1,232.92,4,1,3,Promising / New
+CUST_2149,22,2,342.35,5,2,4,Promising / New
+CUST_2150,20,1,488.49,5,1,4,Promising / New
+CUST_2151,146,1,55.13,3,1,1,About to Sleep / Average
+CUST_2152,5,1,93.55,5,1,2,Promising / New
+CUST_2153,1,1,468.4,5,1,4,Promising / New
+CUST_2154,337,1,239.36,1,1,4,Hibernating / Lost
+CUST_2155,327,1,210.44,1,1,3,Hibernating / Lost
+CUST_2156,22,1,133.89,5,1,2,Promising / New
+CUST_2157,276,1,39.04,1,1,1,Hibernating / Lost
+CUST_2158,228,1,95.42,2,1,2,Hibernating / Lost
+CUST_2159,110,1,248.3,4,1,4,Promising / New
+CUST_2160,128,1,306.92,3,1,4,About to Sleep / Average
+CUST_2161,357,1,903.68,1,1,5,Hibernating / Lost
+CUST_2162,153,1,19.34,3,1,1,About to Sleep / Average
+CUST_2163,4,1,134.04,5,1,2,Promising / New
+CUST_2164,118,4,965.0,3,4,5,Loyal Customers
+CUST_2165,316,1,104.74,1,1,2,Hibernating / Lost
+CUST_2166,190,1,112.18,3,1,2,About to Sleep / Average
+CUST_2167,207,1,90.97,2,1,2,Hibernating / Lost
+CUST_2168,356,1,359.6,1,1,4,Hibernating / Lost
+CUST_2169,22,1,72.38,5,1,1,Promising / New
+CUST_2170,190,1,19.47,3,1,1,About to Sleep / Average
+CUST_2171,321,1,155.89,1,1,3,Hibernating / Lost
+CUST_2172,152,1,203.61,3,1,3,About to Sleep / Average
+CUST_2173,53,2,338.44,5,2,4,Promising / New
+CUST_2174,234,1,125.88,2,1,2,Hibernating / Lost
+CUST_2175,201,1,105.77,2,1,2,Hibernating / Lost
+CUST_2176,123,1,704.5,3,1,5,About to Sleep / Average
+CUST_2177,71,1,515.43,4,1,4,Promising / New
+CUST_2178,316,1,134.1,1,1,2,Hibernating / Lost
+CUST_2179,233,1,539.6,2,1,4,Hibernating / Lost
+CUST_2180,353,2,944.3500000000001,1,2,5,Hibernating / Lost
+CUST_2181,82,1,217.36,4,1,3,Promising / New
+CUST_2182,15,1,35.23,5,1,1,Promising / New
+CUST_2183,118,1,134.51,3,1,2,About to Sleep / Average
+CUST_2184,346,1,118.57,1,1,2,Hibernating / Lost
+CUST_2185,177,1,179.72,3,1,3,About to Sleep / Average
+CUST_2186,334,1,517.87,1,1,4,Hibernating / Lost
+CUST_2187,181,1,492.45,3,1,4,About to Sleep / Average
+CUST_2188,166,2,352.33000000000004,3,2,4,About to Sleep / Average
+CUST_2189,83,1,20.87,4,1,1,Promising / New
+CUST_2190,333,1,94.05,1,1,2,Hibernating / Lost
+CUST_2191,19,1,54.41,5,1,1,Promising / New
+CUST_2192,320,1,235.52,1,1,3,Hibernating / Lost
+CUST_2193,320,1,146.75,1,1,3,Hibernating / Lost
+CUST_2194,319,2,340.93,1,2,4,Hibernating / Lost
+CUST_2195,94,1,76.31,4,1,1,Promising / New
+CUST_2196,12,2,338.98,5,2,4,Promising / New
+CUST_2197,108,2,137.52,4,2,2,Promising / New
+CUST_2198,155,1,2442.05,3,1,5,About to Sleep / Average
+CUST_2199,107,1,161.29,4,1,3,Promising / New
+CUST_2200,334,1,114.02,1,1,2,Hibernating / Lost
+CUST_2201,125,3,557.38,3,3,4,Loyal Customers
+CUST_2202,212,2,298.12,2,2,4,Hibernating / Lost
+CUST_2203,283,1,261.44,1,1,4,Hibernating / Lost
+CUST_2204,99,1,3607.9500000000003,4,1,5,Promising / New
+CUST_2205,16,1,31.89,5,1,1,Promising / New
+CUST_2206,62,1,224.84,4,1,3,Promising / New
+CUST_2207,15,2,209.57,5,2,3,Promising / New
+CUST_2208,62,1,209.28,4,1,3,Promising / New
+CUST_2209,70,1,34.84,4,1,1,Promising / New
+CUST_2210,110,2,918.63,4,2,5,Promising / New
+CUST_2211,263,1,116.46,2,1,2,Hibernating / Lost
+CUST_2212,348,1,96.29,1,1,2,Hibernating / Lost
+CUST_2213,10,1,198.43,5,1,3,Promising / New
+CUST_2214,270,1,101.35,2,1,2,Hibernating / Lost
+CUST_2215,107,2,294.83,4,2,4,Promising / New
+CUST_2216,106,1,487.2,4,1,4,Promising / New
+CUST_2217,13,1,549.0999999999999,5,1,4,Promising / New
+CUST_2218,81,1,19.31,4,1,1,Promising / New
+CUST_2219,155,1,93.07,3,1,2,About to Sleep / Average
+CUST_2220,56,2,131.72,4,2,2,Promising / New
+CUST_2221,18,1,150.48,5,1,3,Promising / New
+CUST_2222,6,1,141.09,5,1,2,Promising / New
+CUST_2223,36,2,706.24,5,2,5,Promising / New
+CUST_2224,49,1,135.17,5,1,2,Promising / New
+CUST_2225,2,2,810.41,5,2,5,Promising / New
+CUST_2226,322,1,34.2,1,1,1,Hibernating / Lost
+CUST_2227,346,1,237.46,1,1,3,Hibernating / Lost
+CUST_2228,179,1,88.91,3,1,1,About to Sleep / Average
+CUST_2229,5,1,262.98,5,1,4,Promising / New
+CUST_2230,199,1,115.6,2,1,2,Hibernating / Lost
+CUST_2231,320,1,69.16,1,1,1,Hibernating / Lost
+CUST_2232,329,1,64.86,1,1,1,Hibernating / Lost
+CUST_2233,14,1,209.73,5,1,3,Promising / New
+CUST_2234,338,1,216.78,1,1,3,Hibernating / Lost
+CUST_2235,195,2,513.37,2,2,4,Hibernating / Lost
+CUST_2236,43,1,58.53,5,1,1,Promising / New
+CUST_2237,103,1,326.38,4,1,4,Promising / New
+CUST_2238,262,1,92.14,2,1,2,Hibernating / Lost
+CUST_2239,17,1,127.82,5,1,2,Promising / New
+CUST_2240,7,2,815.39,5,2,5,Promising / New
+CUST_2241,190,1,133.58,3,1,2,About to Sleep / Average
+CUST_2242,71,1,539.8,4,1,4,Promising / New
+CUST_2243,166,5,1540.83,3,4,5,Loyal Customers
+CUST_2244,109,1,1163.64,4,1,5,Promising / New
+CUST_2245,118,1,509.5,3,1,4,About to Sleep / Average
+CUST_2246,155,1,118.21,3,1,2,About to Sleep / Average
+CUST_2247,49,1,247.85,5,1,4,Promising / New
+CUST_2248,356,1,211.68,1,1,3,Hibernating / Lost
+CUST_2249,253,1,129.4,2,1,2,Hibernating / Lost
+CUST_2250,63,2,886.48,4,2,5,Promising / New
+CUST_2251,19,3,998.91,5,3,5,Champions
+CUST_2252,201,1,198.37,2,1,3,Hibernating / Lost
+CUST_2253,295,1,6710.36,1,1,5,Hibernating / Lost
+CUST_2254,168,2,265.64,3,2,4,About to Sleep / Average
+CUST_2255,126,5,1584.5700000000002,3,4,5,Loyal Customers
+CUST_2256,203,1,1020.75,2,1,5,Hibernating / Lost
+CUST_2257,271,1,152.11,2,1,3,Hibernating / Lost
+CUST_2258,19,5,1006.26,5,4,5,Champions
+CUST_2259,267,1,220.98,2,1,3,Hibernating / Lost
+CUST_2260,45,1,87.48,5,1,1,Promising / New
+CUST_2261,363,1,19.42,1,1,1,Hibernating / Lost
+CUST_2262,8,1,136.13,5,1,2,Promising / New
+CUST_2263,146,1,3555.05,3,1,5,About to Sleep / Average
+CUST_2264,179,1,145.46,3,1,2,About to Sleep / Average
+CUST_2265,125,1,37.19,3,1,1,About to Sleep / Average
+CUST_2266,152,1,119.69,3,1,2,About to Sleep / Average
+CUST_2267,80,1,98.26,4,1,2,Promising / New
+CUST_2268,363,1,149.2,1,1,3,Hibernating / Lost
+CUST_2269,294,1,310.86,1,1,4,Hibernating / Lost
+CUST_2270,38,1,20.68,5,1,1,Promising / New
+CUST_2271,30,2,214.01,5,2,3,Promising / New
+CUST_2272,117,1,99.19,4,1,2,Promising / New
+CUST_2273,66,2,3600.22,4,2,5,Promising / New
+CUST_2274,307,1,2289.65,1,1,5,Hibernating / Lost
+CUST_2275,103,1,105.38,4,1,2,Promising / New
+CUST_2276,60,10,4496.9,4,5,5,Champions
+CUST_2277,268,1,177.59,2,1,3,Hibernating / Lost
+CUST_2278,324,1,694.14,1,1,5,Hibernating / Lost
+CUST_2279,45,1,218.17,5,1,3,Promising / New
+CUST_2280,16,3,1826.2299999999998,5,3,5,Champions
+CUST_2281,140,1,160.86,3,1,3,About to Sleep / Average
+CUST_2282,67,1,112.04,4,1,2,Promising / New
+CUST_2283,99,1,110.82,4,1,2,Promising / New
+CUST_2284,23,2,381.33000000000004,5,2,4,Promising / New
+CUST_2285,36,1,198.9,5,1,3,Promising / New
+CUST_2286,4,4,849.46,5,4,5,Champions
+CUST_2287,318,1,193.24,1,1,3,Hibernating / Lost
+CUST_2288,157,1,96.9,3,1,2,About to Sleep / Average
+CUST_2289,92,2,412.77,4,2,4,Promising / New
+CUST_2290,286,2,211.07,1,2,3,Hibernating / Lost
+CUST_2291,59,1,419.18,4,1,4,Promising / New
+CUST_2292,47,3,3628.79,5,3,5,Champions
+CUST_2293,21,1,71.11,5,1,1,Promising / New
+CUST_2294,282,1,566.24,1,1,4,Hibernating / Lost
+CUST_2295,96,1,75.18,4,1,1,Promising / New
+CUST_2296,358,1,99.08,1,1,2,Hibernating / Lost
+CUST_2297,15,1,148.34,5,1,3,Promising / New
+CUST_2298,323,1,183.67,1,1,3,Hibernating / Lost
+CUST_2299,45,1,96.16,5,1,2,Promising / New
+CUST_2300,25,1,136.63,5,1,2,Promising / New
+CUST_2301,62,1,2444.25,4,1,5,Promising / New
+CUST_2302,98,1,692.15,4,1,5,Promising / New
+CUST_2303,67,1,58.63,4,1,1,Promising / New
+CUST_2304,98,1,114.59,4,1,2,Promising / New
+CUST_2305,17,1,40.75,5,1,1,Promising / New
+CUST_2306,109,2,310.62,4,2,4,Promising / New
+CUST_2307,364,1,3510.21,1,1,5,Hibernating / Lost
+CUST_2308,351,1,258.88,1,1,4,Hibernating / Lost
+CUST_2309,165,3,1589.82,3,3,5,Loyal Customers
+CUST_2310,35,2,6532.5,5,2,5,Promising / New
+CUST_2311,221,2,231.82,2,2,3,Hibernating / Lost
+CUST_2312,167,1,247.02,3,1,4,About to Sleep / Average
+CUST_2313,124,1,667.97,3,1,5,About to Sleep / Average
+CUST_2314,354,1,200.57,1,1,3,Hibernating / Lost
+CUST_2315,152,1,83.32,3,1,1,About to Sleep / Average
+CUST_2316,352,1,36.61,1,1,1,Hibernating / Lost
+CUST_2317,197,1,72.29,2,1,1,Hibernating / Lost
+CUST_2318,81,2,321.07000000000005,4,2,4,Promising / New
+CUST_2319,349,1,140.94,1,1,2,Hibernating / Lost
+CUST_2320,191,1,177.8,3,1,3,About to Sleep / Average
+CUST_2321,164,1,143.53,3,1,2,About to Sleep / Average
+CUST_2322,166,1,374.20000000000005,3,1,4,About to Sleep / Average
+CUST_2323,248,1,19.1,2,1,1,Hibernating / Lost
+CUST_2324,317,1,66.29,1,1,1,Hibernating / Lost
+CUST_2325,35,1,64.79,5,1,1,Promising / New
+CUST_2326,116,1,495.7,4,1,4,Promising / New
+CUST_2327,56,1,318.24,4,1,4,Promising / New
+CUST_2328,29,1,69.81,5,1,1,Promising / New
+CUST_2329,66,1,951.15,4,1,5,Promising / New
+CUST_2330,316,2,1137.2599999999998,1,2,5,Hibernating / Lost
+CUST_2331,6,1,139.22,5,1,2,Promising / New
+CUST_2332,241,1,671.94,2,1,5,Hibernating / Lost
+CUST_2333,258,1,189.03,2,1,3,Hibernating / Lost
+CUST_2334,169,1,494.15,3,1,4,About to Sleep / Average
+CUST_2335,36,1,653.4000000000001,5,1,5,Promising / New
+CUST_2336,164,1,106.71,3,1,2,About to Sleep / Average
+CUST_2337,156,1,96.08,3,1,2,About to Sleep / Average
+CUST_2338,11,1,214.12,5,1,3,Promising / New
+CUST_2339,110,1,151.68,4,1,3,Promising / New
+CUST_2340,305,1,679.66,1,1,5,Hibernating / Lost
+CUST_2341,4,1,75.91,5,1,1,Promising / New
+CUST_2342,133,3,688.39,3,3,5,Loyal Customers
+CUST_2343,15,4,4300.92,5,4,5,Champions
+CUST_2344,112,1,19.41,4,1,1,Promising / New
+CUST_2345,61,1,463.56,4,1,4,Promising / New
+CUST_2346,40,4,7961.4400000000005,5,4,5,Champions
+CUST_2347,325,1,205.25,1,1,3,Hibernating / Lost
+CUST_2348,242,1,191.82,2,1,3,Hibernating / Lost
+CUST_2349,122,1,123.46,3,1,2,About to Sleep / Average
+CUST_2350,210,1,98.97,2,1,2,Hibernating / Lost
+CUST_2351,294,1,647.95,1,1,5,Hibernating / Lost
+CUST_2352,54,1,114.91,5,1,2,Promising / New
+CUST_2353,142,2,737.48,3,2,5,About to Sleep / Average
+CUST_2354,150,1,196.34,3,1,3,About to Sleep / Average
+CUST_2355,68,1,70.8,4,1,1,Promising / New
+CUST_2356,150,1,197.87,3,1,3,About to Sleep / Average
+CUST_2357,56,1,182.73,4,1,3,Promising / New
+CUST_2358,138,3,820.5500000000001,3,3,5,Loyal Customers
+CUST_2359,128,2,309.78999999999996,3,2,4,About to Sleep / Average
+CUST_2360,22,2,7161.78,5,2,5,Promising / New
+CUST_2361,209,1,123.86,2,1,2,Hibernating / Lost
+CUST_2362,200,1,154.63,2,1,3,Hibernating / Lost
+CUST_2363,32,2,3503.5299999999997,5,2,5,Promising / New
+CUST_2364,41,1,155.94,5,1,3,Promising / New
+CUST_2365,46,1,161.08,5,1,3,Promising / New
+CUST_2366,181,2,232.79,3,2,3,About to Sleep / Average
+CUST_2367,21,2,1250.72,5,2,5,Promising / New
+CUST_2368,117,1,150.96,4,1,3,Promising / New
+CUST_2369,199,1,97.4,2,1,2,Hibernating / Lost
+CUST_2370,308,1,383.44,1,1,4,Hibernating / Lost
+CUST_2371,12,1,34.11,5,1,1,Promising / New
+CUST_2372,219,1,165.75,2,1,3,Hibernating / Lost
+CUST_2373,267,1,132.79,2,1,2,Hibernating / Lost
+CUST_2374,71,3,4335.45,4,3,5,Champions
+CUST_2375,153,1,283.56,3,1,4,About to Sleep / Average
+CUST_2376,38,1,76.28,5,1,1,Promising / New
+CUST_2377,183,1,57.77,3,1,1,About to Sleep / Average
+CUST_2378,37,3,405.7,5,3,4,Champions
+CUST_2379,168,1,70.73,3,1,1,About to Sleep / Average
+CUST_2380,126,1,100.36,3,1,2,About to Sleep / Average
+CUST_2381,234,1,75.45,2,1,1,Hibernating / Lost
+CUST_2382,196,1,2285.05,2,1,5,Hibernating / Lost
+CUST_2383,152,1,183.81,3,1,3,About to Sleep / Average
+CUST_2384,18,1,76.14,5,1,1,Promising / New
+CUST_2385,63,1,1158.1999999999998,4,1,5,Promising / New
+CUST_2386,38,2,313.14,5,2,4,Promising / New
+CUST_2387,128,1,68.87,3,1,1,About to Sleep / Average
+CUST_2388,111,2,611.9399999999999,4,2,5,Promising / New
+CUST_2389,162,1,36.06,3,1,1,About to Sleep / Average
+CUST_2390,309,3,223.98,1,3,3,At Risk / Can't Lose Them
+CUST_2391,114,1,542.64,4,1,4,Promising / New
+CUST_2392,353,1,245.06,1,1,4,Hibernating / Lost
+CUST_2393,206,2,461.27,2,2,4,Hibernating / Lost
+CUST_2394,187,1,72.4,3,1,1,About to Sleep / Average
+CUST_2395,307,1,19.73,1,1,1,Hibernating / Lost
+CUST_2396,117,1,679.78,4,1,5,Promising / New
+CUST_2397,37,1,111.73,5,1,2,Promising / New
+CUST_2398,68,1,20.71,4,1,1,Promising / New
+CUST_2399,21,1,95.07,5,1,2,Promising / New
+CUST_2400,53,2,2821.64,5,2,5,Promising / New
+CUST_2401,89,2,267.74,4,2,4,Promising / New
+CUST_2402,162,1,49.01,3,1,1,About to Sleep / Average
+CUST_2403,103,1,112.94,4,1,2,Promising / New
+CUST_2404,264,1,455.32,2,1,4,Hibernating / Lost
+CUST_2405,20,1,64.57,5,1,1,Promising / New
+CUST_2406,73,1,20.21,4,1,1,Promising / New
+CUST_2407,249,1,658.34,2,1,5,Hibernating / Lost
+CUST_2408,159,4,1875.3000000000002,3,4,5,Loyal Customers
+CUST_2409,26,1,75.62,5,1,1,Promising / New
+CUST_2410,311,2,132.73,1,2,2,Hibernating / Lost
+CUST_2411,155,1,73.12,3,1,1,About to Sleep / Average
+CUST_2412,203,1,435.98,2,1,4,Hibernating / Lost
+CUST_2413,215,1,163.1,2,1,3,Hibernating / Lost
+CUST_2414,176,1,70.13,3,1,1,About to Sleep / Average
+CUST_2415,8,1,1141.42,5,1,5,Promising / New
+CUST_2416,65,3,486.62,4,3,4,Champions
+CUST_2417,328,1,116.53,1,1,2,Hibernating / Lost
+CUST_2418,200,1,62.45,2,1,1,Hibernating / Lost
+CUST_2419,92,1,91.22,4,1,2,Promising / New
+CUST_2420,13,2,334.0,5,2,4,Promising / New
+CUST_2421,9,2,769.35,5,2,5,Promising / New
+CUST_2422,215,1,116.81,2,1,2,Hibernating / Lost
+CUST_2423,212,1,140.26,2,1,2,Hibernating / Lost
+CUST_2424,336,1,130.91,1,1,2,Hibernating / Lost
+CUST_2425,349,1,71.51,1,1,1,Hibernating / Lost
+CUST_2426,305,2,307.77,1,2,4,Hibernating / Lost
+CUST_2427,64,1,659.43,4,1,5,Promising / New
+CUST_2428,158,1,54.91,3,1,1,About to Sleep / Average
+CUST_2429,164,1,71.02,3,1,1,About to Sleep / Average
+CUST_2430,280,1,475.7,1,1,4,Hibernating / Lost
+CUST_2431,115,3,1027.29,4,3,5,Champions
+CUST_2432,284,1,679.23,1,1,5,Hibernating / Lost
+CUST_2433,353,1,141.53,1,1,2,Hibernating / Lost
+CUST_2434,57,1,19.91,4,1,1,Promising / New
+CUST_2435,31,2,76.16,5,2,1,Promising / New
+CUST_2436,3,1,460.24,5,1,4,Promising / New
+CUST_2437,230,1,19.65,2,1,1,Hibernating / Lost
+CUST_2438,100,1,38.33,4,1,1,Promising / New
+CUST_2439,55,1,146.81,4,1,3,Promising / New
+CUST_2440,308,1,133.35,1,1,2,Hibernating / Lost
+CUST_2441,306,1,548.25,1,1,4,Hibernating / Lost
+CUST_2442,43,5,548.1999999999999,5,4,4,Champions
+CUST_2443,122,1,492.58,3,1,4,About to Sleep / Average
+CUST_2444,2,4,1527.84,5,4,5,Champions
+CUST_2445,346,1,128.79,1,1,2,Hibernating / Lost
+CUST_2446,174,2,189.97,3,2,3,About to Sleep / Average
+CUST_2447,232,1,157.89,2,1,3,Hibernating / Lost
+CUST_2448,224,1,626.68,2,1,5,Hibernating / Lost
+CUST_2449,29,2,577.6899999999999,5,2,4,Promising / New
+CUST_2450,154,1,146.65,3,1,2,About to Sleep / Average
+CUST_2451,327,1,92.08,1,1,2,Hibernating / Lost
+CUST_2452,76,1,186.52,4,1,3,Promising / New
+CUST_2453,194,2,2032.52,2,2,5,Hibernating / Lost
+CUST_2454,31,5,712.12,5,4,5,Champions
+CUST_2455,113,1,680.37,4,1,5,Promising / New
+CUST_2456,331,1,78.85,1,1,1,Hibernating / Lost
+CUST_2457,48,1,206.11,5,1,3,Promising / New
+CUST_2458,127,1,40.78,3,1,1,About to Sleep / Average
+CUST_2459,73,1,415.14,4,1,4,Promising / New
+CUST_2460,217,1,37.33,2,1,1,Hibernating / Lost
+CUST_2461,98,1,401.78,4,1,4,Promising / New
+CUST_2462,108,1,115.15,4,1,2,Promising / New
+CUST_2463,36,1,126.78,5,1,2,Promising / New
+CUST_2464,109,1,411.6,4,1,4,Promising / New
+CUST_2465,37,1,52.12,5,1,1,Promising / New
+CUST_2466,266,1,636.79,2,1,5,Hibernating / Lost
+CUST_2467,158,2,1010.26,3,2,5,About to Sleep / Average
+CUST_2468,54,2,321.58,5,2,4,Promising / New
+CUST_2469,251,1,575.14,2,1,4,Hibernating / Lost
+CUST_2470,213,1,72.52,2,1,1,Hibernating / Lost
+CUST_2471,265,3,391.70000000000005,2,3,4,At Risk / Can't Lose Them
+CUST_2472,9,1,1047.04,5,1,5,Promising / New
+CUST_2473,64,1,280.12,4,1,4,Promising / New
+CUST_2474,126,1,68.23,3,1,1,About to Sleep / Average
+CUST_2475,21,1,227.17,5,1,3,Promising / New
+CUST_2476,161,1,150.23,3,1,3,About to Sleep / Average
+CUST_2477,280,1,105.29,1,1,2,Hibernating / Lost
+CUST_2478,216,1,64.35,2,1,1,Hibernating / Lost
+CUST_2479,23,1,19.8,5,1,1,Promising / New
+CUST_2480,246,1,251.26,2,1,4,Hibernating / Lost
+CUST_2481,13,4,2664.41,5,4,5,Champions
+CUST_2482,131,2,365.5,3,2,4,About to Sleep / Average
+CUST_2483,27,2,554.99,5,2,4,Promising / New
+CUST_2484,76,1,199.2,4,1,3,Promising / New
+CUST_2485,356,1,19.51,1,1,1,Hibernating / Lost
+CUST_2486,228,1,214.82,2,1,3,Hibernating / Lost
+CUST_2487,54,4,573.5,5,4,4,Champions
+CUST_2488,136,1,207.51,3,1,3,About to Sleep / Average
+CUST_2489,173,1,120.13,3,1,2,About to Sleep / Average
+CUST_2490,260,1,218.8,2,1,3,Hibernating / Lost
+CUST_2491,157,2,154.41,3,2,3,About to Sleep / Average
+CUST_2492,281,1,178.58,1,1,3,Hibernating / Lost
+CUST_2493,306,1,672.02,1,1,5,Hibernating / Lost
+CUST_2494,18,1,97.69,5,1,2,Promising / New
+CUST_2495,92,1,153.34,4,1,3,Promising / New
+CUST_2496,313,1,215.18,1,1,3,Hibernating / Lost
+CUST_2497,272,1,100.69,2,1,2,Hibernating / Lost
+CUST_2498,273,1,289.7,2,1,4,Hibernating / Lost
+CUST_2499,74,1,468.75,4,1,4,Promising / New

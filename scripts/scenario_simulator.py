@@ -37,6 +37,8 @@ import sys
 
 import pandas as pd
 
+import rfm_analysis
+
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(SCRIPT_DIR, "..", "data")
 REPORTS_DIR = os.path.join(SCRIPT_DIR, "..", "reports")
@@ -46,6 +48,9 @@ RFM_FILE = os.path.join(DATA_DIR, "rfm_segments.csv")
 SALES_FILE = os.path.join(DATA_DIR, "raw_sales_data.csv")
 
 HORIZON_DAYS = 30
+
+# Below this many customers, a segment's measured conversion rate is noise.
+MIN_SEGMENT_OBSERVATIONS = 30
 
 # Home goods gross margin. A planning assumption, not measured -- the catalog
 # has retail prices only, no cost of goods.
@@ -77,45 +82,21 @@ def measure_baselines(horizon=HORIZON_DAYS):
     hist = sales[sales["InvoiceDate"] <= cutoff]
     future_buyers = set(sales[sales["InvoiceDate"] > cutoff]["CustomerID"])
 
-    snapshot = hist["InvoiceDate"].max() + pd.Timedelta(days=1)
+    # Scoring comes from rfm_analysis so there is exactly one implementation.
+    # This module used to carry its own copy, which would have kept the old
+    # tie-breaking behavior after the real one was fixed.
     grouped = hist.groupby("CustomerID")
-    rfm = pd.DataFrame({
-        "recency": (snapshot - grouped["InvoiceDate"].max()).dt.days,
-        "frequency": grouped["InvoiceNo"].nunique(),
-        "monetary": grouped["Rev"].sum(),
-    })
-    rfm["r"] = pd.qcut(rfm["recency"].rank(method="first", ascending=False),
-                       5, labels=[1, 2, 3, 4, 5]).astype(int)
-    rfm["f"] = pd.qcut(rfm["frequency"].rank(method="first"),
-                       5, labels=[1, 2, 3, 4, 5]).astype(int)
-    rfm["m"] = pd.qcut(rfm["monetary"].rank(method="first"),
-                       5, labels=[1, 2, 3, 4, 5]).astype(int)
-    rfm["segment"] = rfm.apply(_segment_of, axis=1)
+    rfm = rfm_analysis.compute_rfm(hist)
     rfm["converted"] = rfm.index.isin(future_buyers)
     rfm["aov"] = grouped.apply(
         lambda g: g["Rev"].sum() / g["InvoiceNo"].nunique(), include_groups=False)
 
-    out = rfm.groupby("segment").agg(
+    out = rfm.groupby("customer_segment").agg(
         observed_customers=("converted", "size"),
         baseline_conv=("converted", "mean"),
         aov=("aov", "mean"),
     )
     return out, rfm["converted"].mean()
-
-
-def _segment_of(row):
-    r, f, m = row["r"], row["f"], row["m"]
-    if r >= 4 and f >= 4 and m >= 4:
-        return "Champions"
-    if r >= 3 and f >= 3 and m >= 3:
-        return "Loyal Customers"
-    if r >= 3 and f <= 2:
-        return "Promising / New"
-    if r <= 2 and f >= 3:
-        return "At Risk / Can't Lose Them"
-    if r <= 2 and f <= 2:
-        return "Hibernating / Lost"
-    return "About to Sleep / Average"
 
 
 def load_segments():
@@ -358,7 +339,14 @@ def main():
         # fixed fact -- measure it rather than asserting it, so this note cannot
         # go stale if the simulator's behavioral model changes.
         conv = baselines["baseline_conv"]
-        spread = conv.max() / conv.min() if conv.min() > 0 else float("inf")
+        counts = baselines["observed_customers"]
+        # A segment with no observed conversions cannot anchor a ratio: the
+        # spread becomes infinite and would sail past any "is there signal?"
+        # check. Treat it as unmeasured instead, which is what it is.
+        measurable = conv[(conv > 0) & (counts >= MIN_SEGMENT_OBSERVATIONS)]
+        unmeasured = [s for s in conv.index if s not in measurable.index]
+        spread = (measurable.max() / measurable.min()
+                  if len(measurable) >= 2 else float("nan"))
         # Two independent red flags. A narrow spread means the segments barely
         # differ; an inverted ordering (Champions converting no better than
         # Hibernating) means whatever spread exists is noise. The old uniform-
@@ -367,22 +355,31 @@ def main():
         champs = baselines["baseline_conv"].get("Champions")
         lost = baselines["baseline_conv"].get("Hibernating / Lost")
         inverted = champs is not None and lost is not None and champs <= lost
-        if spread < 3.0 or inverted:
+        if unmeasured:
+            print("")
+            print(f"  NOTE: {', '.join(unmeasured)} has too few observed")
+            print(f"  conversions to estimate a baseline (fewer than"
+                  f" {MIN_SEGMENT_OBSERVATIONS} customers,")
+            print("  or none converted). Pass --baseline explicitly when"
+                  " targeting it.")
+        if pd.isna(spread) or spread < 3.0 or inverted:
             print("")
             print("  WARNING: these segment baselines do not look trustworthy.")
-            print(f"  Spread is only {spread:.2f}x" + (" and Champions convert no"
-                  " better than" if inverted else ""))
+            if pd.isna(spread):
+                print("  Too few measurable segments to compare.")
+            else:
+                print(f"  Spread is only {spread:.2f}x" + (" and Champions convert"
+                      " no better than" if inverted else ""))
             if inverted:
                 print("  Hibernating / Lost, which should never happen.")
-            print("  Past behavior likely does not predict future purchases here,")
-            print("  so treat the per-segment rates as uninformative.")
-            print("  Pass --baseline with your own estimate.")
+            print("  Treat the per-segment rates as uninformative and pass")
+            print("  --baseline with your own estimate.")
         else:
             print("")
-            print(f"  Segment baselines differ {spread:.1f}x (highest to lowest)")
-            print("  and are correctly ordered, so they carry real signal. They")
-            print("  are still measured on simulated transactions -- pass")
-            print("  --baseline to substitute your own estimate for a real call.")
+            print(f"  Measurable segment baselines differ {spread:.1f}x and are")
+            print("  correctly ordered, so they carry real signal. They are still")
+            print("  measured on simulated transactions -- pass --baseline to")
+            print("  substitute your own estimate for a real call.")
         if not args.segment:
             return
 
