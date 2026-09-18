@@ -15,11 +15,14 @@ BEHAVIORAL MODEL
 Customers are not interchangeable. Each one draws two latent traits:
 
     lambda  purchases per day while active   ~ Gamma
-    mu      dropout hazard (1/expected life) ~ Gamma
+    mu      dropout hazard (per day)         ~ Gamma
+    tau     lifetime                         ~ Exponential(mu)
 
 and then buys via a Poisson process from their acquisition date until they
 churn or the window closes. This is the Pareto/NBD structure (Schmittlein,
-Morrison & Colombo 1987) that underpins most non-contractual CLV work.
+Morrison & Colombo 1987) that underpins most non-contractual CLV work: the
+Gamma-mixed Poisson gives the NBD purchase counts, and the Gamma-mixed
+exponential lifetime is Lomax (Pareto type II), which supplies the Pareto.
 
 An earlier version of this script assigned every transaction to a uniformly
 random customer:
@@ -79,9 +82,17 @@ LAMBDA_SHAPE = 0.9
 LAMBDA_MEAN_PER_YEAR = 1.7          # mean repeat purchases/year while active
 
 # --- dropout ---------------------------------------------------------------
-# Expected customer lifetime, also heterogeneous. Short relative to the
-# window so that cohort retention actually decays inside 12 months.
-LIFETIME_SHAPE = 1.4
+# True Pareto/NBD dropout: each customer draws a dropout HAZARD from a Gamma,
+# then an exponential lifetime at that hazard. The lifetime is therefore
+# Lomax (Pareto type II) distributed -- the "Pareto" the model is named for.
+#
+# An earlier version drew the lifetime straight from a Gamma, which is a
+# reasonable model but is not Pareto/NBD, and the docstring above claimed the
+# hazard was drawn even though the code never drew one.
+#
+# DROPOUT_SHAPE is s in Gamma(s, beta); the scale is derived so that the mean
+# lifetime equals LIFETIME_MEAN_DAYS, since E[1/mu] = 1 / (scale * (s - 1)).
+DROPOUT_SHAPE = 2.5
 LIFETIME_MEAN_DAYS = 165
 
 QUANTITY_CHOICES = [1, 2, 5]
@@ -131,12 +142,15 @@ def load_catalog() -> list[dict]:
 def build_customers(rng: np.random.Generator, fake: Faker) -> list[dict]:
     """Draw each customer's acquisition date and latent behavioral traits."""
     lam_scale = (LAMBDA_MEAN_PER_YEAR / 365.0) / LAMBDA_SHAPE
-    life_scale = LIFETIME_MEAN_DAYS / LIFETIME_SHAPE
+    hazard_scale = 1.0 / (LIFETIME_MEAN_DAYS * (DROPOUT_SHAPE - 1))
 
     customers = []
     for i in range(NUM_CUSTOMERS):
         # Acquisition spread across the window so cohorts are real cohorts.
         acquired_offset = int(rng.integers(0, WINDOW_DAYS))
+        # Pareto/NBD dropout: hazard first, then an exponential lifetime.
+        hazard = float(rng.gamma(DROPOUT_SHAPE, hazard_scale))
+        lifetime = float(rng.exponential(1.0 / hazard)) if hazard > 0 else float(WINDOW_DAYS)
         customers.append({
             "CustomerID": f"CUST_{1000 + i}",
             "CustomerName": fake.name(),
@@ -144,8 +158,9 @@ def build_customers(rng: np.random.Generator, fake: Faker) -> list[dict]:
             "acquired": START_DATE + timedelta(days=acquired_offset),
             # purchases/day while active
             "lambda": float(rng.gamma(LAMBDA_SHAPE, lam_scale)),
-            # days from acquisition until dropout
-            "lifetime_days": float(rng.gamma(LIFETIME_SHAPE, life_scale)),
+            # dropout hazard per day, and the lifetime it implies
+            "dropout_hazard": hazard,
+            "lifetime_days": lifetime,
         })
     return customers
 
@@ -204,6 +219,7 @@ def generate_transactions(products: list[dict], customers: list[dict],
         "CustomerID": c["CustomerID"],
         "acquired": c["acquired"].strftime("%Y-%m-%d"),
         "true_lambda_per_year": round(c["lambda"] * 365, 4),
+        "true_dropout_hazard_per_day": round(c["dropout_hazard"], 6),
         "true_lifetime_days": round(c["lifetime_days"], 1),
         "churned_before_window_end": bool(
             c["acquired"] + timedelta(days=c["lifetime_days"]) < END_DATE),
