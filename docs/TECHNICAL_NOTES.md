@@ -16,7 +16,6 @@ python scripts/scraper.py        # data/wayfair_page.html -> data/product_catalo
 python scripts/clean_data.py     # data/product_catalog.csv -> data/product_catalog_clean.csv
 python scripts/simulator.py      # data/product_catalog_clean.csv -> data/raw_sales_data.csv
 python scripts/rfm_analysis.py   # data/raw_sales_data.csv -> data/rfm_segments.csv
-python scripts/generate_report.py # all of the above -> reports/*.docx
 
 # optional analysis tools (not part of the linear pipeline)
 python scripts/scenario_simulator.py --list
@@ -24,7 +23,7 @@ python scripts/churn_model.py
 python scripts/cohort_analysis.py
 ```
 
-All eight scripts resolve paths relative to their own file location
+All seven scripts resolve paths relative to their own file location
 (`SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))`), so they run
 correctly whether invoked from the project root or from inside `scripts/`.
 Verified both ways.
@@ -48,16 +47,13 @@ ecommerce-rfm-pipeline/
 │   ├── clean_data.py
 │   ├── simulator.py
 │   ├── rfm_analysis.py
-│   ├── generate_report.py
 │   ├── scenario_simulator.py
 │   ├── churn_model.py
 │   └── cohort_analysis.py
 ├── reports/
-│   ├── Wayfair_Sales_Performance_Report.docx
-│   └── charts/                   # PNGs embedded in the report (regenerated each run)
+│   └── charts/                   # PNGs written by the analysis scripts (gitignored)
 ├── docs/
-│   ├── TECHNICAL_NOTES.md        # this file
-│   └── images/                   # charts shown in the README
+│   └── TECHNICAL_NOTES.md        # this file
 ├── requirements.txt
 └── README.md
 ```
@@ -116,11 +112,22 @@ to a clearly distinct filename instead (`product_catalog_SAMPLE.csv`).
 ### `simulator.py`
 - Generates a simulated transaction history against the real catalog, over a
   365-day window ending 2026-06-01.
-- **Customers are not interchangeable.** Each draws two latent traits --
-  a purchase rate (`lambda`, Gamma-distributed) and a dropout hazard giving a
-  finite lifetime -- then buys via a Poisson process from their acquisition
-  date until they churn or the window closes. This is the Pareto/NBD structure
-  (Schmittlein, Morrison & Colombo 1987) used in non-contractual CLV work.
+- **Customers are not interchangeable.** Each draws a purchase rate
+  (`lambda`, Gamma-distributed) and a dropout hazard (`mu`, Gamma-distributed),
+  then an exponential lifetime at that hazard, and buys via a Poisson process
+  from acquisition until they churn or the window closes. This is the
+  Pareto/NBD structure (Schmittlein, Morrison & Colombo 1987): the Gamma-mixed
+  Poisson gives NBD purchase counts, and the Gamma-mixed exponential lifetime
+  is Lomax (Pareto type II), which is where the "Pareto" comes from.
+- **The dropout process was wrong until 2026-09-17.** The code drew
+  `lifetime_days` straight from a Gamma, which is a reasonable behavioral model
+  but is not Pareto/NBD -- and the module docstring described a hazard the code
+  never drew. Drawing the hazard first gives lifetimes a much heavier tail:
+  median 79 days against a 162-day mean.
+- `DROPOUT_SHAPE = 2.5` with `LIFETIME_MEAN_DAYS = 165` was chosen so the
+  corrected process still yields a plausible dataset (23% repeat rate, 66%
+  churned inside the window). Shape values below ~2 push the repeat rate under
+  21%.
 - **Acquisition dates are staggered** across the window rather than every
   customer existing from day one, so cohort analysis sees real monthly cohorts.
 - **Transaction volume is an output, not an input.** Tune `NUM_CUSTOMERS` and
@@ -142,11 +149,11 @@ the descriptive outputs but broke everything predictive built on top:
 
 | Symptom | Uniform random | Behavioral model |
 |---|---|---|
-| Churn model AUC (6-feature probe, logistic regression) | 0.480 | **0.763** |
-| `frequency` correlation with repurchase | -0.0003 | **+0.163** |
-| Month-1 cohort retention | 35% (flat, no decay) | **10.6% (decaying)** |
-| Cohort sizes across 12 months | 157 → 2 (artifact) | **101–138 (even)** |
-| Repeat-purchase rate | 96.2% (implausible) | **28.0%** |
+| Churn model AUC (6-feature probe, logistic regression) | 0.480 | **0.739** |
+| `frequency` correlation with repurchase | -0.0003 | **+0.126** |
+| Month-1 cohort retention | 35% (flat, no decay) | **9.0% (decaying)** |
+| Cohort sizes across 12 months | 157 → 2 (artifact) | **109–155 (even)** |
+| Repeat-purchase rate | 96.2% (implausible) | **23.0%** |
 
 All five traced back to that one line. Note the sign on `frequency`: under the
 old model, how often a customer had bought carried no information about whether
@@ -154,47 +161,34 @@ they would buy again, which is why any model scored at chance.
 
 ### `rfm_analysis.py`
 - Computes Recency / Frequency / Monetary per customer from
-  `raw_sales_data.csv`, scores each on a 1–5 quintile scale, and assigns a
-  segment label (`Champions`, `Loyal Customers`, `Promising / New`,
-  `At Risk / Can't Lose Them`, `Hibernating / Lost`, `About to Sleep /
-  Average`).
-- All three quintile scores use `.rank(method='first')` before `qcut` so
-  that tied values (common with integer `frequency`) can never produce a
-  "duplicate bin edge" crash. This was a real bug found and fixed — adding
-  `duplicates='drop'` to `qcut` directly does **not** work when explicit
-  `labels` are also passed (it raises a different error), so don't
-  reintroduce that pattern.
+  `raw_sales_data.csv`, scores each 1–5, and assigns one of six segment
+  labels.
+- **Recency and monetary use tie-aware quintiles**: percentile rank with
+  `method="average"`, so equal values always land on the same score. Buckets
+  are uneven whenever values repeat, which is the correct trade.
+- **Frequency uses explicit order-count bands** (1 / 2 / 3 / 4–5 / 6+). Its
+  distribution is far too concentrated for quintiles: 77% of customers place
+  exactly one order.
+- **⚠️ Do not reintroduce `.rank(method="first")` before `qcut`.** It was here
+  until 2026-09-17 as a way to stop `qcut` raising "duplicate bin edge" on tied
+  values. It works, but it breaks ties by row order, so identical customers get
+  different scores: the one-order customers were spread across F-scores 1–4,
+  putting 18 one-time buyers in Champions and 109 in Loyal Customers. Passing
+  `duplicates='drop'` to `qcut` is not the alternative either -- it raises a
+  different error when explicit `labels` are supplied. Score ties explicitly
+  instead.
+- **Segment rules test frequency first.** With 77% of customers at one order,
+  the classic recency-first grid put 91% of customers into two labels and left
+  `About to Sleep / Average` empty. Repeat buyers (3+ orders) split by recency
+  and value; everyone else splits by recency alone.
+- `describe()` warns if any one-order customer lands in a segment that implies
+  repeat buying -- the original symptom of the tie bug, now a standing check.
+- The scoring functions are imported by `scenario_simulator.py` rather than
+  copied. The copy that used to live there would have kept the old tie
+  behavior after this file was fixed.
 - `snapshot_date` is derived from the data itself
   (`max(InvoiceDate) + 1 day`), not hardcoded, so it stays correct even if
   `simulator.py`'s date window changes later.
-
-### `generate_report.py`
-- Builds `reports/Wayfair_Sales_Performance_Report.docx` from
-  `raw_sales_data.csv`, `product_catalog_clean.csv`, and (optionally)
-  `rfm_segments.csv`. Charts are written to `reports/charts/` and embedded.
-- **Every number in the narrative prose is computed at generation time.**
-  There are no hardcoded figures in the sentences — month names, peak/trough
-  revenue, the 80%-of-revenue product count, segment shares, and the
-  partial-month exclusion note all derive from the data.
-- **So are the judgments.** Computing the numbers turned out not to be
-  enough. After the simulator rewrite the report still called a 28% repeat
-  rate "very high", said "very few" customers placed a single order when 72%
-  did, described revenue that rose by more than half across the year as
-  "relatively stable", and called a March peak "consistent with a holiday
-  shopping pattern". The numbers had updated; the adjectives were hardcoded.
-  The repeat-rate descriptor (`repeat_descriptor`), trend direction
-  (`describe_trend`), and holiday attribution are now chosen from the data,
-  so prose and tables cannot drift apart when the data changes.
-- `rfm_segments.csv` is optional. If it's missing the script prints a notice
-  and emits the report without the segmentation section, rather than failing.
-- Verified to reproduce every figure from the original hand-authored report
-  (revenue, orders, AOV, repeat rate, top/bottom products, top customers),
-  against the pre-behavioral-model dataset that report was written for.
-- Exits with a clear message if the .docx is open in Word, which holds a
-  write lock on the file.
-- **Why this script exists**: the original report was authored interactively
-  and its generating code was never saved, so the report couldn't be rebuilt
-  when upstream data changed. This closes that gap.
 
 ### `scenario_simulator.py`
 A "what-if" tool for testing retention/discount campaigns against the RFM
@@ -213,33 +207,34 @@ Two things it does deliberately:
 
 - **Accounts for discount cannibalization.** A discount is paid to everyone who
   redeems, including customers who would have bought anyway. Ignoring this is
-  the most common way campaign ROI gets overstated. In the 15%/10% example
-  above, $218.77 of discount goes to baseline buyers versus $21.88 to
-  incremental ones -- which is why that scenario returns **-77% ROI** despite
-  sounding reasonable.
+  the most common way campaign ROI gets overstated. Offering 15% off to the
+  521 customers in `Promising / New` and assuming a 10% lift sends $1,093 of
+  discount to baseline buyers versus $109 to incremental ones -- which is why
+  that scenario returns **-70% ROI** despite sounding reasonable.
 - **Solves for break-even lift.** Rather than reporting ROI for one guessed
   lift, it reports the lift the campaign would need to break even, which is the
-  number that actually drives a go/no-go call. For At Risk customers, a 5%
-  discount needs a 24.8% lift to break even; a 25% discount needs 104.7%, which
-  means more than doubling the segment's conversion rate just to break even.
+  number that actually drives a go/no-go call. For `Promising / New`, a 5%
+  discount needs a 14.6% lift to break even; a 25% discount needs 88.0%, close
+  to doubling the segment's conversion rate just to get the money back.
 
 **Baselines are measured out of sample.** Segments are rebuilt on history only,
 then conversion is measured in a held-out 30-day window. Measuring conversion on
-the same window that defined `recency` would be circular -- "At Risk" means "has
-not purchased recently", so it reports a 0% baseline by construction and makes
-every campaign look infinitely profitable. (Measured naively on the current
-data, At Risk and Hibernating / Lost both show 0.0% and Champions 40.9%; measured
-properly out of sample, At Risk is 2.0% and Champions 16.9%.)
+the same window that defined `recency` would be circular -- a lapsed segment
+means "has not purchased recently", so it reports a 0% baseline by construction
+and makes every campaign look infinitely profitable. (Measured naively on the
+current data, every lapsed segment shows 0.0% and Champions 36.8%; measured
+properly out of sample, Hibernating / Lost is 1.1% and Champions 17.9%.)
 
-**Baselines now carry signal.** Since the simulator gained a behavioral model,
-forward conversion ranges from 16.9% (Champions) down to 1.2% (Hibernating /
-Lost) -- a 14x spread, correctly ordered. Under the old uniform-random
-simulator every segment sat near 38% and `Hibernating / Lost` outranked
-`Champions`, which was meaningless. The tool checks for both failure modes at
-runtime (narrow spread, or Champions converting no better than Hibernating) and
-prints a warning rather than trusting the numbers blindly. Rates are still
-measured on simulated transactions, so pass `--baseline` with your own estimate
-for a real decision; the arithmetic does not depend on the data having
+**Baselines carry signal, and unmeasurable segments say so.** Forward conversion
+ranges from 17.9% (Champions) down to 1.1% (Hibernating / Lost), correctly
+ordered. `At Risk / Can't Lose Them` holds only 22 customers with no observed
+conversions, so no rate can be estimated for it: a zero denominator would make
+the max/min spread infinite and sail past any "is there signal here?" check,
+which is exactly what happened when the corrected segmentation first shrank that
+segment. Segments below `MIN_SEGMENT_OBSERVATIONS` or with no conversions are
+now reported as unmeasured, and the spread is computed from the rest. Rates are
+still measured on simulated transactions, so pass `--baseline` with your own
+estimate for a real decision; the arithmetic does not depend on the data having
 predictive signal, since lift and baseline are inputs rather than estimates.
 
 ### `churn_model.py`
@@ -257,16 +252,28 @@ overlap. Two numbers are reported because they answer different questions:
 
 | | ROC AUC | Avg precision | Top-decile capture |
 |---|---|---|---|
-| Cross-validated (5-fold) | 0.768 | 0.146 | 30% |
-| **Forward backtest** | **0.695** | **0.112** | **27%** |
-| Random baseline | 0.500 | 0.053 | 10% |
+| Selection snapshot (5-fold CV) | 0.775 | 0.118 | 31% |
+| **Forward backtest** | **0.696** | **0.096** | **31%** |
+| Random baseline | 0.500 | 0.039 | 10% |
 
 The backtest fits at an earlier cutoff and scores at a later one, so training
 data strictly precedes test data. **That is the number to quote** -- it is the
 honest estimate of deployed behavior, and it is meaningfully lower than the
-cross-validated figure, as it should be. Top-decile capture of 27% is a 2.7x
-lift: contacting the riskiest 10% of customers reaches 27% of everyone who
+cross-validated figure, as it should be. Top-decile capture of 31% is a 3.1x
+lift: contacting the riskiest 10% of customers reaches 31% of everyone who
 would have bought.
+
+**Model selection uses the earlier snapshot only.** Until 2026-09-17 all three
+candidates were scored on the test period and the winner picked from those
+results, which let the test period influence the choice -- the same leak as
+tuning on a test set. This is not academic: selecting honestly on the earlier
+snapshot picks random forest, while the old procedure picked logistic
+regression. Their forward AUCs are within 0.01 of each other, so the headline
+number barely moved, but the procedure has to hold regardless of how it falls.
+
+**Scores are out-of-time.** `churn_predictions.csv` and the ground-truth check
+use the model fitted on the earlier snapshot. Fitting on the test snapshot and
+scoring it -- which is what this did before -- makes both in-sample.
 
 **Validated against ground truth.** `customer_truth.csv` holds the latent
 parameters `simulator.py` used, so the model can be checked against the process
@@ -274,31 +281,39 @@ that generated the data rather than only a held-out split:
 
 | | Top decile | Bottom decile |
 |---|---|---|
-| True purchase rate (per year) | 2.92 | 1.07 |
-| Actually churned in window | 36% | 97% |
+| True purchase rate (per year) | 2.69 | 1.30 |
+| Actually churned in window | 42% | 86% |
 
-Predicted probability correlates with the true purchase rate at rho = +0.296
-and identifies genuinely-active customers at AUC 0.772.
+Predicted probability correlates with the true purchase rate at rho = +0.174
+and identifies genuinely-active customers at AUC 0.692. These are lower than
+the in-sample figures this section used to quote (+0.296 and 0.772), because
+the scores are now produced by a model that never saw these outcomes.
 
 `churn_predictions.csv` includes a `risk_decile` column where **10 = highest
 churn risk**. It was originally ranked on repurchase probability, which
 silently inverted it so that decile 1 was the riskiest -- the opposite of what
 anyone sorting a dashboard by risk would assume.
 
-**No `class_weight="balanced"`, deliberately.** Despite the 5% positive rate,
-rebalancing rescales probabilities to a 50/50 world and destroys calibration:
-mean predicted probability was 0.389 against an actual 0.053, with a Brier
-score 4x worse (0.198 vs 0.049). Ranking did not improve either (AUC 0.761
-balanced vs 0.768 unweighted). Since `scenario_simulator.py` consumes these as
-expected values rather than only as a ranking, calibration is the property that
-matters. The reflexive fix for imbalance cost accuracy here for nothing.
+**No `class_weight="balanced"`, deliberately.** Despite the ~4% positive rate,
+rebalancing rescales probabilities to a 50/50 world: mean predicted probability
+was 0.394 against an actual 0.039, with a Brier score 5x worse (0.2010 vs
+0.0376). Ranking did not improve either (AUC 0.724 balanced vs 0.728
+unweighted), so the reflexive fix for imbalance cost accuracy for nothing.
+
+**But the probabilities are not established as calibrated.** Dropping the class
+weighting is necessary, not sufficient. Out of time the model scores a Brier of
+0.0373 against 0.0378 for predicting the base rate for every customer -- a
+skill score of +1.2%, which is parity. The script prints this comparison on
+every run and says so in words. Earlier versions of these notes claimed
+`scenario_simulator.py` consumed the probabilities as expected values; it never
+did, and on this evidence it should not.
 
 **Coefficients are partial effects, not standalone predictors.** The features
-are heavily collinear (`monetary` ~ `frequency` x `aov`; `overdue_ratio` is
-built from `recency`; `recency`/`tenure` correlate at 0.88). Under collinearity
+are collinear (`monetary` ~ `frequency` x `aov` at 0.84; `recency`/`tenure` at
+0.89; `frequency`/`units` at 0.72). Under collinearity
 a fitted coefficient can take the opposite sign to the feature's own
-relationship with the outcome -- `monetary` correlates +0.024 with repurchase
-but fits at -0.279. The script prints each coefficient beside that feature's
+relationship with the outcome -- in the current run `units` correlates +0.101
+with repurchase but fits at -0.097. The script prints each coefficient beside that feature's
 own correlation and flags the disagreements, so the chart cannot be read as
 causal. Ranking quality is unaffected; only interpretation is.
 
@@ -311,11 +326,11 @@ now" but "how fast do customers decay, and is acquisition quality changing".
 python scripts/cohort_analysis.py
 ```
 
-Retention decays cleanly, and cohorts are evenly sized (101-138):
+Retention decays cleanly, and cohorts are evenly sized (109-155):
 
 | Month | +1 | +2 | +3 | +4 | +5 | +6 |
 |---|---|---|---|---|---|---|
-| Avg retention | 10.6% | 8.5% | 7.1% | 5.6% | 4.7% | 3.2% |
+| Avg retention | 9.0% | 6.9% | 5.6% | 5.8% | 3.9% | 3.4% |
 | Cohorts averaged | 11 | 10 | 9 | 8 | 7 | 6 |
 
 Four things the script does deliberately, each guarding a way cohort analysis
@@ -326,8 +341,8 @@ usually goes wrong:
   the cohort count is printed beside every average -- a "month +8" figure drawn
   from three cohorts is not comparable to "month +1" drawn from eleven.
 - **Cohort quality is compared at a fixed offset,** which is the only
-  apples-to-apples comparison. The month +1 figures trend +0.44 pp per cohort,
-  which looks like improving acquisition until you test it: **p = 0.086, not
+  apples-to-apples comparison. The month +1 figures trend -0.37 pp per cohort,
+  which looks like declining acquisition until you test it: **p = 0.075, not
   significant**. The script says so plainly. This dataset draws every customer
   from the same distribution, so flat is the correct answer, and a tool that
   reported a trend here would be wrong.
@@ -350,13 +365,13 @@ which is the shape Power BI's matrix visual wants.
 
 ## Known data characteristics (from the last full run)
 
-- 49 real products, 1,500 simulated customers, 2,169 simulated transactions,
-  $708,998.19 total simulated revenue.
+- 49 real products, 1,500 simulated customers, 2,077 simulated transactions,
+  $700,701.67 total simulated revenue.
 - Revenue is still concentrated: the single highest-earning rug accounts for
-  ~33% of revenue and the top 5 products for ~52%. That comes from the real
+  ~23% of revenue and the top 5 products for ~51%. That comes from the real
   catalog's price spread, not from the simulation.
-- 28.0% of customers placed 2+ orders, and 58.0% churned before the window
-  closed. Both are properties of the behavioral model rather than claims about
+- 23.0% of customers placed 2+ orders (77.0% ordered exactly once), and 66.3%
+  churned before the window closed. Both are properties of the behavioral model rather than claims about
   real Wayfair shoppers, but they are at least in a plausible range for
   big-ticket home goods.
 - Products are still chosen uniformly at random per transaction. Real customers
@@ -365,30 +380,38 @@ which is the shape Power BI's matrix visual wants.
 
 ## Report
 
-`reports/Wayfair_Sales_Performance_Report.docx` — formal Word report,
-generated by `scripts/generate_report.py`. Covers KPIs, monthly revenue
-trend, top/bottom products, revenue concentration (Pareto), customer
-purchase frequency, and **RFM customer segmentation**. States data
-provenance (real catalog vs. simulated transactions) up front, and repeats
-the simulation caveat inside the segmentation section so segment sizes
-aren't read as real-world customer distribution.
+The performance report is authored by hand, not generated. `generate_report.py`
+was removed on 2026-09-17 so the report and its visuals could be produced
+directly; the generator remains in git history if it is ever wanted back.
 
-Segment breakdown from the last run (sums to the $708,998.19 revenue total):
+`reports/Wayfair_Sales_Performance_Report.docx` is the last generated version,
+kept for reference until a hand-authored report replaces it. Treat it as a
+frozen snapshot: nothing regenerates it, so it will not follow later changes to
+the data. In particular, its RFM segmentation section is built from
+`rfm_segments.csv` and will go stale as soon as the frequency scoring is
+corrected.
+
+Anything the report states about customer behavior should carry the same
+provenance caveat the pipeline uses elsewhere: the product catalog is real,
+while every customer, order, and date is simulated.
+
+Segment breakdown from the last run (sums to the $700,701.67 revenue total):
 
 | Segment | Customers | % of base | Revenue | % of revenue |
 |---|---|---|---|---|
-| Champions | 186 | 12.4% | $219,214.45 | 30.9% |
-| Loyal Customers | 230 | 15.3% | $139,850.04 | 19.7% |
-| Promising / New | 322 | 21.5% | $117,082.57 | 16.5% |
-| About to Sleep / Average | 162 | 10.8% | $14,926.18 | 2.1% |
-| At Risk / Can't Lose Them | 322 | 21.5% | $129,793.64 | 18.3% |
-| Hibernating / Lost | 278 | 18.5% | $88,131.31 | 12.4% |
+| Hibernating / Lost | 579 | 38.6% | $223,703.14 | 31.9% |
+| Promising / New | 521 | 34.7% | $199,624.07 | 28.5% |
+| Champions | 76 | 5.1% | $117,623.75 | 16.8% |
+| About to Sleep / Average | 270 | 18.0% | $92,592.30 | 13.2% |
+| Loyal Customers | 32 | 2.1% | $40,254.56 | 5.7% |
+| At Risk / Can't Lose Them | 22 | 1.5% | $26,903.85 | 3.8% |
 
 ## Natural next steps
 
 - Feed `churn_predictions.csv` into `scenario_simulator.py` so campaigns can be
-  targeted by predicted risk rather than by segment membership. The model is
-  calibrated, so its probabilities can be used as expected values directly.
+  targeted by predicted risk rather than by segment membership. Use the scores
+  as a ranking (who to contact), not as expected values -- the forward Brier
+  skill is only +1.2%, so they would need recalibrating first.
 - Weight product selection by price so cheaper items sell more often. Products
   are currently drawn uniformly, which overstates revenue concentration.
 - If the scraper ever reports 0 products, re-derive the CSS classes (see
@@ -400,18 +423,13 @@ The repo uses `.gitattributes` to keep line endings from creating noise:
 pandas writes CRLF on Windows, while the repository stores LF. Re-running the
 entire pipeline leaves all four CSVs showing **no diff**.
 
-Two things worth knowing:
+One thing worth knowing:
 
 - `.gitattributes` deliberately uses plain `text`, not `text eol=lf`. Forcing
   LF in the working tree makes every pandas-written CSV disagree with its
   checked-out form, and `git status` then reports all four data files as
   modified after any rerun even though content is identical. This was tested,
   not assumed.
-- `reports/Wayfair_Sales_Performance_Report.docx` **will** show as modified
-  after every regeneration. A .docx is a zip archive with embedded
-  timestamps, so its bytes change even when the document doesn't. Before
-  committing one, check whether the content actually changed rather than
-  assuming a diff is meaningful; if it hasn't, `git checkout --` the file.
 
 ## Verified environment
 
@@ -425,7 +443,6 @@ well ahead of the minimums in `requirements.txt`:
 | Faker | >=20.0 | 40.37.0 |
 | beautifulsoup4 | >=4.12 | 4.14.3 |
 | matplotlib | >=3.7 | 3.10.8 |
-| python-docx | >=1.1 | 1.2.0 |
 | scikit-learn | >=1.3 | 1.9.0 |
 | scipy | >=1.10 | 1.18.1 |
 
