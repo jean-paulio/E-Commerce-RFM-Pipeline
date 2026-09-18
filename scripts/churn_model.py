@@ -24,9 +24,12 @@ Two evaluations are reported, because they answer different questions:
     how the model behaves deployed, and it is the number to quote.
 
 With a ~5% positive rate, ROC AUC alone flatters a model. Average precision
-(against the base rate) and top-decile capture are reported alongside it, and
-calibration is checked because the scenario simulator consumes these
-probabilities as expected values, not just rankings.
+(against the base rate) and top-decile capture are reported alongside it.
+
+Calibration is reported but NOT claimed. The forward Brier score is compared
+against a constant "everyone at the base rate" forecast; when that constant
+wins, these probabilities are useful for ranking customers and should not be
+used as expected values in an ROI model.
 
 GROUND TRUTH
 ------------
@@ -102,14 +105,23 @@ def build_features(sales: pd.DataFrame, cutoff: pd.Timestamp) -> pd.DataFrame:
         "units": g["Quantity"].sum(),
     })
 
-    # Average gap between purchases, and how far past it the customer is.
-    # "Overdue" is usually the single strongest signal: a customer who buys
-    # every 40 days and last bought 200 days ago is behaving differently from
-    # one who buys every 300 days and last bought 200 days ago, even though
-    # their recency is identical.
+    # Average gap between consecutive orders, and how far past it the customer
+    # is. "Overdue" is usually the strongest signal: a customer who buys every
+    # 40 days and last bought 200 days ago is behaving differently from one who
+    # buys every 300 days and last bought 200 days ago, even though their
+    # recency is identical.
+    #
+    # The span is first order -> last order. An earlier version divided tenure
+    # (first order -> cutoff) by the number of gaps, which folds recency into
+    # the customer's "typical gap": someone who ordered on days 1 and 30 and is
+    # scored on day 200 got 199 days instead of 29. That made overdue_ratio a
+    # near-duplicate of recency (correlation 0.91) and cost about a point of
+    # forward AUC.
+    active_span = (g["InvoiceDate"].max() - g["InvoiceDate"].min()).dt.days
+    active_span = active_span.reindex(feats.index)
     feats["mean_gap"] = np.where(
         feats["frequency"] > 1,
-        feats["tenure"] / (feats["frequency"] - 1).clip(lower=1),
+        active_span / (feats["frequency"] - 1).clip(lower=1),
         np.nan,
     )
     typical_gap = feats["mean_gap"].median()
@@ -140,14 +152,14 @@ def candidate_models():
     """Candidate classifiers.
 
     Deliberately no `class_weight="balanced"`, despite the 5% positive rate.
-    Rebalancing rescales predicted probabilities to a 50/50 world, which
-    destroys calibration -- with balanced weights the mean predicted
-    probability was 0.389 against an actual rate of 0.053, and the Brier score
-    was 4x worse (0.198 vs 0.049). Ranking did not improve either: AUC was
-    0.761 balanced vs 0.768 unweighted. Since these probabilities feed
-    scenario_simulator.py as expected values rather than only as a ranking,
-    calibration is the property that matters, and the usual reflex for
-    imbalance costs it for nothing here.
+    Rebalancing rescales predicted probabilities to a 50/50 world: with
+    balanced weights the mean predicted probability was 0.389 against an actual
+    rate of 0.053, and the Brier score was 4x worse (0.198 vs 0.049). Ranking
+    did not improve either (AUC 0.761 balanced vs 0.768 unweighted), so the
+    usual reflex for imbalance costs accuracy here for nothing.
+
+    Dropping it does not by itself make the probabilities trustworthy as
+    expected values -- see the forward Brier skill reported by main().
     """
     return {
         "Logistic Regression": make_pipeline(
@@ -196,8 +208,8 @@ def print_header(title):
     print(f"\n{'=' * 68}\n{title}\n{'=' * 68}")
 
 
-def report_cv(X, y, results, base_rate):
-    print_header("MODEL COMPARISON (5-fold cross-validated)")
+def report_cv(X, y, results, base_rate, snapshot="snapshot"):
+    print_header(f"MODEL COMPARISON (5-fold cross-validated, {snapshot})")
     print(f"  positives: {y.sum()} of {len(y)} customers "
           f"({base_rate*100:.1f}% base rate)\n")
     print(f"  {'model':<22}{'ROC AUC':>9}{'avg prec':>10}{'Brier':>9}"
@@ -214,15 +226,33 @@ def report_cv(X, y, results, base_rate):
 def report_backtest(name, metrics, base_rate):
     print_header(f"FORWARD BACKTEST -- {name}")
     print("  trained on an earlier cutoff, scored on a later one, so all")
-    print("  training data strictly precedes all test data.\n")
+    print("  training data strictly precedes all test data, and the algorithm")
+    print("  was chosen without ever seeing this period.\n")
     print(f"  ROC AUC            {metrics['auc']:.3f}")
     print(f"  Average precision  {metrics['ap']:.3f}   "
           f"(base rate {base_rate:.3f} = chance)")
-    print(f"  Brier score        {metrics['brier']:.4f}   (lower is better)")
     print(f"  Top-decile capture {metrics['capture10']*100:.0f}%   "
           f"of buyers found in the top 10% of scores")
     lift = metrics["capture10"] / 0.10
     print(f"  Lift over random   {lift:.1f}x")
+
+    print(f"\n  Brier score        {metrics['brier']:.4f}")
+    print(f"  ...vs a constant   {metrics['brier_const']:.4f}   "
+          f"(everyone at the training base rate)")
+    print(f"  Brier skill        {metrics['brier_skill']:+.1%}")
+    # A skill score of a percent or two is parity, not calibration. Requiring a
+    # real margin keeps this from overclaiming the way "calibrated probabilities"
+    # did before.
+    if metrics["brier_skill"] < 0.05:
+        verdict = ("no better than" if metrics["brier_skill"] <= 0
+                   else "barely better than")
+        print(f"\n  These probabilities are {verdict} a constant forecast, so the")
+        print("  scores RANK customers usefully but are not established as")
+        print("  calibrated probabilities. Do not use them as expected values")
+        print("  in an ROI model without recalibrating first.")
+    else:
+        print("\n  The model beats a constant forecast by a clear margin, so the")
+        print("  probabilities carry information beyond the ranking.")
 
 
 def report_coefficients(model, X, y):
@@ -386,42 +416,55 @@ def main():
     cutoff_test = last - pd.Timedelta(days=HORIZON_DAYS)
     cutoff_train = cutoff_test - pd.Timedelta(days=HORIZON_DAYS)
 
+    X_tr, y_tr = dataset_at(sales, cutoff_train)
     X, y = dataset_at(sales, cutoff_test)
     base_rate = y.mean()
     print(f"Scoring window   : {HORIZON_DAYS} days")
+    print(f"Selection cutoff : {cutoff_train:%Y-%m-%d}  "
+          f"({len(X_tr):,} customers, {y_tr.sum()} positives)")
     print(f"Feature cutoff   : {cutoff_test:%Y-%m-%d}  "
           f"({len(X):,} customers with history)")
     print(f"Label window     : {cutoff_test + pd.Timedelta(days=1):%Y-%m-%d}"
           f" -> {last:%Y-%m-%d}")
 
-    results = {name: evaluate_cv(X, y, m) for name, m in candidate_models().items()}
-    report_cv(X, y, results, base_rate)
+    # Algorithm selection uses the EARLIER snapshot only. Selecting on the later
+    # one lets the test period influence the choice, which is the same leak as
+    # tuning on a test set -- even when, as here, the winner is the same either
+    # way, the procedure has to hold regardless of how it happens to fall.
+    selection = {name: evaluate_cv(X_tr, y_tr, m)
+                 for name, m in candidate_models().items()}
+    report_cv(X_tr, y_tr, selection, y_tr.mean(), snapshot="selection snapshot")
 
-    best_name = max(results, key=lambda k: results[k]["auc"])
-    print(f"\n  best by ROC AUC: {best_name}")
+    best_name = max(selection, key=lambda k: selection[k]["auc"])
+    print(f"\n  selected without seeing the test period: {best_name}")
 
     # --- forward backtest -------------------------------------------------
-    X_tr, y_tr = dataset_at(sales, cutoff_train)
     model = candidate_models()[best_name]
     model.fit(X_tr, y_tr)
     proba_bt = model.predict_proba(X)[:, 1]
+    brier_const = brier_score_loss(y, np.full(len(y), y_tr.mean()))
+    brier_model = brier_score_loss(y, proba_bt)
     bt = {
         "auc": roc_auc_score(y, proba_bt),
         "ap": average_precision_score(y, proba_bt),
-        "brier": brier_score_loss(y, proba_bt),
+        "brier": brier_model,
+        "brier_const": brier_const,
+        "brier_skill": 1 - brier_model / brier_const,
         "capture10": capture_at(y, proba_bt, 0.10),
     }
     report_backtest(best_name, bt, base_rate)
 
-    # --- interpretability (always from logistic regression) ---------------
+    # --- interpretability -------------------------------------------------
+    # Fitted on the selection snapshot, matching the model that was evaluated.
     lr = candidate_models()["Logistic Regression"]
-    lr.fit(X, y)
-    coefs = report_coefficients(lr, X, y)
+    lr.fit(X_tr, y_tr)
+    coefs = report_coefficients(lr, X_tr, y_tr)
 
-    # --- final scores on all customers ------------------------------------
-    final = candidate_models()[best_name]
-    final.fit(X, y)
-    scores = pd.Series(final.predict_proba(X)[:, 1], index=X.index)
+    # --- scores -----------------------------------------------------------
+    # Out-of-time: the model never saw these labels. Scoring the test snapshot
+    # with a model fitted on it would make churn_predictions.csv and the
+    # ground-truth check in-sample.
+    scores = pd.Series(proba_bt, index=X.index)
 
     out = X.copy()
     out["repurchase_probability"] = scores.round(4)
@@ -436,7 +479,7 @@ def main():
 
     report_ground_truth(scores)
 
-    path = save_charts(y, results[best_name]["proba"], coefs, best_name)
+    path = save_charts(y, proba_bt, coefs, best_name)
     print(f"\nWrote {OUTPUT_FILE}")
     print(f"Charts -> {path}")
 
