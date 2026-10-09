@@ -71,7 +71,10 @@ OUTPUT_FILE = os.path.join(DATA_DIR, "raw_sales_data.csv")
 TRUTH_FILE = os.path.join(DATA_DIR, "customer_truth.csv")
 
 NUM_CUSTOMERS = 1500
-END_DATE = datetime(2026, 6, 1)
+# A full calendar year (2025-01-01 .. 2025-12-31). END_DATE is exclusive: the
+# window runs back WINDOW_DAYS from it, and the last transaction lands on the
+# day before. A calendar year gives clean quarters for reporting.
+END_DATE = datetime(2026, 1, 1)
 WINDOW_DAYS = 365
 START_DATE = END_DATE - timedelta(days=WINDOW_DAYS)
 

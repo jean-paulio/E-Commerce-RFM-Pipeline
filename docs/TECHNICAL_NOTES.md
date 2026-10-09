@@ -111,7 +111,11 @@ to a clearly distinct filename instead (`product_catalog_SAMPLE.csv`).
 
 ### `simulator.py`
 - Generates a simulated transaction history against the real catalog, over a
-  365-day window ending 2026-06-01.
+  365-day window covering calendar 2025 (2025-01-01 to 2025-12-31). `END_DATE`
+  is exclusive, so it is set to 2026-01-01 and the last transaction falls on
+  31 December. A calendar year was chosen over the original June-to-June
+  window because quarters and year labels then line up with how a reader
+  already thinks about a reporting period.
 - **Customers are not interchangeable.** Each draws a purchase rate
   (`lambda`, Gamma-distributed) and a dropout hazard (`mu`, Gamma-distributed),
   then an exponential lifetime at that hazard, and buys via a Poisson process
@@ -151,8 +155,8 @@ the descriptive outputs but broke everything predictive built on top:
 |---|---|---|
 | Churn model AUC (6-feature probe, logistic regression) | 0.480 | **0.739** |
 | `frequency` correlation with repurchase | -0.0003 | **+0.126** |
-| Month-1 cohort retention | 35% (flat, no decay) | **9.0% (decaying)** |
-| Cohort sizes across 12 months | 157 → 2 (artifact) | **109–155 (even)** |
+| Month-1 cohort retention | 35% (flat, no decay) | **9.2% (decaying)** |
+| Cohort sizes across 12 months | 157 → 2 (artifact) | **112–142 (even)** |
 | Repeat-purchase rate | 96.2% (implausible) | **23.0%** |
 
 All five traced back to that one line. Note the sign on `frequency`: under the
@@ -326,11 +330,11 @@ now" but "how fast do customers decay, and is acquisition quality changing".
 python scripts/cohort_analysis.py
 ```
 
-Retention decays cleanly, and cohorts are evenly sized (109-155):
+Retention decays cleanly, and cohorts are evenly sized (112-142):
 
 | Month | +1 | +2 | +3 | +4 | +5 | +6 |
 |---|---|---|---|---|---|---|
-| Avg retention | 9.0% | 6.9% | 5.6% | 5.8% | 3.9% | 3.4% |
+| Avg retention | 9.2% | 6.9% | 5.6% | 6.2% | 3.9% | 3.0% |
 | Cohorts averaged | 11 | 10 | 9 | 8 | 7 | 6 |
 
 Four things the script does deliberately, each guarding a way cohort analysis
@@ -342,7 +346,7 @@ usually goes wrong:
   from three cohorts is not comparable to "month +1" drawn from eleven.
 - **Cohort quality is compared at a fixed offset,** which is the only
   apples-to-apples comparison. The month +1 figures trend -0.37 pp per cohort,
-  which looks like declining acquisition until you test it: **p = 0.075, not
+  which looks like declining acquisition until you test it: **p = 0.108, not
   significant**. The script says so plainly. This dataset draws every customer
   from the same distribution, so flat is the correct answer, and a tool that
   reported a trend here would be wrong.
@@ -416,6 +420,27 @@ Segment breakdown from the last run (sums to the $700,701.67 revenue total):
   are currently drawn uniformly, which overstates revenue concentration.
 - If the scraper ever reports 0 products, re-derive the CSS classes (see
   fragility note above) before assuming the page has no products.
+
+### Changing the date window
+
+The window moved from June 2025 – May 2026 to calendar 2025 on 2026-10-09. It
+cost one constant, because the pipeline never hardcodes dates anywhere else:
+every analysis window is defined relative to the last transaction
+(`max(InvoiceDate)`), not against the calendar.
+
+Worth knowing if it is ever moved again. The simulator is seeded, so the random
+draws happen in the same order regardless of the dates attached to them: the
+ledger came out as the same transactions shifted by a constant 151 days, with
+every non-date field identical. Revenue, RFM segments and churn predictions
+were byte-identical before and after. Only calendar-bucketed views moved --
+monthly revenue, which now buckets on different boundaries, and cohort sizes,
+which shifted from 109-155 to 112-142.
+
+One consequence to state in any report built on this data: a calendar year
+invites the reader to look for a Q4 holiday lift, and there is none. December
+takes $56K against a March peak of $74K. The simulator models purchase timing
+as random within each customer's active period, so seasonality is deliberately
+absent rather than measured and found missing.
 
 ## Version control
 

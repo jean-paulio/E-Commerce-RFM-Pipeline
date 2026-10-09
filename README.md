@@ -139,7 +139,7 @@ The analysis also checks whether newer customers are better or worse than older 
 <summary><b>Technical details</b></summary>
 
 - **Right-censoring made explicit:** later cohorts have had less time to be observed, so every column average is reported with the number of cohorts behind it.
-- **Cohort quality compared at a fixed offset** (month +1), tested with linear regression: slope −0.37 pp per cohort, **p = 0.075**, not significant.
+- **Cohort quality compared at a fixed offset** (month +1), tested with linear regression: slope −0.37 pp per cohort, **p = 0.108**, not significant.
 - **Observed zeros are distinguished from unobserved cells.** A cohort that went quiet in an observed month shows `0%`; only months that haven't happened yet are blank.
 - Cohorts under 30 customers are flagged and excluded from summary statistics.
 - Also reports cumulative revenue per cohort member (the payback view), and exports `cohort_retention_long.csv` in tidy long format for Power BI.
@@ -182,8 +182,8 @@ The original simulator assigned each transaction via `random.choice(customers)`,
 |---|---|---|
 | Churn model AUC | 0.480 | 0.739 |
 | Purchase frequency's correlation with repurchase | −0.0003 | +0.126 |
-| Month-1 cohort retention | 35% (flat) | 9.0% (decaying) |
-| Cohort sizes over 12 months | 157 → 2 | 109–155 |
+| Month-1 cohort retention | 35% (flat) | 9.2% (decaying) |
+| Cohort sizes over 12 months | 157 → 2 | 112–142 |
 | Repeat-purchase rate | 96.2% | 23.0% |
 
 </details>
@@ -224,7 +224,7 @@ The cohort analysis first reported that newer customers were getting better. A p
 <details>
 <summary><b>Technical details</b></summary>
 
-An initial heuristic compared the slope to the spread and flagged a trend. It was replaced with an ordinary least-squares significance test (`scipy.stats.linregress`): −0.37 pp per cohort, SE 0.18, p = 0.075, n = 11.
+An initial heuristic compared the slope to the spread and flagged a trend. It was replaced with an ordinary least-squares significance test (`scipy.stats.linregress`): −0.37 pp per cohort, SE 0.21, p = 0.108, n = 11.
 
 </details>
 
